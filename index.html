@@ -59,20 +59,18 @@
 			
 				<li><a href="/">主页</a></li>
 	        
-				<li><a href="/tags/SpringCloud/">SpringCloud</a></li>
+				<li><a href="/tags/SpringCloud">SpringCloud</a></li>
 	        
-				<li><a href="/tags/SpringBoot/">SpringBoot</a></li>
+				<li><a href="/tags/SpringBoot">SpringBoot</a></li>
 	        
-				<li><a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</a></li>
-	        
-				<li><a href="/tags/%E9%9A%8F%E7%AC%94/">随笔</a></li>
+				<li><a href="/archives/index.html">所有文章</a></li>
 	        
 			</ul>
 		</nav>
 		<nav class="header-smart-menu">
     		
     			
-    			<a q-on="click: openSlider(e, 'innerArchive')" href="javascript:void(0)">所有文章</a>
+    			<a q-on="click: openSlider(e, 'innerArchive')" href="javascript:void(0)">搜索文章</a>
     			
             
     			
@@ -125,8 +123,6 @@
 			
 				
 			
-				
-			
 			
 			
 			<nav class="header-nav">
@@ -147,15 +143,13 @@
 				<ul style="width: 70%">
 				
 				
-					<li style="width: 20%"><a href="/">主页</a></li>
+					<li style="width: 25%"><a href="/">主页</a></li>
 		        
-					<li style="width: 20%"><a href="/tags/SpringCloud/">SpringCloud</a></li>
+					<li style="width: 25%"><a href="/tags/SpringCloud">SpringCloud</a></li>
 		        
-					<li style="width: 20%"><a href="/tags/SpringBoot/">SpringBoot</a></li>
+					<li style="width: 25%"><a href="/tags/SpringBoot">SpringBoot</a></li>
 		        
-					<li style="width: 20%"><a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</a></li>
-		        
-					<li style="width: 20%"><a href="/tags/%E9%9A%8F%E7%AC%94/">随笔</a></li>
+					<li style="width: 25%"><a href="/archives/index.html">所有文章</a></li>
 		        
 				</ul>
 			</nav>
@@ -172,19 +166,19 @@
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-SpringCloud-微服务实战（一）：微服务架构" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-微服务实战（一）：微服务架构" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2020/07/11/SpringCloud-%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AE%9E%E6%88%98%EF%BC%88%E4%B8%80%EF%BC%89%EF%BC%9A%E5%BE%AE%E6%9C%8D%E5%8A%A1%E6%9E%B6%E6%9E%84/">SpringCloud 微服务实战（一）：微服务架构</a>
+      <a class="article-title" href="/2020/07/11/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AE%9E%E6%88%98%EF%BC%88%E4%B8%80%EF%BC%89%EF%BC%9A%E5%BE%AE%E6%9C%8D%E5%8A%A1%E6%9E%B6%E6%9E%84/">SpringCloud 微服务实战（一）：微服务架构</a>
     </h1>
   
 
         
-        <a href="/2020/07/11/SpringCloud-%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AE%9E%E6%88%98%EF%BC%88%E4%B8%80%EF%BC%89%EF%BC%9A%E5%BE%AE%E6%9C%8D%E5%8A%A1%E6%9E%B6%E6%9E%84/" class="archive-article-date">
+        <a href="/2020/07/11/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AE%9E%E6%88%98%EF%BC%88%E4%B8%80%EF%BC%89%EF%BC%9A%E5%BE%AE%E6%9C%8D%E5%8A%A1%E6%9E%B6%E6%9E%84/" class="archive-article-date">
 
   	<time datetime="2020-07-11T15:49:55.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-11</time>
 </a>
@@ -212,10 +206,8 @@
 </li>
 </ul>
 <h2 id="一、前言"><a href="#一、前言" class="headerlink" title="一、前言"></a>一、前言</h2><p> &emsp; 在进行Spring Cloud的具体内容介绍之前，我们先通过本章学习一些关于微服务架构以及Spring Cloud的基础知识。对Spring Cloud有一个大致的了解，以帮助我们更好地理解后续章节各个组件的介绍。</p>
-<h2 id="二、什么是微服务架构"><a href="#二、什么是微服务架构" class="headerlink" title="二、什么是微服务架构"></a>二、什么是微服务架构</h2><p>​    <strong>“微服务”</strong>一词源于<strong>Martin Fowler</strong>的名为<a href="https://martinfowler.com/articles/microservices.html" target="_blank" rel="noopener">Microservices</a>的博文。</p>
-<p> &emsp; 简单地说，微服务是系统架构上的一种设计风格，它的主旨是将一个原本独立的系统图拆分成多个小型服务，这些小型服务都在各自独立的进程中运行，服务之间通过基于<strong>HTTP</strong>的RESTful API进行通信协作。被拆分成的每一个小型服务都围绕着系统中的某一项或一些耦合度较高的业务功能进行构建，并且每个服务都维护着自身的数据存储、业务开发、自动化测试案例以及独立部署机制。由于有了轻量级的通信协作基础，所以这些微服务可以使用不同的语言来编写。</p>
         
-          <a class="article-more-a" href="/2020/07/11/SpringCloud-%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AE%9E%E6%88%98%EF%BC%88%E4%B8%80%EF%BC%89%EF%BC%9A%E5%BE%AE%E6%9C%8D%E5%8A%A1%E6%9E%B6%E6%9E%84/#more">more >></a>
+          <a class="article-more-a" href="/2020/07/11/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AE%9E%E6%88%98%EF%BC%88%E4%B8%80%EF%BC%89%EF%BC%9A%E5%BE%AE%E6%9C%8D%E5%8A%A1%E6%9E%B6%E6%9E%84/#more">more >></a>
         
       
 	  
@@ -249,7 +241,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2020/07/11/SpringCloud-%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AE%9E%E6%88%98%EF%BC%88%E4%B8%80%EF%BC%89%EF%BC%9A%E5%BE%AE%E6%9C%8D%E5%8A%A1%E6%9E%B6%E6%9E%84/">more >></a>
+          <a class="article-more-a" href="/2020/07/11/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AE%9E%E6%88%98%EF%BC%88%E4%B8%80%EF%BC%89%EF%BC%9A%E5%BE%AE%E6%9C%8D%E5%8A%A1%E6%9E%B6%E6%9E%84/">more >></a>
         </p>
       
 
@@ -350,7 +342,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
     
     
       
-      <li style="width: 50%" q-on="click: openSlider(e, 'innerArchive')"><a href="javascript:void(0)" q-class="active:innerArchive">所有文章</a></li>
+      <li style="width: 50%" q-on="click: openSlider(e, 'innerArchive')"><a href="javascript:void(0)" q-class="active:innerArchive">搜索文章</a></li>
       
         
       

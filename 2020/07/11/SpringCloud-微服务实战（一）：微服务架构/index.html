@@ -8,16 +8,18 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>SpringCloud 微服务实战（一）：微服务架构 | 你对我笑i</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="一、前言在进行Spring Cloud的具体内容介绍之前，我们先通过本章学习一些关于微服务架构以及Spring Cloud的基础知识。对Spring Cloud有一个大致的了解，以帮助我们更好地理解后续章节各个组件的介绍。 二、什么是微服务架构​    “微服务”一词源于Martin Fowler的名为Microservices的博文。 ​    简单地说，微服务是系统架构上的一种设计风格，它的主">
+  <meta name="description" content="参考资料 Spring Cloud SpringCloud中文文档 SpringCloud官方文档 书籍 《SpringCloud微服务实战》 《 Spring Cloud与Docker微服务架构实战 》     SpringBoot SpringBoot官方文档    一、前言 &amp;emsp; 在进行Spring Cloud的具体内容介绍之前，我们先通过本章学习一些关于微服务架构以及Spring">
 <meta property="og:type" content="article">
 <meta property="og:title" content="SpringCloud 微服务实战（一）：微服务架构">
 <meta property="og:url" content="http://yoursite.com/2020/07/11/SpringCloud-%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AE%9E%E6%88%98%EF%BC%88%E4%B8%80%EF%BC%89%EF%BC%9A%E5%BE%AE%E6%9C%8D%E5%8A%A1%E6%9E%B6%E6%9E%84/index.html">
 <meta property="og:site_name" content="你对我笑i">
-<meta property="og:description" content="一、前言在进行Spring Cloud的具体内容介绍之前，我们先通过本章学习一些关于微服务架构以及Spring Cloud的基础知识。对Spring Cloud有一个大致的了解，以帮助我们更好地理解后续章节各个组件的介绍。 二、什么是微服务架构​    “微服务”一词源于Martin Fowler的名为Microservices的博文。 ​    简单地说，微服务是系统架构上的一种设计风格，它的主">
+<meta property="og:description" content="参考资料 Spring Cloud SpringCloud中文文档 SpringCloud官方文档 书籍 《SpringCloud微服务实战》 《 Spring Cloud与Docker微服务架构实战 》     SpringBoot SpringBoot官方文档    一、前言 &amp;emsp; 在进行Spring Cloud的具体内容介绍之前，我们先通过本章学习一些关于微服务架构以及Spring">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="http://cdn.lnzz.site/static/images/SpringCloud/01/1.png">
+<meta property="og:image" content="http://cdn.lnzz.site/static/images/SpringCloud/01/2.png">
+<meta property="og:image" content="http://cdn.lnzz.site/static/images/SpringCloud/01/3.png">
 <meta property="article:published_time" content="2020-07-11T15:49:55.000Z">
-<meta property="article:modified_time" content="2020-07-12T05:55:59.364Z">
+<meta property="article:modified_time" content="2020-07-12T09:10:11.514Z">
 <meta property="article:author" content="你对我笑i">
 <meta property="article:tag" content="SpringCloud">
 <meta property="article:tag" content="SpringBoot">
@@ -186,15 +188,64 @@
 
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="一、前言"><a href="#一、前言" class="headerlink" title="一、前言"></a>一、前言</h2><p>在进行Spring Cloud的具体内容介绍之前，我们先通过本章学习一些关于微服务架构以及Spring Cloud的基础知识。对Spring Cloud有一个大致的了解，以帮助我们更好地理解后续章节各个组件的介绍。</p>
-<h2 id="二、什么是微服务架构"><a href="#二、什么是微服务架构" class="headerlink" title="二、什么是微服务架构"></a>二、什么是微服务架构</h2><p>​    “微服务”一词源于<strong>Martin Fowler</strong>的名为<a href="https://martinfowler.com/articles/microservices.html" target="_blank" rel="noopener">Microservices</a>的博文。</p>
-<p>​    简单地说，微服务是系统架构上的一种设计风格，它的主旨是将一个原本独立的系统图拆分成多个小型服务，这些小型服务都在各自独立的进程中运行，服务之间通过基于<strong>HTTP</strong>的RESTful API进行通信协作。被拆分成的每一个小型服务都围绕着系统中的某一项或一些耦合度较高的业务功能进行构建，并且每个服务都维护着自身的数据存储、业务开发、自动化测试案例以及独立部署机制。由于有了轻量级的通信协作基础，所以这些微服务可以使用不同的语言来编写。</p>
+        <h4 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h4><ul>
+<li>Spring Cloud<ul>
+<li><a href="https://www.bookstack.cn/read/spring-cloud-docs/docs-index.md" target="_blank" rel="noopener">SpringCloud中文文档</a></li>
+<li><a href="https://cloud.spring.io/spring-cloud-static/Hoxton.SR1/reference/htmlsingle/" target="_blank" rel="noopener">SpringCloud官方文档</a></li>
+<li>书籍<ul>
+<li><a href="https://item.jd.com/12172344.html" target="_blank" rel="noopener">《SpringCloud微服务实战》</a></li>
+<li><a href="https://item.jd.com/12393837.html" target="_blank" rel="noopener">《 Spring Cloud与Docker微服务架构实战 》</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>SpringBoot<ul>
+<li><a href="https://docs.spring.io/spring-boot/docs/2.2.2.RELEASE/reference/htmlsingle/" target="_blank" rel="noopener">SpringBoot官方文档</a></li>
+</ul>
+</li>
+</ul>
+<h2 id="一、前言"><a href="#一、前言" class="headerlink" title="一、前言"></a>一、前言</h2><p> &emsp; 在进行Spring Cloud的具体内容介绍之前，我们先通过本章学习一些关于微服务架构以及Spring Cloud的基础知识。对Spring Cloud有一个大致的了解，以帮助我们更好地理解后续章节各个组件的介绍。</p>
+<h2 id="二、什么是微服务架构"><a href="#二、什么是微服务架构" class="headerlink" title="二、什么是微服务架构"></a>二、什么是微服务架构</h2><p>​    <strong>“微服务”</strong>一词源于<strong>Martin Fowler</strong>的名为<a href="https://martinfowler.com/articles/microservices.html" target="_blank" rel="noopener">Microservices</a>的博文。</p>
+<p> &emsp; 简单地说，微服务是系统架构上的一种设计风格，它的主旨是将一个原本独立的系统图拆分成多个小型服务，这些小型服务都在各自独立的进程中运行，服务之间通过基于<strong>HTTP</strong>的RESTful API进行通信协作。被拆分成的每一个小型服务都围绕着系统中的某一项或一些耦合度较高的业务功能进行构建，并且每个服务都维护着自身的数据存储、业务开发、自动化测试案例以及独立部署机制。由于有了轻量级的通信协作基础，所以这些微服务可以使用不同的语言来编写。</p>
 <a id="more"></a>
 
-<h3 id="2-1-与单体系统的区别"><a href="#2-1-与单体系统的区别" class="headerlink" title="2.1 与单体系统的区别"></a>2.1 与单体系统的区别</h3><img src="http://cdn.lnzz.site/static/images/SpringCloud/01/1.png">
+<h3 id="2-1-与单体系统的区别"><a href="#2-1-与单体系统的区别" class="headerlink" title="2.1 与单体系统的区别"></a>2.1 与单体系统的区别</h3><p> &emsp; 在以往传统的企业系统架构中，我们针对一个复杂的业务需求通常使用对象或业务类型来构建-一个单体项目。在项目中我们通常将需求分为三个主要部分</p>
+<img src="http://cdn.lnzz.site/static/images/SpringCloud/01/1.png">
+
+<p> &emsp; 在业务发展初期，由于所有的业务逻辑在一个应用中，<strong>开发、测试、部署</strong>都还比较容易且方便。但是，随着企业的发展，系统为了应对不同的业务需求会不断为该单体项目增加不同的业务模块;同时随着移动端设备的进步，前端展现模块已经不仅仅局限于Web的形式，这对于系统后端向前端的支持需要更多的接口模块。单体应用由于面对的业务需求更为宽泛，不断扩大的需求会使得单体应用变得越来越臃肿。单体应用的问题就逐渐凸显出来，由于单体系统部署在一个进程内， 往往我们修改了一个很小的功能，为了部署上线会影响其他功能的运行。并且，单体应用中的这些功能模块的使用场景、并发量、消耗的资源类型都各有不同，对于资源的利用又互相影响，这样使得我们对各个业务模块的系统容量很难给出较为准确的评估。所以，单体系统在初期虽然可以非常方便地进行开发和使用，但是随着系统的发展，维护成本会变得越来越大，且难以控制。</p>
+<p>&emsp;为了解决单体系统变得庞大臃肿之后产生的难以维护的问题，微服务架构诞生了并被大家所关注。我们将系统中的不同功能模块拆分成多个不同的服务，这些服务都能够独立部署和扩展。由于每个服务都运行在自己的进程内，在部署上有稳固的边界，这样每个服务的更新都不会影响其他服务的运行。同时，由于是独立部署的，我们可以更准确地为每个服务评估性能容量，通过配合服务间的协作流程也可以更容易地发现系统的瓶颈位置，以及给出较为准确的系统级性能容量评估。</p>
+<h3 id="2-2-微服务特点"><a href="#2-2-微服务特点" class="headerlink" title="2.2 微服务特点"></a>2.2 微服务特点</h3><ul>
+<li><p>小型化</p>
+<p>&emsp;微服务架构设计的突出之处：进行服务组件化设计，组件化的结果最显著的特点就是应用程序变小了。使用组件化方式来构建的应用程序，每个组件将只负责完成一定范围的业务功能，更加专一地做好一件事情。因为小型化的特点，会让问题变得更加简单，也是开发变得更加容易。</p>
+</li>
+<li><p>自治化</p>
+<p>&emsp;使用去中心化的扁平化设计，将使每个服务都能够进行独立自治，这是对负责功能的一种解耦设计。这种设计的特点也给每个微服务提供了更加自由的管理空间。</p>
+<p>&emsp;每个微服务都是一个独立的应用，独立使用数据库，独立部署，独立运行，这种独立性符合高内聚松耦合的设计原则。在微服务开发和维护中，每个微服务都是独立自治的，一个服务的更新和迭代将不存在对其他任何服务的依赖，同时也不会给其他服务造成影响，或者将这种影响减少到最小限度。</p>
+</li>
+<li><p>扁平化</p>
+<p>&emsp;独立自治的微服务，可以更加自由地发挥每一个服务的优势和长处。但是这种自由并不是指随意的混搭和组合，而是使用了扁平化的服务治理，让更多的微服务在发挥个性优势的同时，处在一种杂而不乱的有序可控的状态之中。虽然从整体上微服务已经没有集中管理的概念了，但是微服务在整体上能够发挥更佳的性能优势。</p>
+</li>
+<li><p>轻量级设计</p>
+<p>&emsp;微服务的组件化特点，也是一种轻量级设计方法的体现， 这种轻量级的设计同样体现在微服务的通信设计之中。</p>
+<p>&emsp;微服务的通信设计通常用到两种方式，即使用<strong>API的同步通信</strong>和使用<strong>消息通道的异步通信</strong>，不管使用哪种通信方式，都没有像<strong>SOA</strong>的<strong>ESB ( Enterprise Service Bus，企业服务总线)</strong>那样的重量级设计，而是分别使用简单的REST协议和轻量的消息总线来实现。</p>
+</li>
+<li><p>渐近化设计</p>
+<p>&emsp;一个产品从成型到成熟总是要经历一个过程，这个过程就是渐进式设计的特点。由于微服务小型而独立的特点，微服务设计可以使用业务驱动的方式进行，使用快速迭代进行不断地修正和调整，以使产品趋于成熟。</p>
+</li>
+</ul>
+<h2 id="三、SpringCloud组件介绍"><a href="#三、SpringCloud组件介绍" class="headerlink" title="三、SpringCloud组件介绍"></a>三、SpringCloud组件介绍</h2><h3 id="3-1-关于Cloud各种组件的停更-升级-替换"><a href="#3-1-关于Cloud各种组件的停更-升级-替换" class="headerlink" title="3.1 关于Cloud各种组件的停更 / 升级 / 替换"></a>3.1 关于Cloud各种组件的停更 / 升级 / 替换</h3><ul>
+<li><p>以前</p>
+<img src="http://cdn.lnzz.site/static/images/SpringCloud/01/2.png">
 
 
 
+</li>
+</ul>
+<ul>
+<li><p>NOW（2020）</p>
+<img src="http://cdn.lnzz.site/static/images/SpringCloud/01/3.png">
+</li>
+</ul>
 
       
 
@@ -332,7 +383,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#一、前言"><span class="toc-number">1.</span> <span class="toc-text">一、前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二、什么是微服务架构"><span class="toc-number">2.</span> <span class="toc-text">二、什么是微服务架构</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-与单体系统的区别"><span class="toc-number">2.1.</span> <span class="toc-text">2.1 与单体系统的区别</span></a></li></ol></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#参考资料"><span class="toc-number">1.</span> <span class="toc-text">参考资料</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#一、前言"><span class="toc-number"></span> <span class="toc-text">一、前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二、什么是微服务架构"><span class="toc-number"></span> <span class="toc-text">二、什么是微服务架构</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-与单体系统的区别"><span class="toc-number"></span> <span class="toc-text">2.1 与单体系统的区别</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-微服务特点"><span class="toc-number"></span> <span class="toc-text">2.2 微服务特点</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#三、SpringCloud组件介绍"><span class="toc-number"></span> <span class="toc-text">三、SpringCloud组件介绍</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-关于Cloud各种组件的停更-升级-替换"><span class="toc-number"></span> <span class="toc-text">3.1 关于Cloud各种组件的停更 &#x2F; 升级 &#x2F; 替换</span></a>
                     </div>
                 </span>
             </div>

@@ -6,12 +6,12 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>SpringCloud 微服务实站（七）：服务调用之Ribbon | 你对我笑i</title>
+  <title>SpringCloud 微服务实站（七）：客户端负载均衡之Ribbon | 你对我笑i</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="参考资料 Spring Cloud SpringCloud中文文档 SpringCloud官方文档 书籍 《 Spring Cloud微服务实战 》 《 Spring Cloud与Docker微服务架构实战 》     SpringBoot SpringBoot官方文档   Github 获取代码    一、前言&amp;emsp;Spring Cloud Ribbon 是一个基于HTTP和TCP的客户端">
 <meta property="og:type" content="article">
-<meta property="og:title" content="SpringCloud 微服务实站（七）：服务调用之Ribbon">
-<meta property="og:url" content="http://yoursite.com/2020/07/19/SpringCloud-%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AE%9E%E7%AB%99%EF%BC%88%E4%B8%83%EF%BC%89%EF%BC%9A%E6%9C%8D%E5%8A%A1%E8%B0%83%E7%94%A8%E4%B9%8BRibbon/index.html">
+<meta property="og:title" content="SpringCloud 微服务实站（七）：客户端负载均衡之Ribbon">
+<meta property="og:url" content="http://yoursite.com/2020/07/19/SpringCloud-%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AE%9E%E7%AB%99%EF%BC%88%E4%B8%83%EF%BC%89%EF%BC%9A%E5%AE%A2%E6%88%B7%E7%AB%AF%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1%E4%B9%8BRibbon/index.html">
 <meta property="og:site_name" content="你对我笑i">
 <meta property="og:description" content="参考资料 Spring Cloud SpringCloud中文文档 SpringCloud官方文档 书籍 《 Spring Cloud微服务实战 》 《 Spring Cloud与Docker微服务架构实战 》     SpringBoot SpringBoot官方文档   Github 获取代码    一、前言&amp;emsp;Spring Cloud Ribbon 是一个基于HTTP和TCP的客户端">
 <meta property="og:locale" content="en_US">
@@ -19,7 +19,7 @@
 <meta property="og:image" content="http://cdn.lnzz.site/static/images/SpringCloud/07/2.png">
 <meta property="og:image" content="http://cdn.lnzz.site/static/images/SpringCloud/07/4.png">
 <meta property="article:published_time" content="2020-07-19T13:18:16.000Z">
-<meta property="article:modified_time" content="2020-07-20T12:39:28.526Z">
+<meta property="article:modified_time" content="2020-07-21T14:16:31.295Z">
 <meta property="article:author" content="你对我笑i">
 <meta property="article:tag" content="SpringCloud">
 <meta property="article:tag" content="SpringBoot">
@@ -172,19 +172,19 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-SpringCloud-微服务实站（七）：服务调用之Ribbon" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-SpringCloud-微服务实站（七）：客户端负载均衡之Ribbon" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      SpringCloud 微服务实站（七）：服务调用之Ribbon
+      SpringCloud 微服务实站（七）：客户端负载均衡之Ribbon
     </h1>
   
 
         
-        <a href="/2020/07/19/SpringCloud-%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AE%9E%E7%AB%99%EF%BC%88%E4%B8%83%EF%BC%89%EF%BC%9A%E6%9C%8D%E5%8A%A1%E8%B0%83%E7%94%A8%E4%B9%8BRibbon/" class="archive-article-date">
+        <a href="/2020/07/19/SpringCloud-%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AE%9E%E7%AB%99%EF%BC%88%E4%B8%83%EF%BC%89%EF%BC%9A%E5%AE%A2%E6%88%B7%E7%AB%AF%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1%E4%B9%8BRibbon/" class="archive-article-date">
   	<time datetime="2020-07-19T13:18:16.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-19</time>
 </a>
 
@@ -504,7 +504,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/07/19/SpringCloud-%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AE%9E%E7%AB%99%EF%BC%88%E4%B8%83%EF%BC%89%EF%BC%9A%E6%9C%8D%E5%8A%A1%E8%B0%83%E7%94%A8%E4%B9%8BRibbon/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/07/19/SpringCloud-%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AE%9E%E7%AB%99%EF%BC%88%E4%B8%83%EF%BC%89%EF%BC%9A%E5%AE%A2%E6%88%B7%E7%AB%AF%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1%E4%B9%8BRibbon/" alt="微信分享二维码">
     </div>
 </div>
 

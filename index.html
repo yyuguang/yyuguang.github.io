@@ -166,19 +166,19 @@
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-SpringCloud-微服务实站（七）：服务调用之Ribbon" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-SpringCloud-微服务实站（七）：客户端负载均衡之Ribbon" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2020/07/19/SpringCloud-%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AE%9E%E7%AB%99%EF%BC%88%E4%B8%83%EF%BC%89%EF%BC%9A%E6%9C%8D%E5%8A%A1%E8%B0%83%E7%94%A8%E4%B9%8BRibbon/">SpringCloud 微服务实站（七）：服务调用之Ribbon</a>
+      <a class="article-title" href="/2020/07/19/SpringCloud-%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AE%9E%E7%AB%99%EF%BC%88%E4%B8%83%EF%BC%89%EF%BC%9A%E5%AE%A2%E6%88%B7%E7%AB%AF%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1%E4%B9%8BRibbon/">SpringCloud 微服务实站（七）：客户端负载均衡之Ribbon</a>
     </h1>
   
 
         
-        <a href="/2020/07/19/SpringCloud-%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AE%9E%E7%AB%99%EF%BC%88%E4%B8%83%EF%BC%89%EF%BC%9A%E6%9C%8D%E5%8A%A1%E8%B0%83%E7%94%A8%E4%B9%8BRibbon/" class="archive-article-date">
+        <a href="/2020/07/19/SpringCloud-%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AE%9E%E7%AB%99%EF%BC%88%E4%B8%83%EF%BC%89%EF%BC%9A%E5%AE%A2%E6%88%B7%E7%AB%AF%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1%E4%B9%8BRibbon/" class="archive-article-date">
   	<time datetime="2020-07-19T13:18:16.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-19</time>
 </a>
 
@@ -211,7 +211,7 @@
 <h2 id="一、前言"><a href="#一、前言" class="headerlink" title="一、前言"></a>一、前言</h2><p>&emsp;Spring Cloud Ribbon 是一个基于HTTP和TCP的客户端负载均衡工具,它基于Netflix Ribbon实现。通过 Spring Cloud 的封装，可以让我们轻松地将面向服务的REST模板请求自动转换成客户端负载均衡的服务调用。 Spring Cloud Ribbon 虽然只是一个工具类框架，它不像服务注册中心、配置中心、API网关那样需要独立部署，但是它几乎存在于每一个 Spring Cloud 构建的微服务和基础设施中。因为微服务间的调用，API网关的请求转发等内容，实际上都是通过 Ribbon来实现的，包括后续我们将要介绍的 Feign，它也是基于 Ribbon实现的工具。所以，对 Spring Cloud Ribbon 的理解和使用，对于我们使用 Spring Cloud来构建微服务非常重要。</p>
 <p>&emsp;在这一章中，我们将具体介绍如何使用 Ribbon来实现客户端的负载均衡，并且通过源码分析来了解 Ribbon实现客户端负载均衡的基本原理。</p>
         
-          <a class="article-more-a" href="/2020/07/19/SpringCloud-%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AE%9E%E7%AB%99%EF%BC%88%E4%B8%83%EF%BC%89%EF%BC%9A%E6%9C%8D%E5%8A%A1%E8%B0%83%E7%94%A8%E4%B9%8BRibbon/#more">more >></a>
+          <a class="article-more-a" href="/2020/07/19/SpringCloud-%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AE%9E%E7%AB%99%EF%BC%88%E4%B8%83%EF%BC%89%EF%BC%9A%E5%AE%A2%E6%88%B7%E7%AB%AF%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1%E4%B9%8BRibbon/#more">more >></a>
         
       
 	  
@@ -245,7 +245,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2020/07/19/SpringCloud-%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AE%9E%E7%AB%99%EF%BC%88%E4%B8%83%EF%BC%89%EF%BC%9A%E6%9C%8D%E5%8A%A1%E8%B0%83%E7%94%A8%E4%B9%8BRibbon/">more >></a>
+          <a class="article-more-a" href="/2020/07/19/SpringCloud-%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AE%9E%E7%AB%99%EF%BC%88%E4%B8%83%EF%BC%89%EF%BC%9A%E5%AE%A2%E6%88%B7%E7%AB%AF%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1%E4%B9%8BRibbon/">more >></a>
         </p>
       
 

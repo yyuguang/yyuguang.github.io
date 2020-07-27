@@ -166,20 +166,20 @@
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-SpringCloud-微服务实站（九）：服务容错保护之Hystrix" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-SpringCloud-微服务实站（十）：服务容错保护之Hystrix（二）" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2020/07/26/SpringCloud-%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AE%9E%E7%AB%99%EF%BC%88%E4%B9%9D%EF%BC%89%EF%BC%9A%E6%9C%8D%E5%8A%A1%E5%AE%B9%E9%94%99%E4%BF%9D%E6%8A%A4%E4%B9%8BHystrix/">SpringCloud 微服务实站（九）：服务容错保护之Hystrix（一）</a>
+      <a class="article-title" href="/2020/07/26/SpringCloud-%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AE%9E%E7%AB%99%EF%BC%88%E5%8D%81%EF%BC%89%EF%BC%9A%E6%9C%8D%E5%8A%A1%E5%AE%B9%E9%94%99%E4%BF%9D%E6%8A%A4%E4%B9%8BHystrix%EF%BC%88%E4%BA%8C%EF%BC%89/">SpringCloud 微服务实站（十）：服务容错保护之Hystrix（二）</a>
     </h1>
   
 
         
-        <a href="/2020/07/26/SpringCloud-%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AE%9E%E7%AB%99%EF%BC%88%E4%B9%9D%EF%BC%89%EF%BC%9A%E6%9C%8D%E5%8A%A1%E5%AE%B9%E9%94%99%E4%BF%9D%E6%8A%A4%E4%B9%8BHystrix/" class="archive-article-date">
-  	<time datetime="2020-07-26T12:54:58.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-26</time>
+        <a href="/2020/07/26/SpringCloud-%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AE%9E%E7%AB%99%EF%BC%88%E5%8D%81%EF%BC%89%EF%BC%9A%E6%9C%8D%E5%8A%A1%E5%AE%B9%E9%94%99%E4%BF%9D%E6%8A%A4%E4%B9%8BHystrix%EF%BC%88%E4%BA%8C%EF%BC%89/" class="archive-article-date">
+  	<time datetime="2020-07-26T15:01:11.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-26</time>
 </a>
 
         
@@ -208,9 +208,9 @@
 </ul>
 </li>
 </ul>
-<h2 id="一、前言"><a href="#一、前言" class="headerlink" title="一、前言"></a>一、前言</h2><p>在微服务架构中，系统被拆分成了很多服务单元，各单元的应用间通过服务注册与订阅的方式互相依赖。由于每个单元都在不同的进程中运行，依赖通过远程调用的方式执行，这样就有可能因为网络原因或是依赖服务自身问题出现调用故障或延迟，而这些问题会直接导致调用方的对外服务也出现延迟，若此时调用方的请求不断增加，最后就会因等待出现故障的依赖方响应形成任务积压，最终导致自身服务的瘫痪。</p>
+<h2 id="一、前言"><a href="#一、前言" class="headerlink" title="一、前言"></a>一、前言</h2><p>在上一章我们通过学习 Hystrix 的快速入门实例，来了解了什么是服务熔断，什么是服务降级，以及Hystrix的一些基础知识，在本章节我们来深入学习一下 Hystrix 的工作原理</p>
         
-          <a class="article-more-a" href="/2020/07/26/SpringCloud-%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AE%9E%E7%AB%99%EF%BC%88%E4%B9%9D%EF%BC%89%EF%BC%9A%E6%9C%8D%E5%8A%A1%E5%AE%B9%E9%94%99%E4%BF%9D%E6%8A%A4%E4%B9%8BHystrix/#more">more >></a>
+          <a class="article-more-a" href="/2020/07/26/SpringCloud-%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AE%9E%E7%AB%99%EF%BC%88%E5%8D%81%EF%BC%89%EF%BC%9A%E6%9C%8D%E5%8A%A1%E5%AE%B9%E9%94%99%E4%BF%9D%E6%8A%A4%E4%B9%8BHystrix%EF%BC%88%E4%BA%8C%EF%BC%89/#more">more >></a>
         
       
 	  
@@ -244,7 +244,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2020/07/26/SpringCloud-%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AE%9E%E7%AB%99%EF%BC%88%E4%B9%9D%EF%BC%89%EF%BC%9A%E6%9C%8D%E5%8A%A1%E5%AE%B9%E9%94%99%E4%BF%9D%E6%8A%A4%E4%B9%8BHystrix/">more >></a>
+          <a class="article-more-a" href="/2020/07/26/SpringCloud-%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AE%9E%E7%AB%99%EF%BC%88%E5%8D%81%EF%BC%89%EF%BC%9A%E6%9C%8D%E5%8A%A1%E5%AE%B9%E9%94%99%E4%BF%9D%E6%8A%A4%E4%B9%8BHystrix%EF%BC%88%E4%BA%8C%EF%BC%89/">more >></a>
         </p>
       
 
@@ -281,7 +281,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2020/07/26/SpringCloud-%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AE%9E%E7%AB%99%EF%BC%88%E4%B9%9D%EF%BC%89%EF%BC%9A%E6%9C%8D%E5%8A%A1%E5%AE%B9%E9%94%99%E4%BF%9D%E6%8A%A4%E4%B9%8BHystrix%EF%BC%88%E4%B8%80%EF%BC%89/">SpringCloud 微服务实站（九）：服务容错保护之Hystrix</a>
+      <a class="article-title" href="/2020/07/26/SpringCloud-%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AE%9E%E7%AB%99%EF%BC%88%E4%B9%9D%EF%BC%89%EF%BC%9A%E6%9C%8D%E5%8A%A1%E5%AE%B9%E9%94%99%E4%BF%9D%E6%8A%A4%E4%B9%8BHystrix%EF%BC%88%E4%B8%80%EF%BC%89/">SpringCloud 微服务实站（九）：服务容错保护之Hystrix（一）</a>
     </h1>
   
 

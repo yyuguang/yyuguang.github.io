@@ -6,23 +6,23 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>SpringCloud 微服务实站（九）：服务容错保护之Hystrix | 你对我笑i</title>
+  <title>SpringCloud 微服务实站（九）：服务容错保护之Hystrix（一） | 你对我笑i</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="参考资料 Spring Cloud SpringCloud中文文档 SpringCloud官方文档 书籍 《 Spring Cloud微服务实战 》 《 Spring Cloud与Docker微服务架构实战 》     SpringBoot SpringBoot官方文档   Github 获取代码    一、前言在微服务架构中，系统被拆分成了很多服务单元，各单元的应用间通过服务注册与订阅的方式互相">
 <meta property="og:type" content="article">
-<meta property="og:title" content="SpringCloud 微服务实站（九）：服务容错保护之Hystrix">
+<meta property="og:title" content="SpringCloud 微服务实站（九）：服务容错保护之Hystrix（一）">
 <meta property="og:url" content="http://yoursite.com/2020/07/26/SpringCloud-%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AE%9E%E7%AB%99%EF%BC%88%E4%B9%9D%EF%BC%89%EF%BC%9A%E6%9C%8D%E5%8A%A1%E5%AE%B9%E9%94%99%E4%BF%9D%E6%8A%A4%E4%B9%8BHystrix%EF%BC%88%E4%B8%80%EF%BC%89/index.html">
 <meta property="og:site_name" content="你对我笑i">
 <meta property="og:description" content="参考资料 Spring Cloud SpringCloud中文文档 SpringCloud官方文档 书籍 《 Spring Cloud微服务实战 》 《 Spring Cloud与Docker微服务架构实战 》     SpringBoot SpringBoot官方文档   Github 获取代码    一、前言在微服务架构中，系统被拆分成了很多服务单元，各单元的应用间通过服务注册与订阅的方式互相">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="http://cdn.lnzz.site/static/images/SpringCloud/08/1.png">
+<meta property="og:image" content="http://cdn.lnzz.site/static/images/SpringCloud/09/1.png">
 <meta property="article:published_time" content="2020-07-26T12:54:58.000Z">
-<meta property="article:modified_time" content="2020-07-26T14:18:04.553Z">
+<meta property="article:modified_time" content="2020-07-27T12:15:39.833Z">
 <meta property="article:author" content="你对我笑i">
 <meta property="article:tag" content="SpringCloud">
 <meta property="article:tag" content="SpringBoot">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://cdn.lnzz.site/static/images/SpringCloud/08/1.png">
+<meta name="twitter:image" content="http://cdn.lnzz.site/static/images/SpringCloud/09/1.png">
   
     <link rel="alternative" href="/atom.xml" title="你对我笑i" type="application/atom+xml">
   
@@ -177,7 +177,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      SpringCloud 微服务实站（九）：服务容错保护之Hystrix
+      SpringCloud 微服务实站（九）：服务容错保护之Hystrix（一）
     </h1>
   
 
@@ -266,7 +266,7 @@
 <li><p>上诉在非高并发的情形下，还能勉强满足，但是在高并发情况下。。。</p>
 </li>
 <li><p>Jmeter压力测试</p>
-<img src="http://cdn.lnzz.site/static/images/SpringCloud/08/1.png">
+<img src="http://cdn.lnzz.site/static/images/SpringCloud/09/1.png">
 
 <ul>
 <li>开启Jmeter，来20000个并发压死8001,20000个请求都去访问paymentinfo_Timeout</li>
@@ -365,12 +365,44 @@
 <li><p>controller</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RestController</span></span><br><span class="line"><span class="meta">@Slf</span>4j</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">OrderHystrixController</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> PaymentHystrixService paymentHystrixService;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@GetMapping</span>(<span class="string">"/consumer/payment/hystrix/ok/&#123;id&#125;"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">paymentInfo_OK</span><span class="params">(@PathVariable(<span class="string">"id"</span>)</span> Integer id) </span>&#123;</span><br><span class="line">        String result = paymentHystrixService.paymentInfo_OK(id);</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@GetMapping</span>(<span class="string">"/consumer/payment/hystrix/timeout/&#123;id&#125;"</span>)</span><br><span class="line">    <span class="meta">@HystrixCommand</span>(fallbackMethod = <span class="string">"paymentTimeOutFallbackMethod"</span>, commandProperties = &#123;</span><br><span class="line">            <span class="meta">@HystrixProperty</span>(name = <span class="string">"execution.isolation.thread.timeoutInMilliseconds"</span>, value = <span class="string">"1500"</span>)</span><br><span class="line">    &#125;)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">paymentInfo_Timeout</span><span class="params">(@PathVariable(<span class="string">"id"</span>)</span> Integer id) </span>&#123;</span><br><span class="line">        String result = paymentHystrixService.paymentInfo_Timeout(id);</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">paymentTimeOutFallbackMethod</span><span class="params">(@PathVariable(<span class="string">"id"</span>)</span> Integer id) </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"我是消费者80,对方支付系统繁忙请10秒钟后再试或者自己运行出错请检查自己,o(╥﹏╥)o"</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
+
 </li>
 </ul>
 </li>
 </ul>
 </li>
 </ul>
+<h3 id="服务熔断"><a href="#服务熔断" class="headerlink" title="服务熔断"></a>服务熔断</h3><ul>
+<li><p>修改cloud-provider-hystrix-payment8001</p>
+<ul>
+<li><p>业务类</p>
+<ul>
+<li><p>service</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">paymentCircuitBreaker</span><span class="params">(@PathVariable(<span class="string">"id"</span>)</span> Integer id)</span>;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>impl</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"> <span class="comment">//=====服务熔断</span></span><br><span class="line">    <span class="meta">@HystrixCommand</span>(fallbackMethod = <span class="string">"paymentCircuitBreaker_fallback"</span>, commandProperties = &#123;</span><br><span class="line">            <span class="meta">@HystrixProperty</span>(name = <span class="string">"circuitBreaker.enabled"</span>, value = <span class="string">"true"</span>),<span class="comment">// 是否开启断路器</span></span><br><span class="line">            <span class="meta">@HystrixProperty</span>(name = <span class="string">"circuitBreaker.requestVolumeThreshold"</span>, value = <span class="string">"10"</span>),<span class="comment">// 请求次数</span></span><br><span class="line">            <span class="meta">@HystrixProperty</span>(name = <span class="string">"circuitBreaker.sleepWindowInMilliseconds"</span>, value = <span class="string">"10000"</span>), <span class="comment">// 时间窗口期</span></span><br><span class="line">            <span class="meta">@HystrixProperty</span>(name = <span class="string">"circuitBreaker.errorThresholdPercentage"</span>, value = <span class="string">"60"</span>),<span class="comment">// 失败率达到多少后跳闸</span></span><br><span class="line">    &#125;)</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">paymentCircuitBreaker</span><span class="params">(@PathVariable(<span class="string">"id"</span>)</span> Integer id) </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (id &lt; <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> RuntimeException(<span class="string">"******id 不能负数"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        String serialNumber = IdUtil.simpleUUID();</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> Thread.currentThread().getName() + <span class="string">"\t"</span> + <span class="string">"调用成功，流水号: "</span> + serialNumber;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">paymentCircuitBreaker_fallback</span><span class="params">(@PathVariable(<span class="string">"id"</span>)</span> Integer id) </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"id 不能负数，请稍后再试，/(ㄒoㄒ)/~~   id: "</span> + id;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>controller</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@GetMapping</span>(<span class="string">"/payment/circuit/&#123;id&#125;"</span>)</span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">paymentCircuitBreaker</span><span class="params">(@PathVariable(<span class="string">"id"</span>)</span> Integer id) </span>&#123;</span><br><span class="line">    String result = paymentService.paymentCircuitBreaker(id);</span><br><span class="line">    log.info(<span class="string">"*****result: "</span> + result);</span><br><span class="line">    <span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>测试</p>
+<ul>
+<li>自测cloud-provider-hystrix-payment8001<ul>
+<li>正确  <a href="http://localhost:8001/payment/hystrix/circuit/1" target="_blank" rel="noopener">http://localhost:8001/payment/hystrix/circuit/1</a> </li>
+<li>错误  <a href="http://localhost:8001/payment/hystrix/circuit/-1" target="_blank" rel="noopener">http://localhost:8001/payment/hystrix/circuit/-1</a> </li>
+</ul>
+</li>
+<li>一次正确一次错误try</li>
+<li>重点测试：多次错误后，然后慢慢正确，发现刚开始不满足条件，后面就算是正确的访问也会报错，需要过会才能恢复正常</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="五、小结"><a href="#五、小结" class="headerlink" title="五、小结"></a>五、小结</h2><p>本章我们简单用编码快速了解了 Spring Cloud Hystrix，在下一章节我们将深入分析 Hystrix 工作原理。更多关于使用 Spring Cloud 开发微服务应用的内容，请持续关注本系列教程，也可参阅官方文档或其他书籍资料来学习。</p>
 
       
 	  
@@ -512,11 +544,11 @@
   
 <nav id="article-nav">
   
-    <a href="/2020/07/26/SpringCloud-%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AE%9E%E7%AB%99%EF%BC%88%E4%B9%9D%EF%BC%89%EF%BC%9A%E6%9C%8D%E5%8A%A1%E5%AE%B9%E9%94%99%E4%BF%9D%E6%8A%A4%E4%B9%8BHystrix/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2020/07/26/SpringCloud-%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AE%9E%E7%AB%99%EF%BC%88%E5%8D%81%EF%BC%89%EF%BC%9A%E6%9C%8D%E5%8A%A1%E5%AE%B9%E9%94%99%E4%BF%9D%E6%8A%A4%E4%B9%8BHystrix%EF%BC%88%E4%BA%8C%EF%BC%89/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          SpringCloud 微服务实站（九）：服务容错保护之Hystrix（一）
+          SpringCloud 微服务实站（十）：服务容错保护之Hystrix（二）
         
       </div>
     </a>
@@ -550,7 +582,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#参考资料"><span class="toc-number">1.</span> <span class="toc-text">参考资料</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#一、前言"><span class="toc-number"></span> <span class="toc-text">一、前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二、Hystrix的基本介绍"><span class="toc-number"></span> <span class="toc-text">二、Hystrix的基本介绍</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#重要概念"><span class="toc-number"></span> <span class="toc-text">重要概念</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#三、快速入门"><span class="toc-number"></span> <span class="toc-text">三、快速入门</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#测试分析"><span class="toc-number"></span> <span class="toc-text">测试分析</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#解决思路"><span class="toc-number"></span> <span class="toc-text">解决思路</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#四、工程优化改造"><span class="toc-number"></span> <span class="toc-text">四、工程优化改造</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#服务降级"><span class="toc-number"></span> <span class="toc-text">服务降级</span></a>
+                    <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#参考资料"><span class="toc-number">1.</span> <span class="toc-text">参考资料</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#一、前言"><span class="toc-number"></span> <span class="toc-text">一、前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二、Hystrix的基本介绍"><span class="toc-number"></span> <span class="toc-text">二、Hystrix的基本介绍</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#重要概念"><span class="toc-number"></span> <span class="toc-text">重要概念</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#三、快速入门"><span class="toc-number"></span> <span class="toc-text">三、快速入门</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#测试分析"><span class="toc-number"></span> <span class="toc-text">测试分析</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#解决思路"><span class="toc-number"></span> <span class="toc-text">解决思路</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#四、工程优化改造"><span class="toc-number"></span> <span class="toc-text">四、工程优化改造</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#服务降级"><span class="toc-number"></span> <span class="toc-text">服务降级</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#服务熔断"><span class="toc-number"></span> <span class="toc-text">服务熔断</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#五、小结"><span class="toc-number"></span> <span class="toc-text">五、小结</span></a>
                     </div>
                 </span>
             </div>

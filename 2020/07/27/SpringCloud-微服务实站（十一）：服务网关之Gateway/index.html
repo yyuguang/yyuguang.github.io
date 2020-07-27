@@ -6,32 +6,27 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>SpringCloud 微服务实站（十）：服务容错保护之Hystrix（二） | 你对我笑i</title>
+  <title>SpringCloud 微服务实站（十一）：服务网关之Gateway | 你对我笑i</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="参考资料 Spring Cloud SpringCloud中文文档 SpringCloud官方文档 书籍 《 Spring Cloud微服务实战 》 《 Spring Cloud与Docker微服务架构实战 》     SpringBoot SpringBoot官方文档   Github 获取代码    一、前言在上一章我们通过学习 Hystrix 的快速入门实例，来了解了什么是服务熔断，什么是服">
+  <meta name="description" content="参考资料 Spring Cloud SpringCloud中文文档 SpringCloud官方文档 书籍 《 Spring Cloud微服务实战 》 《 Spring Cloud与Docker微服务架构实战 》     SpringBoot SpringBoot官方文档   Github 获取代码    一、前言API 网关是一个更为智能的应用服务器，它的定义类似于面向对象设计模式中的 Facad">
 <meta property="og:type" content="article">
-<meta property="og:title" content="SpringCloud 微服务实站（十）：服务容错保护之Hystrix（二）">
-<meta property="og:url" content="http://yoursite.com/2020/07/26/SpringCloud-%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AE%9E%E7%AB%99%EF%BC%88%E5%8D%81%EF%BC%89%EF%BC%9A%E6%9C%8D%E5%8A%A1%E5%AE%B9%E9%94%99%E4%BF%9D%E6%8A%A4%E4%B9%8BHystrix%EF%BC%88%E4%BA%8C%EF%BC%89/index.html">
+<meta property="og:title" content="SpringCloud 微服务实站（十一）：服务网关之Gateway">
+<meta property="og:url" content="http://yoursite.com/2020/07/27/SpringCloud-%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AE%9E%E7%AB%99%EF%BC%88%E5%8D%81%E4%B8%80%EF%BC%89%EF%BC%9A%E6%9C%8D%E5%8A%A1%E7%BD%91%E5%85%B3%E4%B9%8BGateway/index.html">
 <meta property="og:site_name" content="你对我笑i">
-<meta property="og:description" content="参考资料 Spring Cloud SpringCloud中文文档 SpringCloud官方文档 书籍 《 Spring Cloud微服务实战 》 《 Spring Cloud与Docker微服务架构实战 》     SpringBoot SpringBoot官方文档   Github 获取代码    一、前言在上一章我们通过学习 Hystrix 的快速入门实例，来了解了什么是服务熔断，什么是服">
+<meta property="og:description" content="参考资料 Spring Cloud SpringCloud中文文档 SpringCloud官方文档 书籍 《 Spring Cloud微服务实战 》 《 Spring Cloud与Docker微服务架构实战 》     SpringBoot SpringBoot官方文档   Github 获取代码    一、前言API 网关是一个更为智能的应用服务器，它的定义类似于面向对象设计模式中的 Facad">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="http://cdn.lnzz.site/static/images/SpringCloud/10/1.png">
-<meta property="og:image" content="http://cdn.lnzz.site/static/images/SpringCloud/10/2.png">
-<meta property="og:image" content="http://cdn.lnzz.site/static/images/SpringCloud/10/3.png">
-<meta property="og:image" content="http://cdn.lnzz.site/static/images/SpringCloud/10/4.png">
-<meta property="og:image" content="http://cdn.lnzz.site/static/images/SpringCloud/10/5.png">
-<meta property="og:image" content="http://cdn.lnzz.site/static/images/SpringCloud/10/6.png">
-<meta property="og:image" content="http://cdn.lnzz.site/static/images/SpringCloud/10/7.png">
-<meta property="og:image" content="http://cdn.lnzz.site/static/images/SpringCloud/10/8.png">
-<meta property="og:image" content="http://cdn.lnzz.site/static/images/SpringCloud/10/9.png">
-<meta property="og:image" content="http://cdn.lnzz.site/static/images/SpringCloud/10/10.png">
-<meta property="article:published_time" content="2020-07-26T15:01:11.000Z">
-<meta property="article:modified_time" content="2020-07-27T12:16:58.168Z">
+<meta property="og:image" content="http://cdn.lnzz.site/static/images/SpringCloud/11/1.png">
+<meta property="og:image" content="http://cdn.lnzz.site/static/images/SpringCloud/11/2.png">
+<meta property="og:image" content="http://cdn.lnzz.site/static/images/SpringCloud/11/3.png">
+<meta property="og:image" content="http://cdn.lnzz.site/static/images/SpringCloud/11/4.png">
+<meta property="og:image" content="http://cdn.lnzz.site/static/images/SpringCloud/11/5.png">
+<meta property="article:published_time" content="2020-07-27T14:03:20.000Z">
+<meta property="article:modified_time" content="2020-07-27T15:06:00.661Z">
 <meta property="article:author" content="你对我笑i">
 <meta property="article:tag" content="SpringCloud">
 <meta property="article:tag" content="SpringBoot">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://cdn.lnzz.site/static/images/SpringCloud/10/1.png">
+<meta name="twitter:image" content="http://cdn.lnzz.site/static/images/SpringCloud/11/1.png">
   
     <link rel="alternative" href="/atom.xml" title="你对我笑i" type="application/atom+xml">
   
@@ -179,20 +174,20 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-SpringCloud-微服务实站（十）：服务容错保护之Hystrix（二）" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-SpringCloud-微服务实站（十一）：服务网关之Gateway" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      SpringCloud 微服务实站（十）：服务容错保护之Hystrix（二）
+      SpringCloud 微服务实站（十一）：服务网关之Gateway
     </h1>
   
 
         
-        <a href="/2020/07/26/SpringCloud-%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AE%9E%E7%AB%99%EF%BC%88%E5%8D%81%EF%BC%89%EF%BC%9A%E6%9C%8D%E5%8A%A1%E5%AE%B9%E9%94%99%E4%BF%9D%E6%8A%A4%E4%B9%8BHystrix%EF%BC%88%E4%BA%8C%EF%BC%89/" class="archive-article-date">
-  	<time datetime="2020-07-26T15:01:11.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-26</time>
+        <a href="/2020/07/27/SpringCloud-%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AE%9E%E7%AB%99%EF%BC%88%E5%8D%81%E4%B8%80%EF%BC%89%EF%BC%9A%E6%9C%8D%E5%8A%A1%E7%BD%91%E5%85%B3%E4%B9%8BGateway/" class="archive-article-date">
+  	<time datetime="2020-07-27T14:03:20.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-27</time>
 </a>
 
         
@@ -221,188 +216,109 @@
 </ul>
 </li>
 </ul>
-<h2 id="一、前言"><a href="#一、前言" class="headerlink" title="一、前言"></a>一、前言</h2><p>在上一章我们通过学习 Hystrix 的快速入门实例，来了解了什么是服务熔断，什么是服务降级，以及Hystrix的一些基础知识，在本章节我们来深入学习一下 Hystrix 的工作原理</p>
+<h2 id="一、前言"><a href="#一、前言" class="headerlink" title="一、前言"></a>一、前言</h2><p>API 网关是一个更为智能的应用服务器，它的定义类似于面向对象设计模式中的 Facade 模式，它的存在就像是整个微服务架构系统的门面一样，所有的外部客户端访问都需要经过它来进行调度和过滤。它除了要实现请求路由、负载均衡、校验过滤等功能之外，还需要更多能力，比如与服务治理框架的结合、请求转发时的熔断机制、服务的聚合等一系列高级功能。</p>
 <a id="more"></a>
 
-<h2 id="二、流程图"><a href="#二、流程图" class="headerlink" title="二、流程图"></a>二、流程图</h2><p>下面的流程图展示了当使用Hystrix的依赖请求，Hystrix是如何工作的 。</p>
-<img src="http://cdn.lnzz.site/static/images/SpringCloud/10/1.png">
 
-<p>下面将更详细的解析每一个步骤都发生哪些动作 ：</p>
-<h4 id="2-1-构建一个HystrixCommand或者HystrixObservableCommand对象。"><a href="#2-1-构建一个HystrixCommand或者HystrixObservableCommand对象。" class="headerlink" title="2.1 构建一个HystrixCommand或者HystrixObservableCommand对象。"></a>2.1 构建一个<code>HystrixCommand</code>或者<code>HystrixObservableCommand</code>对象。</h4><p>第一步是构造一个<code>HystrixCommand</code>或<code>HystrixObservableCommand</code>对象，以表示您对依赖项提出的请求。向构造函数传递发出请求时所需的任何参数。</p>
-<p>如果构建<code>HystrixCommand</code>中的依赖返回单个响应，例如：  </p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">HystrixCommand command = <span class="keyword">new</span> HystrixCommand(arg1, arg2);</span><br></pre></td></tr></table></figure>
 
-<p>如果依赖需要返回一个Observable来发射响应，就需要通过构建<code>HystrixObservableCommand</code>对象来完 成，例如：  </p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">HystrixObservableCommand command = <span class="keyword">new</span> HystrixObservableCommand(arg1, arg2);</span><br></pre></td></tr></table></figure>
-
-<h4 id="2-2-执行命令"><a href="#2-2-执行命令" class="headerlink" title="2.2 执行命令"></a>2.2 执行命令</h4><p>使用Hystrix命令对象的以下四种方法之一可以执行命令的方式有四种（前两种仅适用于简单<code>HystrixCommand</code>对象，不适用于<code>HystrixObservableCommand</code>）：</p>
+<h2 id="二、-Spring-Cloud-Gateway-简介"><a href="#二、-Spring-Cloud-Gateway-简介" class="headerlink" title="二、 Spring Cloud Gateway 简介"></a>二、 Spring Cloud Gateway 简介</h2><p>Spring Cloud Gateway 是 Spring Cloud 的一个全新项目，该项目是基于 <strong>Spring 5.0，Spring Boot 2.0 和 Project Reactor</strong> 等技术开发的网关，它旨在<strong>为微服务架构提供一种简单有效的统一的 API 路由管理方式。</strong></p>
+<p>Spring Cloud Gateway 作为 Spring Cloud 生态系统中的网关，目标是替代 Zuul，在Spring Cloud 2.0以上版本中，没有对新版本的Zuul 2.0以上最新高性能版本进行集成，仍然还是使用的Zuul 2.0之前的非Reactor模式的老版本。而为了提升网关的性能，SpringCloud Gateway是基于WebFlux框架实现的，而WebFlux框架底层则使用了高性能的Reactor模式通信框架Netty。</p>
+<p>Spring Cloud Gateway 的目标，不仅提供统一的路由方式，并且基于 Filter 链的方式提供了网关基本的功能，例如：安全，监控/指标，和限流。</p>
+<p>提前声明：<strong>Spring Cloud Gateway 底层使用了高性能的通信框架Netty</strong>。</p>
+<h3 id="2-1-特征"><a href="#2-1-特征" class="headerlink" title="2.1 特征"></a>2.1 特征</h3><p> Spring Cloud 官方，对 Spring Cloud Gateway 特征介绍如下： </p>
 <ul>
-<li><strong><code>execute()</code></strong>：该方法是阻塞的，从依赖请求中接收到单个响应（或者出错时抛出异常）。  </li>
-<li><strong><code>queue()</code></strong>：从依赖请求中返回一个包含单个响应的Future对象。  </li>
-<li><strong><code>observe()</code></strong>：订阅一个从依赖请求中返回的代表响应的Observable对象。</li>
-<li><strong><code>toObservable()</code></strong>：返回一个Observable对象，只有当你订阅它时，它才会执行Hystrix命令并发射响应。  </li>
+<li>基于 Spring Framework 5，Project Reactor 和 Spring Boot 2.0</li>
+<li>集成 Hystrix 断路器</li>
+<li>集成 Spring Cloud DiscoveryClient</li>
+<li>Predicates 和 Filters 作用于特定路由，易于编写的 Predicates 和 Filters</li>
+<li>具备一些网关的高级功能：动态路由、限流、路径重写</li>
 </ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">K             value   = command.execute();</span><br><span class="line">Future&lt;K&gt;     fValue  = command.queue();</span><br><span class="line">Observable&lt;K&gt; ohValue = command.observe();         <span class="comment">//hot observable</span></span><br><span class="line">Observable&lt;K&gt; ocValue = command.toObservable();    <span class="comment">//cold observable</span></span><br></pre></td></tr></table></figure>
-
-<p>同步调用<code>execute()</code>调用<code>queue().get()</code>。<code>queue()</code>依次调用<code>toObservable().toBlocking().toFuture()</code>。这就是说，最终每个实现<code>HystrixCommand</code>都由<code>Observable</code>实现来支持，即使是那些旨在返回单个简单值的命令也是如此。</p>
-<h4 id="2-3-响应是否被缓存"><a href="#2-3-响应是否被缓存" class="headerlink" title="2.3 响应是否被缓存"></a>2.3 响应是否被缓存</h4><p>如果为此命令启用了请求缓存，并且如果对请求的响应在缓存中可用，则该缓存的响应将立即以的形式返回<code>Observable</code>。</p>
-<h4 id="2-4-回路器是否打开"><a href="#2-4-回路器是否打开" class="headerlink" title="2.4 回路器是否打开"></a>2.4 回路器是否打开</h4><p>当命令执行执行时，Hystrix会检查回路器是否被打开。</p>
-<p>如果回路器被打开（或者tripped），那么Hystrix就不会再执行命名，而是直接路由到第8步，获取fallback方法，并执行fallback逻辑。</p>
-<p>如果回路器关闭，那么将进入第5步，检查是否有足够的容量来执行任务。（其中容量包括线程池的容量，队列的容量等等）。  </p>
-<h4 id="2-5-线程池-队列-信号量是否已满"><a href="#2-5-线程池-队列-信号量是否已满" class="headerlink" title="2.5 线程池/队列/信号量是否已满"></a>2.5 线程池/队列/信号量是否已满</h4><p>如果与该命令相关的线程池或者队列已经满了，那么Hystrix就不会再执行命令，而是立即跳到第8步,执行 fallback 逻辑。  </p>
-<h4 id="2-6-HystrixObservableCommand-construct-或者-HystrixCommand-run"><a href="#2-6-HystrixObservableCommand-construct-或者-HystrixCommand-run" class="headerlink" title="2.6 HystrixObservableCommand.construct() 或者 HystrixCommand.run()"></a>2.6 HystrixObservableCommand.construct() 或者 HystrixCommand.run()</h4><p>在这里，Hystrix通过你写的方法逻辑来调用对依赖的请求，通过下列之一的调用：  </p>
+<p>从以上的特征来说，和Zuul的特征差别不大。Spring Cloud Gateway和 Zuul 主要的区别，还是在底层的通信框架上。</p>
+<p>简单说明一下上文中的三个<strong>术语</strong>：</p>
 <ul>
-<li><p><code>HystrixCommand.run()</code>：返回单个响应或者抛出异常</p>
+<li><p><strong>Filter（过滤器）</strong>：</p>
+<p>和Zuul的过滤器在概念上类似，可以使用它拦截和修改请求，并且对上游的响应，进行二次处理。过滤器为<code>org.springframework.cloud.gateway.filter.GatewayFilter</code>类的实例。</p>
 </li>
-<li><p><code>HystrixObservableCommand.construct()</code>：返回一个Observable，它发出响应或发送<code>onError</code>通知。</p>
+<li><p><strong>Route（路由）</strong>：</p>
+<p>网关配置的基本组成模块，和Zuul的路由配置模块类似。一个<strong>Route模块</strong>由一个 ID，一个目标 URI，一组断言和一组过滤器定义。如果断言为真，则路由匹配，目标URI会被访问。</p>
+</li>
+<li><p><strong>Predicate（断言）</strong>：</p>
+<p>这是一个 Java 8 的 Predicate，可以使用它来匹配来自 HTTP 请求的任何内容，例如 headers 或参数。<strong>断言的</strong>输入类型是一个 <code>ServerWebExchange</code>。</p>
 </li>
 </ul>
-<p>如果<code>run()</code>or <code>construct()</code>方法超出命令的超时值，则该线程将抛出<code>TimeoutException</code>（如果命令本身未在其自己的线程中运行，则该线程将抛出单独的计时器线程）。在那种情况下，Hystrix通过8路由响应。获取Fallback，如果该方法没有取消/中断，它将丢弃最终的返回值<code>run()</code>或<code>construct()</code>方法。</p>
-<p>请注意，没有办法强制潜在线程停止工作 —— Hystrix在JVM上能做的最好的事情就是将其抛出InterruptedException。如果Hystrix封装的工作不遵守InterruptedExceptions，尽管客户端已收到TimeoutException，Hystrix线程池中的线程仍将继续其工作。这种行为可能会使Hystrix线程池饱和，尽管负载已“正确释放”。大多数Java HTTP客户端库不解释InterruptedExceptions。因此，请确保在HTTP客户端上正确配置连接和读取/写入超时。</p>
-<p>如果命令没有引发任何异常并且返回了响应，则Hystrix在执行一些日志记录和度量标准报告后将返回此响应。在的情况下<code>run()</code>，Hystrix返回<code>Observable</code>，发出单个响应，然后发出<code>onCompleted</code>通知。在的情况下<code>construct()</code>猬返回相同<code>Observable</code>的返回<code>construct()</code>。</p>
-<h4 id="2-7-计算电路健康"><a href="#2-7-计算电路健康" class="headerlink" title="2.7 计算电路健康"></a>2.7 计算电路健康</h4><p>Hystrix向断路器报告成功，失败，拒绝和超时，断路器保持滚动的一组计算统计信息的计数器。</p>
-<p>它使用这些统计信息来确定电路何时应<strong>“跳闸”</strong>，在该时间点它会将随后的所有请求短路，直到经过恢复期为止，在此之后，在首先检查某些运行状况检查之后，电路再次闭合。</p>
-<h4 id="2-8-获取FallBack"><a href="#2-8-获取FallBack" class="headerlink" title="2.8 获取FallBack"></a>2.8 获取FallBack</h4><p>当命令执行失败时，Hystrix会尝试执行自定义的Fallback逻辑：  </p>
-<ul>
-<li>当<code>construct()</code>或者<code>run()</code>方法执行过程中抛出异常。</li>
-<li>当回路器打开，命令的执行进入了熔断状态。</li>
-<li>当命令执行的线程池和队列或者信号量已经满容。</li>
-<li>命令执行超时。  </li>
-</ul>
-<p>写一个fallback方法，提供一个不需要网络依赖的通用响应，从内存缓存或者其他的静态逻辑获取数据。如果再 fallback内必须需要网络的调用，更好的做法是使用另一个<code>HystrixCommand</code>或者<code>HystrixObservableCommand。</code></p>
-<p>如果你的命令是继承自<code>HystrixCommand</code>，那么可以通过实现<code>HystrixCommand.getFallback()</code>方法返回一个单个的fallback值。</p>
-<p>如果你的命令是继承自<code>HystrixObservableCommand</code>，那么可以通过实现<code>HystrixObservableCommand.resumeWithFallback()</code>方法返回一个Observable，并且该Observable能够发射出一个fallback值。</p>
-<p>Hystrix会把fallback方法返回的响应返回给调用者。</p>
-<p>如果你没有为你的命令实现fallback方法，那么当命令抛出异常时，Hystrix仍然会返回一个Observable，但是该Observable并不会发射任何的数据，并且会立即终止并调用<code>onError()</code>通知。通过这个<code>onError</code>通知，可以将造成该命令抛出异常的原因返回给调用者。  </p>
-<p>失败或不存在的后备结果将因调用Hystrix命令的方式而异：</p>
-<ul>
-<li><code>execute()</code> -引发异常</li>
-<li><code>queue()</code>—成功返回<code>Future</code>，但是<code>Future</code>如果<code>get()</code>调用其方法，则会抛出异常</li>
-<li><code>observe()</code>—返回一个<code>Observable</code>，当您订阅它时，将通过调用订阅者的<code>onError</code>方法立即终止</li>
-<li><code>toObservable()</code>—返回一个<code>Observable</code>，当您订阅时，它将通过调用订阅者的<code>onError</code>方法终止</li>
-</ul>
-<h4 id="2-9-返回成功的回应"><a href="#2-9-返回成功的回应" class="headerlink" title="2.9 返回成功的回应"></a>2.9 返回成功的回应</h4><p>如果Hystrix命令成功执行，它将以的形式将一个或多个响应返回给调用方<code>Observable</code>。根据上面步骤2中调用命令的方式，在<code>Observable</code>返回给您之前，可能会对其进行转换：</p>
-<img src="http://cdn.lnzz.site/static/images/SpringCloud/10/2.png">
+<h3 id="2-2-架构"><a href="#2-2-架构" class="headerlink" title="2.2 架构"></a>2.2 架构</h3><p>Spring 在2017年下半年迎来了 Webflux，Webflux 的出现填补了 Spring 在响应式编程上的空白，Webflux 的响应式编程不仅仅是编程风格的改变，而且对于一系列的著名框架，都提供了响应式访问的开发包，比如Netty、Redis等等。</p>
+<p>Spring Cloud Gateway 使用的Webflux中的 <code>reactor-netty</code> 响应式编程组件，底层使用了Netty通讯框架。</p>
+<img src="http://cdn.lnzz.site/static/images/SpringCloud/11/1.png">
 
-<ul>
-<li><code>execute()</code>：通过调用<code>queue()</code>来得到一个Future对象，然后调用<code>get()</code>方法来获取Future中包含的值。  </li>
-<li><code>queue()</code>：将Observable转换成<code>BlockingObservable</code>，在将<code>BlockingObservable</code>转换成一个Future。  </li>
-<li><code>observe()</code>： 订阅返回的Observable，并且立即开始执行命令的逻辑。</li>
-<li><code>toObservable()</code>：返回一个没有改变的Observable，你必须订阅它，它才能够开始执行命令的逻辑。  </li>
-</ul>
-<h2 id="三、断路器"><a href="#三、断路器" class="headerlink" title="三、断路器"></a>三、断路器</h2><p>下图展示了<code>HystrixCommand</code>和<code>HystrixObservableCommand</code>如何与<code>HystrixCircuitBroker</code>进行交互。</p>
-<img src="http://cdn.lnzz.site/static/images/SpringCloud/10/3.png">
+<h4 id="Zuul的IO模型"><a href="#Zuul的IO模型" class="headerlink" title="Zuul的IO模型"></a>Zuul的IO模型</h4><p>Spring Cloud中所集成的Zuul版本，采用的是Tomcat容器，使用的是传统的Servlet IO处理模型。</p>
+<p>大家知道，servlet由<code>servlet container</code>进行生命周期管理。<code>container</code>启动时构造servlet对象并调用<code>servlet init()</code>进行初始化；<code>container</code>关闭时调用<code>servlet destory()</code>销毁servlet；<code>container</code>运行时接受请求，并为每个请求分配一个线程（一般从线程池中获取空闲线程）然后调用service()。</p>
+<p><strong>弊端</strong>：servlet是一个简单的网络IO模型，当请求进入<code>servlet container</code>时，<code>servlet container</code>就会为其绑定一个线程，在并发不高的场景下这种模型是适用的，但是一旦并发上升，线程数量就会上涨，而线程资源代价是昂贵的（上线文切换，内存消耗大）严重影响请求的处理时间。在一些简单的业务场景下，不希望为每个request分配一个线程，只需要1个或几个线程就能应对极大并发的请求，这种业务场景下servlet模型没有优势。</p>
+<img src="http://cdn.lnzz.site/static/images/SpringCloud/11/2.png">
 
-<p>电路打开和关闭的精确方式如下：</p>
-<ul>
-<li>假设回路中的请求满足了一定的阈值<code>（HystrixCommandProperties.circuitBreakerRequestVolumeThreshold()）</code></li>
-<li>假设错误发生的百分比超过了设定的错误发生的阈值<code>HystrixCommandProperties.circuitBreakerErrorThresholdPercentage()</code></li>
-<li>断路器状态由<code>CLOSED</code>转换成<code>OPEN</code>。</li>
-<li>如果断路器打开，所有的请求都会被断路器所熔断  </li>
-<li>经过一段时间（<code>HystrixCommandProperties.circuitBreakerSleepWindowInMilliseconds()</code>）后，下一个单个请求被允许通过（这是<code>HALF-OPEN</code>状态）。如果请求失败，断路器将<code>OPEN</code>在睡眠窗口期间返回到该状态。如果请求成功，则断路器会被置为关闭状态，重新开启 <strong>1</strong> 步骤的逻辑。</li>
-</ul>
-<h2 id="四、隔离"><a href="#四、隔离" class="headerlink" title="四、隔离"></a>四、隔离</h2><p>Hystrix采用舱壁模式来隔离相互之间的依赖关系，并限制对其中任何一个的并发访问。</p>
-<img src="http://cdn.lnzz.site/static/images/SpringCloud/10/4.png">
+<p> 所以 Spring Cloud Zuul 是基于servlet之上的一个阻塞式处理模型，即spring实现了处理所有request请求的一个servlet（DispatcherServlet），并由该servlet阻塞式处理处理。所以 Spring Cloud Zuul无法摆脱servlet模型的弊端。虽然Zuul 2.0开始，使用了Netty，并且已经有了大规模Zuul 2.0集群部署的成熟案例，但是，Springcloud官方已经没有集成改版本的计划了。 </p>
+<h4 id="Webflux模型"><a href="#Webflux模型" class="headerlink" title="Webflux模型"></a>Webflux模型</h4><p> Webflux模式替换了旧的Servlet线程模型。用少量的线程处理request和response io操作，这些线程称为Loop线程，而业务交给响应式编程框架处理，响应式编程是非常灵活的，用户可以将业务中阻塞的操作提交到响应式框架的work线程中执行，而不阻塞的操作依然可以在Loop线程中进行处理，大大提高了Loop线程的利用率。官方结构图： </p>
+<img src="http://cdn.lnzz.site/static/images/SpringCloud/11/3.png">
 
-<h2 id="五、线程和线程池"><a href="#五、线程和线程池" class="headerlink" title="五、线程和线程池"></a>五、线程和线程池</h2><p>客户端（库，网络调用等）在单独的线程上执行。这将它们与调用线程（Tomcat线程池）隔离开，以便调用者可以“摆脱”花费太长时间的依赖项调用。</p>
-<p>Hystrix使用单独的，每个依赖关系的线程池来约束任何给定的依赖关系，因此对基础执行的延迟将仅使该池中的可用线程饱和。</p>
-<img src="http://cdn.lnzz.site/static/images/SpringCloud/10/5.png">
+<p> Webflux 虽然可以兼容多个底层的通信框架，但是一般情况下，底层使用的还是Netty，毕竟，Netty是目前业界认可的最高性能的通信框架。而Webflux的Loop线程，正好就是著名的Reactor 模式IO处理模型的Reactor线程，如果使用的是高性能的通信框架Netty，这就是Netty的EventLoop线程。 </p>
+<h4 id="Spring-Cloud-Gateway的处理流程"><a href="#Spring-Cloud-Gateway的处理流程" class="headerlink" title="Spring Cloud Gateway的处理流程"></a>Spring Cloud Gateway的处理流程</h4><p> 客户端向 Spring Cloud Gateway 发出请求。然后在 Gateway Handler Mapping 中找到与请求相匹配的路由，将其发送到 Gateway Web Handler。Handler 再通过指定的过滤器链来将请求发送到我们实际的服务执行业务逻辑，然后返回。过滤器之间用虚线分开是因为过滤器可能会在发送代理请求之前（“pre”）或之后（“post”）执行业务逻辑。 </p>
+<img src="http://cdn.lnzz.site/static/images/SpringCloud/11/4.png">
 
-<p>你可以在不使用线程池的情况下防止失败，但这需要信任的客户端非常迅速地失败（网络连接/读取超时和重试配置），并且始终表现良好。</p>
-<p>Netflix 在Hystrix的设计中选择使用线程和线程池来实现隔离的原因很多，其中包括：</p>
-<ul>
-<li>许多应用程序会针对许多不同团队开发的数十种不同服务执行数十种（有时甚至超过100种）不同的后端服务调用。</li>
-<li>每个服务都提供自己的客户端库。</li>
-<li>客户端库一直在变化。</li>
-<li>客户端库逻辑可以更改以添加新的网络调用。</li>
-<li>客户端库可以包含诸如重试，数据解析，缓存（内存中或跨网络）以及其他此类行为的逻辑。</li>
-<li>客户端库往往是“黑匣子”-用户对其实现细节，网络访问模式，配置默认值等不透明。</li>
-<li>在实际的几次生产中断中，确定为“哦，某些更改并且应该调整属性”或“客户端库更改了其行为”。</li>
-<li>即使客户端本身未更改，服务本身也会更改，这可能会影响性能特征，进而导致客户端配置无效。</li>
-<li>传递依赖关系可能会引入其他意外的客户端库，这些客户端库可能不是预期的，也可能配置不正确。</li>
-<li>大多数网络访问是同步执行的。</li>
-<li>故障和延迟也可能在客户端代码中发生，而不仅仅是在网络调用中。</li>
-</ul>
-<img src="http://cdn.lnzz.site/static/images/SpringCloud/10/6.png">
 
-<h4 id="5-1-线程池的好处"><a href="#5-1-线程池的好处" class="headerlink" title="5.1 线程池的好处"></a>5.1 线程池的好处</h4><p>通过自己线程池中的线程进行隔离的好处是：</p>
-<ul>
-<li>该应用程序受到完全保护，不受客户端库的攻击。给定依赖库的池可以填满，而不会影响应用程序的其余部分。</li>
-<li>该应用程序可以接受风险更低的新客户端库。如果发生问题，它将隔离到库中，并且不会影响其他所有问题。</li>
-<li>当出现故障的客户端再次恢复正常运行时，线程池将被清除，应用程序将立即恢复运行正常的性能，而整个Tomcat容器不堪重负时，恢复时间将很长。</li>
-<li>如果客户端库配置错误，线程池的运行状况将迅速证明这一点（通过增加错误，延迟，超时，拒绝等），您可以在不影响应用程序功能的情况下进行处理（通常是通过动态属性实时进行）。 。</li>
-<li>如果客户服务更改了性能特征（通常会经常出现问题），从而又导致需要调整属性（增加/减少超时，更改重试次数等），则可以通过线程池指标（错误，延迟）再次看到该特征，超时，拒绝），并且可以在不影响其他客户端，请求或用户的情况下进行处理。</li>
-<li>除了隔离优势之外，拥有专用线程池还可以提供内置的并发性，可以利用这些并发性在同步客户端库之上构建异步外观（类似于Netflix API如何在Hystrix命令之上构建反应性，完全异步的Java API）</li>
-</ul>
-<p>简而言之，线程池提供的隔离允许客户端库和子系统性能特征的不断变化和动态组合得到优雅处理，而不会造成中断。</p>
-<p><strong>注意：</strong>尽管有单独的线程提供了隔离，但是你的基础客户端代码也应具有超时和/或对线程中断的响应，因此它不会无限期地阻塞并使Hystrix线程池饱和。</p>
-<h4 id="5-2-线程池的缺点"><a href="#5-2-线程池的缺点" class="headerlink" title="5.2 线程池的缺点"></a>5.2 线程池的缺点</h4><p>线程池的主要缺点是它们增加了计算开销。每个命令执行都涉及在单独的线程上运行命令所涉及的队列，调度和上下文切换。</p>
-<p>Netflix在设计此系统时，决定接受此间接费用的费用，以换取其提供的好处，并认为此费用很小，不会对成本或性能造成重大影响。</p>
-<h4 id="5-3-线程成本"><a href="#5-3-线程成本" class="headerlink" title="5.3 线程成本"></a>5.3 线程成本</h4><p>Hystrix测量在子线程上执行<code>construct()</code>or <code>run()</code>方法时的延迟以及父线程上的总的端到端时间。这样，你可以看到Hystrix开销（线程，度量，日志记录，断路器等）的成本。</p>
-<p>Netflix API使用线程隔离每天处理 <strong>10+亿次</strong> Hystrix命令执行。每个API实例有40多个线程池，每个线程池中有5-20个线程（大多数设置为10）。</p>
-<p>下图表示一个<code>HystrixCommand</code>在单个API实例上以每秒60个请求的速度执行的情况（每个服务器每秒约350个线程执行总数）：</p>
-<img src="http://cdn.lnzz.site/static/images/SpringCloud/10/7.png">
 
-<p>在中位数（或更低）处，拥有一个单独的线程是没有成本的。</p>
-<p>在第90 个百分位数处，拥有一个单独的线程要花费3ms的时间。</p>
-<p>在第99 个百分位数处，拥有单独的线程需要9毫秒的时间。但是请注意，成本的增加远远小于单独线程（网络请求）的执行时间的增加，后者从2跳到28，而成本从0跳到9。</p>
-<p>此开销在90 个百分和电路，诸如这些较高已被认为对大多数Netflix的用例的弹性实现的益处可以接受的。</p>
-<p>对于包装延迟非常低的请求的电路（例如那些主要访问内存缓存的请求），开销可能会过高，在这种情况下，您可以使用其他方法，例如可尝试的信号量，尽管这种方法不允许超时，提供最大的弹性优势，而没有开销。但是，总的来说开销很小，以至于Netflix实际上通常比这种技术更喜欢使用单独线程的隔离优势。</p>
-<h4 id="5-4-信号量"><a href="#5-4-信号量" class="headerlink" title="5.4 信号量"></a>5.4 信号量</h4><p>可以使用信号量（或计数器）将并发调用的数量限制为任何给定的依赖项，而不是使用线程池/队列大小。这使Hystrix无需使用线程池就可以减轻负载，但它不允许超时和退出。如果你信任客户端，并且只希望减少负载，则可以使用这种方法。</p>
-<p><code>HystrixCommand</code>并<code>HystrixObservableCommand</code>在2个地方支持信号灯：</p>
-<ul>
-<li><strong>后备：</strong>当Hystrix检索后备时，它总是在调用Tomcat线程上进行。</li>
-<li><strong>执行：</strong>如果将该属性设置为<code>execution.isolation.strategy</code>，<code>SEMAPHORE</code>则Hystrix将使用信号量而不是线程来限制调用该命令的并发父线程的数量。</li>
-</ul>
-<p>可以通过定义可以执行多少个并发线程的动态属性来配置信号灯的这两种用法。应该使用与调整线程池大小时类似的计算来确定它们的大小（在不到毫秒的时间内返回的内存中调用可以执行超过5000rps的操作，并且信号量仅为1或2…但默认值为10）。</p>
-<p><strong>注意：</strong>如果依赖关系被信号量隔离，然后变为潜在状态，则父线程将保持阻塞状态，直到基础网络调用超时为止。</p>
-<p>一旦达到限制，信号灯拒绝将开始，但是填充信号灯的线程无法走开。</p>
-<h2 id="六、请求折叠"><a href="#六、请求折叠" class="headerlink" title="六、请求折叠"></a>六、请求折叠</h2><p>你可以<code>HystrixCommand</code>在请求折叠器（<a href="http://netflix.github.io/Hystrix/javadoc/index.html?com/netflix/hystrix/HystrixCollapser.html" target="_blank" rel="noopener"><code>HystrixCollapser</code></a>是抽象父项）的前面加上，可以将多个请求折叠到单个后端依赖项调用中。</p>
-<p>下图显示了两种情况下的线程和网络连接数：首先是没有连接，然后是请求折叠（假设所有连接在较短的时间窗口内（在这种情况下为10ms）是“并发的”）。</p>
-<img src="http://cdn.lnzz.site/static/images/SpringCloud/10/8.png">
+<h3 id="2-3-路由配置方式"><a href="#2-3-路由配置方式" class="headerlink" title="2.3 路由配置方式"></a>2.3 路由配置方式</h3><h4 id="基础URI一种路由配置方式"><a href="#基础URI一种路由配置方式" class="headerlink" title="基础URI一种路由配置方式"></a>基础URI一种路由配置方式</h4><p> 如果请求的目标地址，是单个的URI资源路径，配置文件示例如下： </p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">server:</span></span><br><span class="line">  <span class="attr">port:</span> <span class="number">8080</span></span><br><span class="line"><span class="attr">spring:</span></span><br><span class="line">  <span class="attr">application:</span></span><br><span class="line">    <span class="attr">name:</span> <span class="string">api-gateway</span></span><br><span class="line">  <span class="attr">cloud:</span></span><br><span class="line">    <span class="attr">gateway:</span></span><br><span class="line">      <span class="attr">routes:</span></span><br><span class="line">        <span class="string">-id:</span> <span class="string">url-proxy-1</span></span><br><span class="line">          <span class="attr">uri:</span> <span class="string">https://blog.csdn.net</span></span><br><span class="line">          <span class="attr">predicates:</span></span><br><span class="line">            <span class="string">-Path=/csdn</span></span><br></pre></td></tr></table></figure>
 
-<h4 id="为什么使用请求折叠？"><a href="#为什么使用请求折叠？" class="headerlink" title="为什么使用请求折叠？"></a>为什么使用请求折叠？</h4><p>使用请求折叠可减少执行并发<code>HystrixCommand</code>执行所需的线程数和网络连接数。请求折叠以一种自动化的方式完成，不会强制所有代码库的开发人员协调手动的请求批处理。</p>
-<h5 id="全局上下文（跨所有Tomcat线程）"><a href="#全局上下文（跨所有Tomcat线程）" class="headerlink" title="全局上下文（跨所有Tomcat线程）"></a>全局上下文（跨所有Tomcat线程）</h5><p>理想的折叠类型是在全局应用程序级别完成的，因此可以将来自任何Tomcat线程上任何<em>用户的</em>请求折叠在一起。</p>
-<p>例如，如果将a配置<code>HystrixCommand</code>为支持对检索电影分级的依赖项的所有用户的批处理，则当同一JVM中的任何用户线程发出此类请求时，Hystrix都会将其请求与其他任何请求一起添加到同一折叠中网络通话。</p>
-<p>请注意，折叠器会将单个HystrixRequestContext对象传递给折叠的网络调用，因此下游系统必须处理这种情况才能使其成为有效的选择。</p>
-<h5 id="用户请求上下文（单个Tomcat线程）"><a href="#用户请求上下文（单个Tomcat线程）" class="headerlink" title="用户请求上下文（单个Tomcat线程）"></a>用户请求上下文（单个Tomcat线程）</h5><p>如果将a配置<code>HystrixCommand</code>为仅处理<em>单个用户的</em>批处理请求，则Hystrix可以折叠单个Tomcat线程内的请求（请求）。</p>
-<p>例如，如果用户想为300个视频对象加载书签，而不是执行300个网络调用，Hystrix可以将它们全部合并为一个。</p>
-<h5 id="对象建模和代码复杂度"><a href="#对象建模和代码复杂度" class="headerlink" title="对象建模和代码复杂度"></a>对象建模和代码复杂度</h5><p>有时，当您创建对对象的使用者具有逻辑意义的对象模型时，这与对象的生产者的有效资源利用并不十分匹配。</p>
-<p>例如，给定一个300个视频对象的列表，对其进行遍历并调用<code>getSomeAttribute()</code>每个对象是一个显而易见的对象模型，但是如果天真地实现，则可能导致300个网络调用全部在彼此之间的毫秒之内进行（并且很可能会占用资源）。</p>
-<p>有一些手动方法可以处理此问题，例如在允许用户调用之前<code>getSomeAttribute()</code>，要求他们声明要为其获取属性的视频对象，以便可以全部提取它们。</p>
-<p>或者，您可以划分对象模型，以便用户必须从一个地方获取视频列表，然后从其他地方索取该视频列表的属性。</p>
-<p>这些方法可能导致笨拙的API和对象模型与思维模型和使用模式不匹配。当多个开发人员在一个代码库上工作时，它们还可能导致简单的错误和效率低下，因为针对一个用例进行的优化可能会因另一用例的实现和代码的新路径而中断。</p>
-<p>通过将折叠逻辑推到Hystrix层，无论如何创建对象模型，以什么顺序进行调用，或者不同的开发人员是否知道正在完成甚至需要进行优化，都无关紧要。</p>
-<p>该<code>getSomeAttribute()</code>方法可以放在最合适的位置，并以适合使用模式的任何方式调用，然后折叠器会自动将调用批量处理到时间窗口中。</p>
-<h5 id="请求崩溃的成本是多少？"><a href="#请求崩溃的成本是多少？" class="headerlink" title="请求崩溃的成本是多少？"></a>请求崩溃的成本是多少？</h5><p>启用请求崩溃的代价是在执行实际命令之前增加了等待时间。最大成本是批处理窗口的大小。</p>
-<p>如果您有一条命令需要花费5ms的中位数来执行，并且有10ms的批处理窗口，则在最坏的情况下执行时间可能变为15ms。通常，一个请求不会在打开时就被提交到窗口，因此中值损失是窗口时间的一半，在这种情况下为5ms。</p>
-<p>确定此成本是否值得取决于所执行的命令。高延迟命令不会受到少量额外平均延迟的影响。同样，给定命令的并发量很关键：如果很少有超过1或2个请求被一起批处理，那么付出代价是没有意义的。实际上，在单线程顺序迭代中，折叠将是主要的性能瓶颈，因为每次迭代将等待10ms的批处理窗口时间。</p>
-<p>但是，如果某个特定命令被大量同时使用，并且可以将数十个甚至数百个呼叫分批处理，则由于Hystrix减少了所需的线程数和与之连接的网络数，因此获得的吞吐量通常远远超过了成本。依赖性。</p>
-<h5 id="塌方流"><a href="#塌方流" class="headerlink" title="塌方流"></a>塌方流</h5><img src="http://cdn.lnzz.site/static/images/SpringCloud/10/9.png">
+<p>各字段含义如下：</p>
+<p>id：我们自定义的路由 ID，保持唯一</p>
+<p>uri：目标服务地址</p>
+<p>predicates：路由条件，Predicate 接受一个输入参数，返回一个布尔值结果。该接口包含多种默认方法来将 Predicate 组合成其他复杂的逻辑（比如：与，或，非）。</p>
+<p>上面这段配置的意思是，配置了一个 id 为 url-proxy-1的URI代理规则，路由的规则为：当访问地址<a href="http://localhost:8080/csdn/1.jsp时，会路由到上游地址https://blog.csdn.net/1.jsp。" target="_blank" rel="noopener">http://localhost:8080/csdn/1.jsp时，会路由到上游地址https://blog.csdn.net/1.jsp。</a></p>
+<h4 id="基于代码的路由配置方式"><a href="#基于代码的路由配置方式" class="headerlink" title="基于代码的路由配置方式"></a>基于代码的路由配置方式</h4><p> 转发功能同样可以通过代码来实现，我们可以在启动类 GateWayApplication 中添加方法 <code>customRouteLocator()</code> 来定制转发规则。 </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@SpringBootApplication</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">GatewayApplication</span> </span>&#123;</span><br><span class="line"> </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        SpringApplication.run(GatewayApplication<span class="class">.<span class="keyword">class</span>, <span class="title">args</span>)</span>;</span><br><span class="line">    &#125;</span><br><span class="line"> </span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> RouteLocator <span class="title">customRouteLocator</span><span class="params">(RouteLocatorBuilder builder)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> builder.routes()</span><br><span class="line">                .route(<span class="string">"path_route"</span>, r -&gt; r.path(<span class="string">"/csdn"</span>)</span><br><span class="line">                        .uri(<span class="string">"https://blog.csdn.net"</span>))</span><br><span class="line">                .build();</span><br><span class="line">    &#125;</span><br><span class="line"> </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<h2 id="七、请求缓存"><a href="#七、请求缓存" class="headerlink" title="七、请求缓存"></a>七、请求缓存</h2><p><code>HystrixCommand</code>和<code>HystrixObservableCommand</code>实施方式可以定义一个缓存键，然后将其在并发感知方式用于重复数据删除的呼叫的请求范围内。</p>
-<p>这是一个示例流程，涉及一个HTTP请求生命周期以及两个在该请求中执行工作的线程：</p>
-<img src="http://cdn.lnzz.site/static/images/SpringCloud/10/10.png">
+<p>我们在yaml配置文件中注销掉相关路由的配置，重启服务，访问链接：<a href="http://localhost:8080/" target="_blank" rel="noopener">http://localhost:8080/</a> csdn， 可以看到和上面一样的页面，证明我们测试成功。</p>
+<p>上面两个示例中 uri 都是指向了我的CSDN博客，在实际项目使用中可以将 uri 指向对外提供服务的项目地址，统一对外输出接口。</p>
+<h4 id="和注册中心相结合的路由配置方式"><a href="#和注册中心相结合的路由配置方式" class="headerlink" title="和注册中心相结合的路由配置方式"></a>和注册中心相结合的路由配置方式</h4><p>在uri的schema协议部分为自定义的lb:类型，表示从微服务注册中心（如Eureka）订阅服务，并且进行服务的路由。</p>
+<p>一个典型的示例如下：</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="attr">server:</span></span><br><span class="line">  <span class="attr">port:</span> <span class="number">9527</span></span><br><span class="line"></span><br><span class="line"><span class="attr">spring:</span></span><br><span class="line">  <span class="attr">application:</span></span><br><span class="line">    <span class="attr">name:</span> <span class="string">cloud-gateway</span></span><br><span class="line">  <span class="attr">cloud:</span></span><br><span class="line">    <span class="attr">gateway:</span></span><br><span class="line">      <span class="attr">discovery:</span></span><br><span class="line">        <span class="attr">locator:</span></span><br><span class="line">          <span class="attr">enabled:</span> <span class="literal">true</span> <span class="comment">#开启从注册中心动态创建路由的功能，利用微服务名进行路由</span></span><br><span class="line">      <span class="attr">routes:</span></span><br><span class="line">        <span class="bullet">-</span> <span class="attr">id:</span> <span class="string">payment_routh</span> <span class="comment">#payment_route    #路由的ID，没有固定规则但要求唯一，建议配合服务名</span></span><br><span class="line"><span class="comment">#          uri: http://localhost:8001          #匹配后提供服务的路由地址</span></span><br><span class="line">          <span class="attr">uri:</span> <span class="string">lb://cloud-payment-service</span> <span class="comment">#匹配后提供服务的路由地址</span></span><br><span class="line">          <span class="attr">predicates:</span></span><br><span class="line">            <span class="bullet">-</span> <span class="string">Path=/payment/getPaymentById/**</span>         <span class="comment"># 断言，路径相匹配的进行路由</span></span><br><span class="line"></span><br><span class="line">        <span class="bullet">-</span> <span class="attr">id:</span> <span class="string">payment_routh2</span> <span class="comment">#payment_route    #路由的ID，没有固定规则但要求唯一，建议配合服务名</span></span><br><span class="line"><span class="comment">#          uri: http://localhost:8001          #匹配后提供服务的路由地址</span></span><br><span class="line">          <span class="attr">uri:</span> <span class="string">lb://cloud-payment-service</span> <span class="comment">#匹配后提供服务的路由地址</span></span><br><span class="line">          <span class="attr">predicates:</span></span><br><span class="line">            <span class="bullet">-</span> <span class="string">Path=/payment/lb/**</span>         <span class="comment"># 断言，路径相匹配的进行路由</span></span><br><span class="line">            <span class="comment">#- After=2020-07-27T22:28:35.558+08:00[Asia/Shanghai]</span></span><br><span class="line">            <span class="comment">#- Cookie=username,lnzz</span></span><br><span class="line">            <span class="comment">#- Header=X-Request-Id, \d+  # 请求头要有X-Request-Id属性并且值为整数的正则表达式</span></span><br><span class="line"></span><br><span class="line"><span class="attr">eureka:</span></span><br><span class="line">  <span class="attr">instance:</span></span><br><span class="line">    <span class="attr">hostname:</span> <span class="string">cloud-gateway-service</span></span><br><span class="line">  <span class="attr">client:</span> <span class="comment">#服务提供者provider注册进eureka服务列表内</span></span><br><span class="line">    <span class="attr">service-url:</span></span><br><span class="line">      <span class="attr">register-with-eureka:</span> <span class="literal">true</span></span><br><span class="line">      <span class="attr">fetch-registry:</span> <span class="literal">true</span></span><br><span class="line">      <span class="attr">defaultZone:</span> <span class="string">http://eureka7001.com:7001/eureka</span></span><br></pre></td></tr></table></figure>
 
-<p>请求缓存的好处是：</p>
-<ul>
-<li>不同的代码路径可以执行Hystrix命令，而无需担心重复的工作。</li>
-</ul>
-<p>这在大型代码库中特别有用，在该代码库中许多开发人员正在实现不同的功能。</p>
-<p>例如，所有需要获取用户<code>Account</code>对象的代码的多个路径都可以这样请求：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Account account = <span class="keyword">new</span> UserGetAccount(accountId).execute();</span><br><span class="line"></span><br><span class="line"><span class="comment">//or</span></span><br><span class="line"></span><br><span class="line">Observable&lt;Account&gt; accountObservable = <span class="keyword">new</span> UserGetAccount(accountId).observe();</span><br></pre></td></tr></table></figure>
+<p>注册中心相结合的路由配置方式，与单个URI的路由配置，区别其实很小，仅仅在于URI的schema协议不同。单个URI的地址的schema协议，一般为http或者https协议。</p>
+<h3 id="2-4-匹配规则"><a href="#2-4-匹配规则" class="headerlink" title="2.4 匹配规则"></a>2.4 匹配规则</h3><p>Spring Cloud Gateway 的功能很强大，我们仅仅通过 Predicates 的设计就可以看出来，前面我们只是使用了 predicates 进行了简单的条件匹配，其实 Spring Cloud Gataway 帮我们内置了很多 Predicates 功能。</p>
+<p>Spring Cloud Gateway 是通过 Spring WebFlux 的 HandlerMapping 做为底层支持来匹配到转发路由，Spring Cloud Gateway 内置了很多 Predicates 工厂，这些 Predicates 工厂通过不同的 HTTP 请求参数来匹配，多个 Predicates 工厂可以组合使用。</p>
+<h4 id="Predicate-断言条件介绍"><a href="#Predicate-断言条件介绍" class="headerlink" title="Predicate 断言条件介绍"></a>Predicate 断言条件介绍</h4><p>Predicate 来源于 Java 8，是 Java 8 中引入的一个函数，Predicate 接受一个输入参数，返回一个布尔值结果。该接口包含多种默认方法来将 Predicate 组合成其他复杂的逻辑（比如：与，或，非）。可以用于接口请求参数校验、判断新老数据是否有变化需要进行更新操作。</p>
+<p>在 Spring Cloud Gateway 中 Spring 利用 Predicate 的特性实现了各种路由匹配规则，有通过 Header、请求参数等不同的条件来进行作为条件匹配到对应的路由。网上有一张图总结了 Spring Cloud 内置的几种 Predicate 的实现。</p>
+<img src="http://cdn.lnzz.site/static/images/SpringCloud/11/5.png">
 
-<p>Hystrix <code>RequestCache</code>将<code>run()</code>一次且仅执行一次基础方法，<code>HystrixCommand</code>尽管实例化了不同的实例，但执行的两个线程将接收相同的数据。</p>
-<ul>
-<li>整个请求中的数据检索都是一致的。</li>
-</ul>
-<p>而不是每次执行命令时都可能返回不同的值（或回退），而是对同一请求内的所有后续调用进行缓存并返回第一个响应。</p>
-<ul>
-<li>消除重复的线程执行。</li>
-</ul>
-<p>由于请求缓存位于<code>construct()</code>或<code>run()</code>方法调用的前面，因此Hystrix可以在导致线程执行之前对重复项进行重复数据删除。</p>
-<p>如果Hystrix没有实现请求缓存功能，则每个命令都需要自己在<code>construct</code>or <code>run</code>方法中实现它，这会将其放在线程排队和执行之后。</p>
-<h2 id="八、小结"><a href="#八、小结" class="headerlink" title="八、小结"></a>八、小结</h2><p>本章我们深入分析了 Hystrix 工作原理，对 Hystrix 有了更深一步的了解。更多关于使用 Spring Cloud 开发微服务应用的内容，请持续关注本系列教程，也可参阅官方文档或其他书籍资料来学习。</p>
+<p> 说白了 Predicate 就是为了实现一组匹配规则，方便让请求过来找到对应的 Route 进行处理，接下来我们接下 Spring Cloud GateWay 内置几种 Predicate 的使用。 </p>
+<h4 id="通过请求参数匹配"><a href="#通过请求参数匹配" class="headerlink" title="通过请求参数匹配"></a>通过请求参数匹配</h4><p> Query Route Predicate 支持传入两个参数，一个是属性名一个为属性值，属性值可以是正则表达式。 </p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">server:</span></span><br><span class="line">  <span class="attr">port:</span> <span class="number">8080</span></span><br><span class="line"></span><br><span class="line"><span class="attr">spring:</span></span><br><span class="line">  <span class="attr">application:</span></span><br><span class="line">    <span class="attr">name:</span> <span class="string">api-gateway</span></span><br><span class="line"></span><br><span class="line"><span class="attr">cloud:</span></span><br><span class="line">  <span class="attr">gateway:</span></span><br><span class="line">   <span class="attr">routes:</span></span><br><span class="line">     <span class="string">-id:</span> <span class="string">gateway-service</span></span><br><span class="line">     <span class="attr">uri:</span> <span class="string">https://www.baidu.com</span></span><br><span class="line">     <span class="attr">order:</span> <span class="number">0</span></span><br><span class="line">     <span class="attr">predicates:</span></span><br><span class="line">       <span class="string">-Query=smile</span></span><br></pre></td></tr></table></figure>
+
+<p>这样配置，只要请求中包含 smile 属性的参数即可匹配路由。</p>
+<p>使用 curl 测试，命令行输入:</p>
+<p>curl localhost:8080?smile=x&amp;id=2</p>
+<p>经过测试发现只要请求汇总带有 smile 参数即会匹配路由，不带 smile 参数则不会匹配。</p>
+<p>还可以将 Query 的值以键值对的方式进行配置，这样在请求过来时会对属性值和正则进行匹配，匹配上才会走路由。</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">server:</span></span><br><span class="line">  <span class="attr">port:</span> <span class="number">8080</span></span><br><span class="line"></span><br><span class="line"><span class="attr">spring:</span></span><br><span class="line">  <span class="attr">application:</span></span><br><span class="line">    <span class="attr">name:</span> <span class="string">api-gateway</span></span><br><span class="line"></span><br><span class="line"><span class="attr">cloud:</span></span><br><span class="line">  <span class="attr">gateway:</span></span><br><span class="line">   <span class="attr">routes:</span></span><br><span class="line">     <span class="string">-id:</span> <span class="string">gateway-service</span></span><br><span class="line">     <span class="attr">uri:</span> <span class="string">https://www.baidu.com</span></span><br><span class="line">     <span class="attr">order:</span> <span class="number">0</span></span><br><span class="line">     <span class="attr">predicates:</span></span><br><span class="line">       <span class="string">-Query=keep,</span> <span class="string">pu.</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="通过-Header-属性匹配"><a href="#通过-Header-属性匹配" class="headerlink" title="通过 Header 属性匹配"></a>通过 Header 属性匹配</h4><p> Header Route Predicate 和 Cookie Route Predicate 一样，也是接收 2 个参数，一个 header 中属性名称和一个正则表达式，这个属性值和正则表达式匹配则执行。 </p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">server:</span></span><br><span class="line">  <span class="attr">port:</span> <span class="number">8080</span></span><br><span class="line"></span><br><span class="line"><span class="attr">spring:</span></span><br><span class="line">  <span class="attr">application:</span></span><br><span class="line">    <span class="attr">name:</span> <span class="string">api-gateway</span></span><br><span class="line"></span><br><span class="line"><span class="attr">cloud:</span></span><br><span class="line">  <span class="attr">gateway:</span></span><br><span class="line">   <span class="attr">routes:</span></span><br><span class="line">     <span class="string">-id:</span> <span class="string">gateway-service</span></span><br><span class="line">     <span class="attr">uri:</span> <span class="string">https://www.baidu.com</span></span><br><span class="line">     <span class="attr">order:</span> <span class="number">0</span></span><br><span class="line">     <span class="attr">predicates:</span></span><br><span class="line">		<span class="bullet">-</span> <span class="string">Header=X-Request-Id,</span> <span class="string">\d+</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="通过-Cookie-匹配"><a href="#通过-Cookie-匹配" class="headerlink" title="通过 Cookie 匹配"></a>通过 Cookie 匹配</h4><p> Cookie Route Predicate 可以接收两个参数，一个是 Cookie name ,一个是正则表达式，路由规则会通过获取对应的 Cookie name 值和正则表达式去匹配，如果匹配上就会执行路由，如果没有匹配上则不执行。 </p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">server:</span></span><br><span class="line">  <span class="attr">port:</span> <span class="number">8080</span></span><br><span class="line"></span><br><span class="line"><span class="attr">spring:</span></span><br><span class="line">  <span class="attr">application:</span></span><br><span class="line">    <span class="attr">name:</span> <span class="string">api-gateway</span></span><br><span class="line"></span><br><span class="line"><span class="attr">cloud:</span></span><br><span class="line">  <span class="attr">gateway:</span></span><br><span class="line">   <span class="attr">routes:</span></span><br><span class="line">     <span class="string">-id:</span> <span class="string">gateway-service</span></span><br><span class="line">     <span class="attr">uri:</span> <span class="string">https://www.baidu.com</span></span><br><span class="line">     <span class="attr">order:</span> <span class="number">0</span></span><br><span class="line">     <span class="attr">predicates:</span></span><br><span class="line">		 <span class="bullet">-</span> <span class="string">Cookie=sessionId,</span> <span class="string">test</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="通过-Host-匹配"><a href="#通过-Host-匹配" class="headerlink" title="通过 Host 匹配"></a>通过 Host 匹配</h4><p> Host Route Predicate 接收一组参数，一组匹配的域名列表，这个模板是一个 ant 分隔的模板，用.号作为分隔符。它通过参数中的主机地址作为匹配规则。 </p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">server:</span></span><br><span class="line">  <span class="attr">port:</span> <span class="number">8080</span></span><br><span class="line"></span><br><span class="line"><span class="attr">spring:</span></span><br><span class="line">  <span class="attr">application:</span></span><br><span class="line">    <span class="attr">name:</span> <span class="string">api-gateway</span></span><br><span class="line"></span><br><span class="line"><span class="attr">cloud:</span></span><br><span class="line">  <span class="attr">gateway:</span></span><br><span class="line">   <span class="attr">routes:</span></span><br><span class="line">     <span class="string">-id:</span> <span class="string">gateway-service</span></span><br><span class="line">     <span class="attr">uri:</span> <span class="string">https://www.baidu.com</span></span><br><span class="line">     <span class="attr">order:</span> <span class="number">0</span></span><br><span class="line">     <span class="attr">predicates:</span></span><br><span class="line">		 <span class="bullet">-</span> <span class="string">Host=**.baidu.com</span></span><br></pre></td></tr></table></figure>
+
+
+
+<p><strong>至于其他方式匹配，可以查阅 Spring Cloud <a href="https://cloud.spring.io/spring-cloud-static/Hoxton.SR1/reference/htmlsingle/#gateway-request-predicates-factories" target="_blank" rel="noopener">官方文档</a>，这里不再举例</strong></p>
+<h2 id="三、小结"><a href="#三、小结" class="headerlink" title="三、小结"></a>三、小结</h2><p> 本章我们介绍了网关的概念，对 Spring Cloud Gateway 有了进一步的了解。更多关于使用 Spring Cloud 开发微服务应用的内容，请持续关注本系列教程，也可参阅官方文档或其他书籍资料来学习。 </p>
 
       
 	  
@@ -530,7 +446,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/07/26/SpringCloud-%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AE%9E%E7%AB%99%EF%BC%88%E5%8D%81%EF%BC%89%EF%BC%9A%E6%9C%8D%E5%8A%A1%E5%AE%B9%E9%94%99%E4%BF%9D%E6%8A%A4%E4%B9%8BHystrix%EF%BC%88%E4%BA%8C%EF%BC%89/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/07/27/SpringCloud-%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AE%9E%E7%AB%99%EF%BC%88%E5%8D%81%E4%B8%80%EF%BC%89%EF%BC%9A%E6%9C%8D%E5%8A%A1%E7%BD%91%E5%85%B3%E4%B9%8BGateway/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -544,18 +460,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2020/07/27/SpringCloud-%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AE%9E%E7%AB%99%EF%BC%88%E5%8D%81%E4%B8%80%EF%BC%89%EF%BC%9A%E6%9C%8D%E5%8A%A1%E7%BD%91%E5%85%B3%E4%B9%8BGateway/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          SpringCloud 微服务实站（十一）：服务网关之Gateway
-        
-      </div>
-    </a>
   
-  
-    <a href="/2020/07/26/SpringCloud-%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AE%9E%E7%AB%99%EF%BC%88%E4%B9%9D%EF%BC%89%EF%BC%9A%E6%9C%8D%E5%8A%A1%E5%AE%B9%E9%94%99%E4%BF%9D%E6%8A%A4%E4%B9%8BHystrix%EF%BC%88%E4%B8%80%EF%BC%89/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">SpringCloud 微服务实站（九）：服务容错保护之Hystrix（一）</div>
+    <a href="/2020/07/26/SpringCloud-%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AE%9E%E7%AB%99%EF%BC%88%E5%8D%81%EF%BC%89%EF%BC%9A%E6%9C%8D%E5%8A%A1%E5%AE%B9%E9%94%99%E4%BF%9D%E6%8A%A4%E4%B9%8BHystrix%EF%BC%88%E4%BA%8C%EF%BC%89/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">SpringCloud 微服务实站（十）：服务容错保护之Hystrix（二）</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -582,7 +489,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#参考资料"><span class="toc-number">1.</span> <span class="toc-text">参考资料</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#一、前言"><span class="toc-number"></span> <span class="toc-text">一、前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二、流程图"><span class="toc-number"></span> <span class="toc-text">二、流程图</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#2-1-构建一个HystrixCommand或者HystrixObservableCommand对象。"><span class="toc-number">1.</span> <span class="toc-text">2.1 构建一个HystrixCommand或者HystrixObservableCommand对象。</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-2-执行命令"><span class="toc-number">2.</span> <span class="toc-text">2.2 执行命令</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-3-响应是否被缓存"><span class="toc-number">3.</span> <span class="toc-text">2.3 响应是否被缓存</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-4-回路器是否打开"><span class="toc-number">4.</span> <span class="toc-text">2.4 回路器是否打开</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-5-线程池-队列-信号量是否已满"><span class="toc-number">5.</span> <span class="toc-text">2.5 线程池&#x2F;队列&#x2F;信号量是否已满</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-6-HystrixObservableCommand-construct-或者-HystrixCommand-run"><span class="toc-number">6.</span> <span class="toc-text">2.6 HystrixObservableCommand.construct() 或者 HystrixCommand.run()</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-7-计算电路健康"><span class="toc-number">7.</span> <span class="toc-text">2.7 计算电路健康</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-8-获取FallBack"><span class="toc-number">8.</span> <span class="toc-text">2.8 获取FallBack</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-9-返回成功的回应"><span class="toc-number">9.</span> <span class="toc-text">2.9 返回成功的回应</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#三、断路器"><span class="toc-number"></span> <span class="toc-text">三、断路器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#四、隔离"><span class="toc-number"></span> <span class="toc-text">四、隔离</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#五、线程和线程池"><span class="toc-number"></span> <span class="toc-text">五、线程和线程池</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#5-1-线程池的好处"><span class="toc-number">1.</span> <span class="toc-text">5.1 线程池的好处</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-2-线程池的缺点"><span class="toc-number">2.</span> <span class="toc-text">5.2 线程池的缺点</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-3-线程成本"><span class="toc-number">3.</span> <span class="toc-text">5.3 线程成本</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-4-信号量"><span class="toc-number">4.</span> <span class="toc-text">5.4 信号量</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#六、请求折叠"><span class="toc-number"></span> <span class="toc-text">六、请求折叠</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#为什么使用请求折叠？"><span class="toc-number">1.</span> <span class="toc-text">为什么使用请求折叠？</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#全局上下文（跨所有Tomcat线程）"><span class="toc-number">1.1.</span> <span class="toc-text">全局上下文（跨所有Tomcat线程）</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#用户请求上下文（单个Tomcat线程）"><span class="toc-number">1.2.</span> <span class="toc-text">用户请求上下文（单个Tomcat线程）</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#对象建模和代码复杂度"><span class="toc-number">1.3.</span> <span class="toc-text">对象建模和代码复杂度</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#请求崩溃的成本是多少？"><span class="toc-number">1.4.</span> <span class="toc-text">请求崩溃的成本是多少？</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#塌方流"><span class="toc-number">1.5.</span> <span class="toc-text">塌方流</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#七、请求缓存"><span class="toc-number"></span> <span class="toc-text">七、请求缓存</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#八、小结"><span class="toc-number"></span> <span class="toc-text">八、小结</span></a>
+                    <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#参考资料"><span class="toc-number">1.</span> <span class="toc-text">参考资料</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#一、前言"><span class="toc-number"></span> <span class="toc-text">一、前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二、-Spring-Cloud-Gateway-简介"><span class="toc-number"></span> <span class="toc-text">二、 Spring Cloud Gateway 简介</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-特征"><span class="toc-number"></span> <span class="toc-text">2.1 特征</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-架构"><span class="toc-number"></span> <span class="toc-text">2.2 架构</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Zuul的IO模型"><span class="toc-number">1.</span> <span class="toc-text">Zuul的IO模型</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Webflux模型"><span class="toc-number">2.</span> <span class="toc-text">Webflux模型</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Spring-Cloud-Gateway的处理流程"><span class="toc-number">3.</span> <span class="toc-text">Spring Cloud Gateway的处理流程</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-3-路由配置方式"><span class="toc-number"></span> <span class="toc-text">2.3 路由配置方式</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#基础URI一种路由配置方式"><span class="toc-number">1.</span> <span class="toc-text">基础URI一种路由配置方式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#基于代码的路由配置方式"><span class="toc-number">2.</span> <span class="toc-text">基于代码的路由配置方式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#和注册中心相结合的路由配置方式"><span class="toc-number">3.</span> <span class="toc-text">和注册中心相结合的路由配置方式</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-4-匹配规则"><span class="toc-number"></span> <span class="toc-text">2.4 匹配规则</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Predicate-断言条件介绍"><span class="toc-number">1.</span> <span class="toc-text">Predicate 断言条件介绍</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#通过请求参数匹配"><span class="toc-number">2.</span> <span class="toc-text">通过请求参数匹配</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#通过-Header-属性匹配"><span class="toc-number">3.</span> <span class="toc-text">通过 Header 属性匹配</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#通过-Cookie-匹配"><span class="toc-number">4.</span> <span class="toc-text">通过 Cookie 匹配</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#通过-Host-匹配"><span class="toc-number">5.</span> <span class="toc-text">通过 Host 匹配</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#三、小结"><span class="toc-number"></span> <span class="toc-text">三、小结</span></a>
                     </div>
                 </span>
             </div>

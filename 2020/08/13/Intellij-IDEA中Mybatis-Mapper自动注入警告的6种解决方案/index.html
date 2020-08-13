@@ -6,25 +6,23 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>SpringCloud 微服务实站（六）：服务注册中心对比 | 你对我笑i</title>
+  <title>Intellij IDEA中Mybatis Mapper自动注入警告的6种解决方案 | 你对我笑i</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="参考资料 Spring Cloud SpringCloud中文文档 SpringCloud官方文档 书籍 《 Spring Cloud微服务实战 》     SpringBoot SpringBoot官方文档   Github 获取代码    一、前言&amp;emsp;在前面几个章节我们分别学习了 Eureka 、Zookeeper 和 Consul 作为 Spring Cloud 的服务注册中心，在本">
+  <meta name="description" content="相信使用 Mybaits 的小伙伴们一定会经常编写类似如下的代码：   可以看到 userMapper 下有个红色警告。虽然代码本身并没有问题，能正常运行，但有个警告总归有点恶心。本文分析原因，并列出解决该警告的几种方案。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="SpringCloud 微服务实站（六）：服务注册中心对比">
-<meta property="og:url" content="http://yoursite.com/2020/07/18/SpringCloud-%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AE%9E%E7%AB%99%EF%BC%88%E5%85%AD%EF%BC%89%EF%BC%9A%E6%9C%8D%E5%8A%A1%E6%B3%A8%E5%86%8C%E4%B8%AD%E5%BF%83%E5%AF%B9%E6%AF%94/index.html">
+<meta property="og:title" content="Intellij IDEA中Mybatis Mapper自动注入警告的6种解决方案">
+<meta property="og:url" content="http://yoursite.com/2020/08/13/Intellij-IDEA%E4%B8%ADMybatis-Mapper%E8%87%AA%E5%8A%A8%E6%B3%A8%E5%85%A5%E8%AD%A6%E5%91%8A%E7%9A%846%E7%A7%8D%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/index.html">
 <meta property="og:site_name" content="你对我笑i">
-<meta property="og:description" content="参考资料 Spring Cloud SpringCloud中文文档 SpringCloud官方文档 书籍 《 Spring Cloud微服务实战 》     SpringBoot SpringBoot官方文档   Github 获取代码    一、前言&amp;emsp;在前面几个章节我们分别学习了 Eureka 、Zookeeper 和 Consul 作为 Spring Cloud 的服务注册中心，在本">
+<meta property="og:description" content="相信使用 Mybaits 的小伙伴们一定会经常编写类似如下的代码：   可以看到 userMapper 下有个红色警告。虽然代码本身并没有问题，能正常运行，但有个警告总归有点恶心。本文分析原因，并列出解决该警告的几种方案。">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="http://cdn.lnzz.site/static/images/SpringCloud/06/1.png">
-<meta property="og:image" content="http://cdn.lnzz.site/static/images/SpringCloud/06/2.png">
-<meta property="og:image" content="http://cdn.lnzz.site/static/images/SpringCloud/06/3.png">
-<meta property="article:published_time" content="2020-07-18T14:25:06.000Z">
-<meta property="article:modified_time" content="2020-08-01T12:54:26.258Z">
+<meta property="og:image" content="http://cdn.lnzz.site/static/images/mybatis/idea-mybatis.png">
+<meta property="article:published_time" content="2020-08-13T14:25:51.000Z">
+<meta property="article:modified_time" content="2020-08-13T14:32:51.165Z">
 <meta property="article:author" content="你对我笑i">
-<meta property="article:tag" content="SpringCloud">
-<meta property="article:tag" content="SpringBoot">
+<meta property="article:tag" content="Mybatis">
+<meta property="article:tag" content="Intellij IDEA">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://cdn.lnzz.site/static/images/SpringCloud/06/1.png">
+<meta name="twitter:image" content="http://cdn.lnzz.site/static/images/mybatis/idea-mybatis.png">
   
     <link rel="alternative" href="/atom.xml" title="你对我笑i" type="application/atom+xml">
   
@@ -172,20 +170,20 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-SpringCloud-微服务实站（六）：服务注册中心对比" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-Intellij-IDEA中Mybatis-Mapper自动注入警告的6种解决方案" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      SpringCloud 微服务实站（六）：服务注册中心对比
+      Intellij IDEA中Mybatis Mapper自动注入警告的6种解决方案
     </h1>
   
 
         
-        <a href="/2020/07/18/SpringCloud-%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AE%9E%E7%AB%99%EF%BC%88%E5%85%AD%EF%BC%89%EF%BC%9A%E6%9C%8D%E5%8A%A1%E6%B3%A8%E5%86%8C%E4%B8%AD%E5%BF%83%E5%AF%B9%E6%AF%94/" class="archive-article-date">
-  	<time datetime="2020-07-18T14:25:06.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-18</time>
+        <a href="/2020/08/13/Intellij-IDEA%E4%B8%ADMybatis-Mapper%E8%87%AA%E5%8A%A8%E6%B3%A8%E5%85%A5%E8%AD%A6%E5%91%8A%E7%9A%846%E7%A7%8D%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/" class="archive-article-date">
+  	<time datetime="2020-08-13T14:25:51.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-08-13</time>
 </a>
 
         
@@ -194,216 +192,55 @@
 
     <div class="article-entry" itemprop="articleBody">
       
-        <h4 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h4><ul>
-<li>Spring Cloud<ul>
-<li><a href="https://www.bookstack.cn/read/spring-cloud-docs/docs-index.md" target="_blank" rel="noopener">SpringCloud中文文档</a></li>
-<li><a href="https://cloud.spring.io/spring-cloud-static/Hoxton.SR1/reference/htmlsingle/" target="_blank" rel="noopener">SpringCloud官方文档</a></li>
-<li>书籍<ul>
-<li><a href="https://item.jd.com/12172344.html" target="_blank" rel="noopener">《 Spring Cloud微服务实战 》</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li>SpringBoot<ul>
-<li><a href="https://docs.spring.io/spring-boot/docs/2.2.2.RELEASE/reference/htmlsingle/" target="_blank" rel="noopener">SpringBoot官方文档</a></li>
-</ul>
-</li>
-<li>Github<ul>
-<li><a href="https://github.com/yyuguang/SpringCloud" target="_blank" rel="noopener">获取代码</a></li>
-</ul>
-</li>
-</ul>
-<h2 id="一、前言"><a href="#一、前言" class="headerlink" title="一、前言"></a>一、前言</h2><p>&emsp;在前面几个章节我们分别学习了 <a href="https://lnzz.site/2020/07/14/SpringCloud-微服务实站（三）：服务注册中心之Eureka/" target="_blank" rel="noopener">Eureka</a> 、<a href="https://lnzz.site/2020/07/17/SpringCloud-微服务实站（四）：服务注册中心之Zookeeper/" target="_blank" rel="noopener">Zookeeper</a> 和 <a href="https://lnzz.site/2020/07/18/SpringCloud-微服务实站（五）：服务注册中心之Consul/" target="_blank" rel="noopener">Consul</a> 作为 Spring Cloud 的服务注册中心，在本章节，我们将详细对比这几种服务注册中心的区别</p>
+        <p><strong>相信使用 Mybaits 的小伙伴们一定会经常编写类似如下的代码：</strong></p>
+<img src="http://cdn.lnzz.site/static/images/mybatis/idea-mybatis.png">
+
+<p>可以看到 <code>userMapper</code> 下有个红色警告。虽然代码本身并没有问题，能正常运行，但有个警告总归有点恶心。本文分析原因，并列出解决该警告的几种方案。</p>
 <a id="more"></a>
 
-<p>&emsp;服务注册中心本质上是为了解耦服务提供者和服务消费者。对于任何一个微服务，原则上都应存在或者支持多个提供者，这是由微服务的分布式属性决定的。更进一步，为了支持弹性扩缩容特性，一个微服务的提供者的数量和分布往往是动态变化的，也是无法预先确定的。因此，原本在单体应用阶段常用的静态LB机制就不再适用了，需要引入额外的组件来管理微服务提供者的注册与发现，而这个组件就是服务注册中心。</p>
-<h2 id="二、CAP理论"><a href="#二、CAP理论" class="headerlink" title="二、CAP理论"></a>二、CAP理论</h2><img src="http://cdn.lnzz.site/static/images/SpringCloud/06/1.png">
+<h2 id="原因"><a href="#原因" class="headerlink" title="原因"></a>原因</h2><p>众所周知，IDEA是非常智能的，它可以理解Spring的上下文。然而 <code>UserMapper</code> 这个接口是Mybatis的，IDEA理解不了。</p>
+<p>而 <code>@Autowired</code> 注解，默认情况下要求依赖对象（也就是 <code>userMapper</code> ）必须存在。而IDEA认为这个对象的实例/代理是个null，所以就<strong>友好地给个提示</strong>。</p>
+<h2 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h2><h3 id="方法1：为-Autowired-注解设置required-false"><a href="#方法1：为-Autowired-注解设置required-false" class="headerlink" title="方法1：为 @Autowired 注解设置required = false"></a>方法1：为 <code>@Autowired</code> 注解设置required = false</h3><p>使用 <code>@Autowired</code> 注解时，若希望允许null值，可设置required = false，像这样：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Autowired</span>(required = <span class="keyword">false</span>)</span><br><span class="line"><span class="keyword">private</span> UserMapper userMapper;</span><br></pre></td></tr></table></figure>
 
-<ul>
-<li>一致性(Consistency) ：所有节点在同一时间的数据完全一致 <ul>
-<li>可用性(Availability) ： 服务在正常响应时间内一直可用 </li>
-<li>分区容错性(Partition Tolerance) ：系统中任意信息的丢失或失败不会影响系统的继续运作</li>
-</ul>
-</li>
-</ul>
-<p>&emsp;CAP理论的核心是：一个分布式系统不可能同时很好地满足<strong>一致性</strong>，<strong>可用性</strong>和<strong>分区容错性</strong>这三个需求，因此，根据 CAP 原理将 NoSQL 数据库分成了<strong>满足 CA原则、满足CP原则</strong>和<strong>满足 AP原则</strong>三大类：</p>
-<ul>
-<li><strong>CA：</strong>单点集群，满足一致性，可用性地系统，通常在可扩展性上不太强大</li>
-<li><strong>CP：</strong>满足一致性，分区容错性的系统，通常性能不是特别高</li>
-<li><strong>AP：</strong>满足可用性，分区容错性的系统，通常可能对一致性要求低一些</li>
-</ul>
-<p><strong>一致性与可用性的决择：</strong></p>
-<p>&emsp;CAP理论就是说在分布式存储系统中，最多只能实现上面的两点。而由于当前的网络硬件肯定会出现延迟丢包等问题，所以分区容忍性是我们必须需要实现的。所以我们只能在一致性和可用性之间进行权衡，没有NoSQL系统能同时保证这三点。</p>
-<p>对于web2.0网站来说，关系数据库的很多主要特性却往往无用武之地</p>
-<ol>
-<li><strong>数据库事务一致性需求 ：</strong>很多web实时系统并不要求严格的数据库事务，对读一致性的要求很低，有些场合对写一致性要求并不高。允许实现最终一致性。</li>
-<li><strong>数据库的写实时性和读实时性需求：</strong>对关系数据库来说，插入一条数据之后立刻查询，是肯定可以读出来这条数据的，但是对于很多web应用来说，并不要求这么高的实时性，比方说发一条消息之 后，过几秒乃至十几秒之后，我的订阅者才看到这条动态是完全可以接受的。</li>
-<li><strong>对复杂的SQL查询，特别是多表关联查询的需求 ：</strong>任何大数据量的web系统，都非常忌讳多个大表的关联查询，以及复杂的数据分析类型的报表查询，特别是SNS类型的网站，从需求以及产品设计角 度，就避免了这种情况的产生。往往更多的只是单表的主键查询，以及单表的简单条件分页查询，SQL的功能被极大的弱化了。</li>
-</ol>
-<h2 id="三、服务注册中心解决方案"><a href="#三、服务注册中心解决方案" class="headerlink" title="三、服务注册中心解决方案"></a>三、服务注册中心解决方案</h2><p>设计或者选型一个服务注册中心，首先要考虑的就是服务注册与发现机制。纵观当下各种主流的服务注册中心解决方案，大致可归为三类： </p>
-<ul>
-<li><p>应用内：直接集成到应用中，依赖于应用自身完成服务的注册与发现，最典型的是Netflix提供的<a href="https://github.com/Netflix/eureka" target="_blank" rel="noopener">Eureka</a> </p>
-</li>
-<li><p>应用外：把应用当成黑盒，通过应用外的某种机制将服务注册到注册中心，最小化对应用的侵入性，比如HashiCorp的<a href="https://www.consul.io/" target="_blank" rel="noopener">Consul</a> </p>
-</li>
-<li><p>DNS：将服务注册为DNS的SRV记录，严格来说，是一种特殊的应用外注册方式，<a href="https://github.com/skynetservices/skydns" target="_blank" rel="noopener">SkyDNS</a>是其中的代表 </p>
-<blockquote>
-<p><em>对于第一类注册方式，除了Eureka这种一站式解决方案，还可以基于ZooKeeper自行实现一套服务注册机制，这在大公司比较常见，但对于小公司而言显然性价比太低。</em> </p>
-</blockquote>
-</li>
-</ul>
-<p>除了基本的服务注册与发现机制，从开发和运维角度，至少还要考虑如下五个方面： </p>
-<ul>
-<li>测活：服务注册之后，如何对服务进行测活以保证服务的可用性？</li>
-<li>负载均衡：当存在多个服务提供者时，如何均衡各个提供者的负载？</li>
-<li>集成：在服务提供端或者调用端，如何集成注册中心？</li>
-<li>运行时依赖：引入注册中心之后，对应用的运行时环境有何影响？</li>
-<li>可用性：如何保证注册中心本身的可用性，特别是消除单点故障？</li>
-</ul>
-<h3 id="3-1-主流注册中心和产品"><a href="#3-1-主流注册中心和产品" class="headerlink" title="3.1 主流注册中心和产品"></a>3.1 主流注册中心和产品</h3><table>
-<thead>
-<tr>
-<th></th>
-<th>Nacos</th>
-<th>Eureka</th>
-<th>Consul</th>
-<th>Zookeeper</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>编写语言</td>
-<td>Java</td>
-<td>Java</td>
-<td>Java</td>
-<td>Go</td>
-</tr>
-<tr>
-<td>一致性协议</td>
-<td>CP+AP</td>
-<td>AP</td>
-<td>CP</td>
-<td>CP</td>
-</tr>
-<tr>
-<td>健康检查</td>
-<td>TCP/HTTP/MYSQL/Client Beat</td>
-<td>Client Beat</td>
-<td>TCP/HTTP/gRPC/Cmd</td>
-<td>Keep Alive</td>
-</tr>
-<tr>
-<td>负载均衡策略</td>
-<td>权重/ metadata/Selector</td>
-<td>Ribbon</td>
-<td>Fabio</td>
-<td>一</td>
-</tr>
-<tr>
-<td>雪崩保护</td>
-<td>有</td>
-<td>有</td>
-<td>无</td>
-<td>无</td>
-</tr>
-<tr>
-<td>自动注销实例</td>
-<td>支持</td>
-<td>支持</td>
-<td>不支持</td>
-<td>支持</td>
-</tr>
-<tr>
-<td>访问协议</td>
-<td>HTTP/DNS</td>
-<td>HTTP</td>
-<td>HTTP/DNS</td>
-<td>TCP</td>
-</tr>
-<tr>
-<td>监听支持</td>
-<td>支持</td>
-<td>支持</td>
-<td>支持</td>
-<td>支持</td>
-</tr>
-<tr>
-<td>多数据中心</td>
-<td>支持</td>
-<td>支持</td>
-<td>支持</td>
-<td>不支持</td>
-</tr>
-<tr>
-<td>跨注册中心同步</td>
-<td>支持</td>
-<td>不支持</td>
-<td>支持</td>
-<td>不支持</td>
-</tr>
-<tr>
-<td>SpringCloud集成</td>
-<td>支持</td>
-<td>支持</td>
-<td>支持</td>
-<td>不支持</td>
-</tr>
-<tr>
-<td>Dubbo集成</td>
-<td>支持</td>
-<td>不支持</td>
-<td>不支持</td>
-<td>支持</td>
-</tr>
-<tr>
-<td>K8S集成</td>
-<td>支持</td>
-<td>不支持</td>
-<td>支持</td>
-<td>不支持</td>
-</tr>
-</tbody></table>
-<h3 id="3-2-Eureka-gt-AP"><a href="#3-2-Eureka-gt-AP" class="headerlink" title="3.2 Eureka -&gt; AP"></a>3.2 Eureka -&gt; AP</h3><img src="http://cdn.lnzz.site/static/images/SpringCloud/06/2.png">
+<p>这样就不会有警告了。原因很好理解：IDEA认为 userMapper 是个null，给了警告；加上<code>required = false</code>后，使用 <code>@Autowired</code> 注解不再去校验 userMapper 是否存在了。也就不会有警告了。</p>
+<p><strong>总结</strong>：这种方式有点蛋疼。一个庞大的既有项目，可能到处都在引用Mapper，总不能到处都补上 required = false 吧……而且对于新手/新员工，很难一眼看懂加required = false属性只是为了解决IDEA的警告。</p>
+<h3 id="方法2：用-Resource-替换-Autowired"><a href="#方法2：用-Resource-替换-Autowired" class="headerlink" title="方法2：用 @Resource 替换 @Autowired"></a>方法2：用 <code>@Resource</code> 替换 <code>@Autowired</code></h3><p>像这样：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Resource</span></span><br><span class="line"><span class="keyword">private</span> UserMapper userMapper;</span><br></pre></td></tr></table></figure>
 
-<p>Spring Cloud Netflix 在设计 Eureka 时就紧遵AP原则。</p>
-<p>Eureka Server 也可以运行多个实例来构建集群，解决单点问题，但不同于 ZooKeeper 的<strong>选举 leader 的过程</strong>，Eureka Server 采用的是Peer to Peer 对等通信。这是一种去中心化的架构，无 master/slave 之分，每一个 Peer 都是对等的。在这种架构风格中，节点通过彼此互相注册来提高可用性，每个节点需要添加一个或多个有效的 serviceUrl 指向其他节点。每个节点都可被视为其他节点的副本。</p>
-<p>在集群环境中如果某台 Eureka Server 宕机，Eureka Client 的请求会自动切换到新的 Eureka Server 节点上，当宕机的服务器重新恢复后，Eureka 会再次将其纳入到服务器集群管理之中。当节点开始接受客户端请求时，所有的操作都会在节点间进行复制（replicate To Peer）操作，将请求复制到该 Eureka Server 当前所知的其它所有节点中。</p>
-<p>当一个新的 Eureka Server 节点启动后，会首先尝试从邻近节点获取所有注册列表信息，并完成初始化。Eureka Server 通过 <code>getEurekaServiceUrls()</code> 方法获取所有的节点，并且会通过心跳契约的方式定期更新。</p>
-<p>默认情况下，如果 Eureka Server 在一定时间内没有接收到某个服务实例的心跳（默认周期为30秒），Eureka Server 将会注销该实例（默认为90秒， <code>eureka.instance.lease-expiration-duration-in-seconds</code> 进行自定义配置）。</p>
-<p>当 Eureka Server 节点在短时间内丢失过多的心跳时，那么这个节点就会进入自我保护模式。</p>
-<p>Eureka的集群中，只要有一台 Eureka 还在，就能保证注册服务可用（保证可用性），只不过查到的信息可能不是最新的（不保证强一致性）。除此之外，Eureka 还有一种自我保护机制，如果在15分钟内超过<strong>85%</strong>的节点都没有正常的心跳，那么 Eureka 就认为客户端与注册中心出现了网络故障，此时会出现以下几种情况：</p>
-<ul>
-<li>Eureka不再从注册表中移除因为长时间没有收到心跳而过期的服务；</li>
-<li>Eureka仍然能够接受新服务注册和查询请求，但是不会被同步到其它节点上（即保证当前节点依然可用）；</li>
-<li>当网络稳定时，当前实例新注册的信息会被同步到其它节点中；</li>
-</ul>
-<p><strong>因此，Eureka可以很好的应对因网络故障导致部分节点失去联系的情况，而不会像 Zookeeper 那样使得整个注册服务瘫痪。</strong></p>
-<h3 id="3-3-Zookeeper-gt-CP"><a href="#3-3-Zookeeper-gt-CP" class="headerlink" title="3.3 Zookeeper -&gt; CP"></a>3.3 Zookeeper -&gt; CP</h3><p>与 Eureka 有所不同，Apache Zookeeper 在设计时就紧遵CP原则，即任何时候对 Zookeeper 的访问请求能得到一致的数据结果，同时系统对网络分割具备容错性，但是 Zookeeper 不能保证每次服务请求都是可达的。 </p>
-<p>从 Zookeeper 的实际应用情况来看，在使用 Zookeeper 获取服务列表时，如果此时的 Zookeeper 集群中的 Leader 宕机了，该集群就要进行 Leader 的选举，又或者 Zookeeper 集群中半数以上服务器节点不可用（例如有三个节点，如果节点一检测到节点三挂了 ，节点二也检测到节点三挂了，那这个节点才算是真的挂了），那么将无法处理该请求。所以说，<strong>Zookeeper 不能保证服务可用性</strong>。</p>
-<p>当然，在大多数分布式环境中，尤其是涉及到数据存储的场景，数据一致性应该是首先被保证的，这也是 Zookeeper 设计紧遵CP原则的另一个原因。</p>
-<p>但是对于服务发现来说，情况就不太一样了，针对同一个服务，即使注册中心的不同节点保存的服务提供者信息不尽相同，也并不会造成灾难性的后果。</p>
-<p>因为对于服务消费者来说，能消费才是最重要的，消费者虽然拿到可能不正确的服务实例信息后尝试消费一下，也要胜过因为无法获取实例信息而不去消费，导致系统异常要好（<strong>淘宝的双十一，京东的618就是紧遵AP的最好参照</strong>）。</p>
-<p>当master节点因为网络故障与其他节点失去联系时，剩余节点会重新进行leader选举。问题在于，选举leader的时间太长，<strong>30~120s</strong>，而且选举期间整个zk集群都是不可用的，这就导致在选举期间注册服务瘫痪。</p>
-<p>在云部署环境下， 因为网络问题使得zk集群失去master节点是大概率事件，虽然服务能最终恢复，但是漫长的选举事件导致注册长期不可用是不能容忍的。</p>
-<h3 id="3-4-Consul-gt-CP"><a href="#3-4-Consul-gt-CP" class="headerlink" title="3.4 Consul -&gt; CP"></a>3.4 Consul -&gt; CP</h3><img src="http://cdn.lnzz.site/static/images/SpringCloud/06/3.png">
+<p>这样也不会再有讨厌的警告。如果你对原因感兴趣，不妨了解一下<a href="https://blog.csdn.net/weixin_40423597/article/details/80643990" target="_blank" rel="noopener">《@Autowired 与@Resource的区别》</a></p>
+<p><strong>总结</strong>：这种方式挺赞，但如果一个项目已经大量使用 @Autowired，然后为了个警告到处改成@Resource，也有点蛋疼。</p>
+<h3 id="方法3：在Mapper接口上加上-Repository注解"><a href="#方法3：在Mapper接口上加上-Repository注解" class="headerlink" title="方法3：在Mapper接口上加上@Repository注解"></a>方法3：在Mapper接口上加上@Repository注解</h3><p>像这样：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Repository</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">UserMapper</span> <span class="keyword">extends</span> <span class="title">Mapper</span>&lt;<span class="title">User</span>&gt; </span>&#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>Consul 是 HashiCorp 公司推出的开源工具，用于实现分布式系统的服务发现与配置。Consul 使用 <strong>Go</strong> 语言编写，因此具有天然可移植性（支持Linux、windows和Mac OS X）。 </p>
-<p>Consul 内置了服务注册与发现框架、分布一致性协议实现、健康检查、Key/Value 存储、多数据中心方案，不再需要依赖其他工具（比如 ZooKeeper 等），使用起来也较为简单。 </p>
-<p>Consul 遵循CAP原理中的CP原则，保证了强一致性和分区容错性，且使用的是 Raft 算法，比Zookeeper 使用的 Paxos 算法更加简单。虽然保证了强一致性，但是可用性就相应下降了，例如服务注册的时间会稍长一些，因为 Consul 的 raft 协议要求必须过半数的节点都写入成功才认为注册成功；在leader挂掉了之后，重新选举出leader之前会导致Consul 服务不可用。</p>
-<p><strong>Consul 对比 Eureka：</strong></p>
+<p>这样也能让你的</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Autowired</span></span><br><span class="line"><span class="keyword">private</span> UserMapper userMapper;</span><br></pre></td></tr></table></figure>
+
+<p>不再报错。</p>
+<p>当然，如果你用@Component替换@Repository也是可以的。原理大致：IDEA不是认为 <code>userMapper</code> 是个null嘛…加个@Repository注解骗一下IDEA就OK了……</p>
+<p><strong>总结</strong>：这种方式比较赞，改动小，也简单，我比较喜欢。</p>
+<h3 id="方法4：用Lombok"><a href="#方法4：用Lombok" class="headerlink" title="方法4：用Lombok"></a>方法4：用Lombok</h3><p>像这样：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Service</span></span><br><span class="line"><span class="meta">@RequiredArgsConstructor</span>(onConstructor = @__(<span class="meta">@Autowired</span>))</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TestService</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> UserMapper userMapper;</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>Lombok生成的代码是这样的：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Service</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TestService</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> UserMapper userMapper;</span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">TestService</span><span class="params">(<span class="keyword">final</span> UserMapper userMapper)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.userMapper = userMapper;</span><br><span class="line">    &#125;</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>但如果自己手写成Lombok生成的代码，IDEA依然会给你报警告</strong> 。我猜，应该是IDEA的Lombok插件把IDEA搞懵逼了…所以不提示了…</p>
+<p><strong>总结</strong> ：<strong>这是我目前最喜欢的方式</strong>。原因有2：</p>
 <ul>
-<li><strong>Consul强一致性(C)带来的是：</strong> <ul>
-<li>服务注册相比Eureka会稍慢一些。因为Consul的raft协议要求必须过半数的节点都写入成功才认为注册成功 </li>
-<li>Leader挂掉时，重新选举期间整个consul不可用。保证了强一致性但牺牲了可用性。 </li>
+<li>Spring官方并不建议直接在类的field上使用 @Autowired 注解，原因详见：<a href="http://olivergierke.de/2013/11/why-field-injection-is-evil/" target="_blank" rel="noopener">《Why field injection is evil》</a> ，用本方法可将field注入编程构造方法注入，Spring是比较推荐的。</li>
+<li>体现了 Lombok 的优势，简化了你的代码。而且你也不用在每个field上都加上 @Autowired 注解了。</li>
 </ul>
-</li>
-<li><strong>Eureka保证高可用(A)和最终一致性：</strong> <ul>
-<li>服务注册相对要快，因为不需要等注册信息replicate到其他节点，也不保证注册信息是否replicate成功</li>
-<li>当数据出现不一致时，虽然A, B上的注册信息不完全相同，但每个Eureka节点依然能够正常对外提供服务，这会出现查询服务信息时如果请求A查不到，但请求B就能查到。如此保证了可用性但牺牲了一致性。</li>
+<p><strong>不过这种方式也有缺点</strong>：那就是如果你类之间的依赖关系比较复杂，特别是存在循环依赖(A引用B，B引用A，或者间接的循环引用)时，应用将会启动不起来……<strong>这其实是构造方法注入方式的缺点</strong>。</p>
+<h3 id="方法5：把IDEA的警告关闭掉"><a href="#方法5：把IDEA的警告关闭掉" class="headerlink" title="方法5：把IDEA的警告关闭掉"></a>方法5：把IDEA的警告关闭掉</h3><p>没有提示的IDEA是没有灵魂的</p>
+<h3 id="方法6：安装mybatis-plugin"><a href="#方法6：安装mybatis-plugin" class="headerlink" title="方法6：安装mybatis plugin"></a>方法6：安装mybatis plugin</h3><p>安装mybatis plugin即可解决该问题。</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>以上是解决问题的6种方法。问题本身其实比较简单，<strong>但其实隐藏的知识点其实挺多的</strong>，例如：</p>
+<ul>
+<li>@Autowired 和 @Resource 有什么区别</li>
+<li>为什么Spring不建议使用field方式注入</li>
+<li>@Repository、@Component、@Controller、@Service有什么区别</li>
 </ul>
-</li>
-<li><strong>其他方面：</strong>Eureka 本质就是个<strong>Servlet</strong>程序，泡在Servlet容器中；Consul 则是用 <strong>Go</strong> 编写的</li>
-</ul>
-<h3 id="3-5-Nacos"><a href="#3-5-Nacos" class="headerlink" title="3.5 Nacos"></a>3.5 Nacos</h3><p>我们将在教程高级部分详细讲解 Nacos，尽请期待</p>
+<p>总之，硬货有时候就隐藏在很low的问题之下，哈哈哈。</p>
 
       
 	  
@@ -471,11 +308,11 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">SpringCloud</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Mybatis</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">SpringBoot</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Intellij IDEA</a>
         		</li>
       		
 		</ul>
@@ -531,7 +368,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/07/18/SpringCloud-%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AE%9E%E7%AB%99%EF%BC%88%E5%85%AD%EF%BC%89%EF%BC%9A%E6%9C%8D%E5%8A%A1%E6%B3%A8%E5%86%8C%E4%B8%AD%E5%BF%83%E5%AF%B9%E6%AF%94/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/08/13/Intellij-IDEA%E4%B8%ADMybatis-Mapper%E8%87%AA%E5%8A%A8%E6%B3%A8%E5%85%A5%E8%AD%A6%E5%91%8A%E7%9A%846%E7%A7%8D%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -545,18 +382,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2020/07/19/SpringCloud-%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AE%9E%E7%AB%99%EF%BC%88%E4%B8%83%EF%BC%89%EF%BC%9A%E5%AE%A2%E6%88%B7%E7%AB%AF%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1%E4%B9%8BRibbon/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          SpringCloud 微服务实站（七）：客户端负载均衡之Ribbon
-        
-      </div>
-    </a>
   
-  
-    <a href="/2020/07/18/SpringCloud-%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AE%9E%E7%AB%99%EF%BC%88%E4%BA%94%EF%BC%89%EF%BC%9A%E6%9C%8D%E5%8A%A1%E6%B3%A8%E5%86%8C%E4%B8%AD%E5%BF%83%E4%B9%8BConsul/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">SpringCloud 微服务实站（五）：服务注册中心之Consul</div>
+    <a href="/2020/08/02/SpringCloud-%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AE%9E%E7%AB%99%EF%BC%88%E5%8D%81%E4%BA%94%EF%BC%89%EF%BC%9A%E5%88%86%E5%B8%83%E5%BC%8F%E6%9C%8D%E5%8A%A1%E8%B7%9F%E8%B8%AA%E4%B9%8BSleuth/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">SpringCloud 微服务实站（十五）：分布式服务跟踪之Sleuth</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -583,7 +411,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#参考资料"><span class="toc-number">1.</span> <span class="toc-text">参考资料</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#一、前言"><span class="toc-number"></span> <span class="toc-text">一、前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二、CAP理论"><span class="toc-number"></span> <span class="toc-text">二、CAP理论</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#三、服务注册中心解决方案"><span class="toc-number"></span> <span class="toc-text">三、服务注册中心解决方案</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-主流注册中心和产品"><span class="toc-number"></span> <span class="toc-text">3.1 主流注册中心和产品</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-Eureka-gt-AP"><span class="toc-number"></span> <span class="toc-text">3.2 Eureka -&gt; AP</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-3-Zookeeper-gt-CP"><span class="toc-number"></span> <span class="toc-text">3.3 Zookeeper -&gt; CP</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-4-Consul-gt-CP"><span class="toc-number"></span> <span class="toc-text">3.4 Consul -&gt; CP</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-5-Nacos"><span class="toc-number"></span> <span class="toc-text">3.5 Nacos</span></a>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#原因"><span class="toc-number">1.</span> <span class="toc-text">原因</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#解决方案"><span class="toc-number">2.</span> <span class="toc-text">解决方案</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#方法1：为-Autowired-注解设置required-false"><span class="toc-number">2.1.</span> <span class="toc-text">方法1：为 @Autowired 注解设置required &#x3D; false</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#方法2：用-Resource-替换-Autowired"><span class="toc-number">2.2.</span> <span class="toc-text">方法2：用 @Resource 替换 @Autowired</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#方法3：在Mapper接口上加上-Repository注解"><span class="toc-number">2.3.</span> <span class="toc-text">方法3：在Mapper接口上加上@Repository注解</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#方法4：用Lombok"><span class="toc-number">2.4.</span> <span class="toc-text">方法4：用Lombok</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#方法5：把IDEA的警告关闭掉"><span class="toc-number">2.5.</span> <span class="toc-text">方法5：把IDEA的警告关闭掉</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#方法6：安装mybatis-plugin"><span class="toc-number">2.6.</span> <span class="toc-text">方法6：安装mybatis plugin</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#总结"><span class="toc-number">3.</span> <span class="toc-text">总结</span></a></li></ol>
                     </div>
                 </span>
             </div>

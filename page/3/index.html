@@ -61,7 +61,7 @@
 	        
 				<li><a href="/tags/SpringCloud">Spring Cloud</a></li>
 	        
-				<li><a href="/tags/SpringBoot">Spring Boot</a></li>
+				<li><a href="/tags/%E9%9A%8F%E7%AC%94">随笔</a></li>
 	        
 				<li><a href="/archives/index.html">所有文章</a></li>
 	        
@@ -147,7 +147,7 @@
 		        
 					<li style="width: 25%"><a href="/tags/SpringCloud">Spring Cloud</a></li>
 		        
-					<li style="width: 25%"><a href="/tags/SpringBoot">Spring Boot</a></li>
+					<li style="width: 25%"><a href="/tags/%E9%9A%8F%E7%AC%94">随笔</a></li>
 		        
 					<li style="width: 25%"><a href="/archives/index.html">所有文章</a></li>
 		        
@@ -165,6 +165,150 @@
           </div>
           <div id="js-content" class="content-ll">
             
+  
+    <article id="post-SpringCloud-微服务实站（七）：客户端负载均衡之Ribbon" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/07/19/SpringCloud-%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AE%9E%E7%AB%99%EF%BC%88%E4%B8%83%EF%BC%89%EF%BC%9A%E5%AE%A2%E6%88%B7%E7%AB%AF%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1%E4%B9%8BRibbon/">SpringCloud 微服务实站（七）：客户端负载均衡之Ribbon</a>
+    </h1>
+  
+
+		
+          <div style="margin-top:10px;">
+    <span class="post-time">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-keyboard-o"></i>
+        <span class="post-meta-item-text">  字数统计: </span>
+        <span class="post-count">4.7k字</span>
+      </span>
+    </span>
+
+    <span class="post-time">
+      &nbsp; | &nbsp;
+      <span class="post-meta-item-icon">
+        <i class="fa fa-hourglass-half"></i>
+        <span class="post-meta-item-text">  阅读时长: </span>
+        <span class="post-count">20分</span>
+      </span>
+    </span>
+	
+	
+	<!-- 添加代码 -->
+	
+</div>
+        
+        
+        <a href="/2020/07/19/SpringCloud-%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AE%9E%E7%AB%99%EF%BC%88%E4%B8%83%EF%BC%89%EF%BC%9A%E5%AE%A2%E6%88%B7%E7%AB%AF%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1%E4%B9%8BRibbon/" class="archive-article-date">
+  	<time datetime="2020-07-19T13:18:16.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-19</time>
+</a>
+
+        
+
+      </header>
+    
+
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h4><ul>
+<li>Spring Cloud<ul>
+<li><a href="https://www.bookstack.cn/read/spring-cloud-docs/docs-index.md" target="_blank" rel="noopener">SpringCloud中文文档</a></li>
+<li><a href="https://cloud.spring.io/spring-cloud-static/Hoxton.SR1/reference/htmlsingle/" target="_blank" rel="noopener">SpringCloud官方文档</a></li>
+<li>书籍<ul>
+<li><a href="https://item.jd.com/12172344.html" target="_blank" rel="noopener">《 Spring Cloud微服务实战 》</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>SpringBoot<ul>
+<li><a href="https://docs.spring.io/spring-boot/docs/2.2.2.RELEASE/reference/htmlsingle/" target="_blank" rel="noopener">SpringBoot官方文档</a></li>
+</ul>
+</li>
+<li>Github<ul>
+<li><a href="https://github.com/yyuguang/SpringCloud" target="_blank" rel="noopener">获取代码</a></li>
+</ul>
+</li>
+</ul>
+<h2 id="一、前言"><a href="#一、前言" class="headerlink" title="一、前言"></a>一、前言</h2><p>&emsp;Spring Cloud Ribbon 是一个基于HTTP和TCP的客户端负载均衡工具,它基于Netflix Ribbon实现。通过 Spring Cloud 的封装，可以让我们轻松地将面向服务的REST模板请求自动转换成客户端负载均衡的服务调用。 Spring Cloud Ribbon 虽然只是一个工具类框架，它不像服务注册中心、配置中心、API网关那样需要独立部署，但是它几乎存在于每一个 Spring Cloud 构建的微服务和基础设施中。因为微服务间的调用，API网关的请求转发等内容，实际上都是通过 Ribbon来实现的，包括后续我们将要介绍的 Feign，它也是基于 Ribbon实现的工具。所以，对 Spring Cloud Ribbon 的理解和使用，对于我们使用 Spring Cloud来构建微服务非常重要。</p>
+<p>&emsp;在这一章中，我们将具体介绍如何使用 Ribbon来实现客户端的负载均衡，并且通过源码分析来了解 Ribbon实现客户端负载均衡的基本原理。</p>
+        
+          <a class="article-more-a" href="/2020/07/19/SpringCloud-%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AE%9E%E7%AB%99%EF%BC%88%E4%B8%83%EF%BC%89%EF%BC%9A%E5%AE%A2%E6%88%B7%E7%AB%AF%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1%E4%B9%8BRibbon/#more">more >></a>
+        
+      
+	  
+	          <!-- 《添加版权声明 -->
+        
+            <!-- 《添加版权声明 -->
+<!--添加版权声明https://github.com/JoeyBling/hexo-theme-yilia-plus/commit/c1215e132f6d5621c5fea83d3c4f7ccbcca074a3-->
+
+
+<!-- #版权基础设定：0-关闭声明； 1-文章对应的md文件里有declare: true属性，才有版权声明； 2-所有文章均有版权声明 -->
+
+  <div class="declare" hidden="hidden"></div>
+
+<!-- 添加版权声明》 -->
+
+        
+        <!-- 添加版权声明》 -->
+
+
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">SpringCloud</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Ribbon</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/07/19/SpringCloud-%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AE%9E%E7%AB%99%EF%BC%88%E4%B8%83%EF%BC%89%EF%BC%9A%E5%AE%A2%E6%88%B7%E7%AB%AF%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1%E4%B9%8BRibbon/">more >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
   
     <article id="post-SpringCloud-微服务实站（六）：服务注册中心对比" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
@@ -232,7 +376,7 @@
 </ul>
 </li>
 </ul>
-<h2 id="一、前言"><a href="#一、前言" class="headerlink" title="一、前言"></a>一、前言</h2><p>&emsp;在前面几个章节我们分别学习了 <a href="https://lnzz.site/2020/07/14/SpringCloud-微服务实站（三）：服务注册中心之Eureka/" target="_blank" rel="noopener">Eureka</a> 、<a href="https://lnzz.site/2020/07/17/SpringCloud-微服务实站（四）：服务注册中心之Zookeeper/" target="_blank" rel="noopener">Zookeeper</a> 和 <a href="https://lnzz.site/2020/07/18/SpringCloud-微服务实站（五）：服务注册中心之Consul/" target="_blank" rel="noopener">Consul</a> 作为 Spring Cloud 的服务注册中心，在本章节，我们将详细对比这几种服务注册中心的区别</p>
+<h2 id="一、前言"><a href="#一、前言" class="headerlink" title="一、前言"></a>一、前言</h2><p>&emsp;在前面几个章节我们分别学习了 <a href="https://lnzz.site/2020/07/14/SpringCloud-微服务实站（三）：服务注册中心之Eureka/">Eureka</a> 、<a href="https://lnzz.site/2020/07/17/SpringCloud-微服务实站（四）：服务注册中心之Zookeeper/">Zookeeper</a> 和 <a href="https://lnzz.site/2020/07/18/SpringCloud-微服务实站（五）：服务注册中心之Consul/">Consul</a> 作为 Spring Cloud 的服务注册中心，在本章节，我们将详细对比这几种服务注册中心的区别</p>
         
           <a class="article-more-a" href="/2020/07/18/SpringCloud-%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AE%9E%E7%AB%99%EF%BC%88%E5%85%AD%EF%BC%89%EF%BC%9A%E6%9C%8D%E5%8A%A1%E6%B3%A8%E5%86%8C%E4%B8%AD%E5%BF%83%E5%AF%B9%E6%AF%94/#more">more >></a>
         
@@ -266,10 +410,6 @@
 			 
         		<li class="article-tag-list-item">
         			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">SpringCloud</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">SpringBoot</a>
         		</li>
       		
 		</ul>
@@ -375,7 +515,7 @@
 </ul>
 </li>
 </ul>
-<h2 id="一、前言"><a href="#一、前言" class="headerlink" title="一、前言"></a>一、前言</h2><p>&emsp;在上一章节我们学习了 <a href="https://lnzz.site/2020/07/17/SpringCloud-微服务实站（四）：服务注册中心之Zookeeper/" target="_blank" rel="noopener">Zookeeper</a> 作为服务注册中心，在本章节，我们将继续学习 Spring Cloud 的另一种服务注册中心，Consul的相关知识</p>
+<h2 id="一、前言"><a href="#一、前言" class="headerlink" title="一、前言"></a>一、前言</h2><p>&emsp;在上一章节我们学习了 <a href="https://lnzz.site/2020/07/17/SpringCloud-微服务实站（四）：服务注册中心之Zookeeper/">Zookeeper</a> 作为服务注册中心，在本章节，我们将继续学习 Spring Cloud 的另一种服务注册中心，Consul的相关知识</p>
         
           <a class="article-more-a" href="/2020/07/18/SpringCloud-%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AE%9E%E7%AB%99%EF%BC%88%E4%BA%94%EF%BC%89%EF%BC%9A%E6%9C%8D%E5%8A%A1%E6%B3%A8%E5%86%8C%E4%B8%AD%E5%BF%83%E4%B9%8BConsul/#more">more >></a>
         
@@ -412,7 +552,7 @@
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">SpringBoot</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Consul</a>
         		</li>
       		
 		</ul>
@@ -518,7 +658,7 @@
 </ul>
 </li>
 </ul>
-<h2 id="一、前言"><a href="#一、前言" class="headerlink" title="一、前言"></a>一、前言</h2><p>&emsp;再上一章节我们学习了 <a href="https://lnzz.site/2020/07/14/SpringCloud-微服务实站（三）：服务注册中心之Eureka/" target="_blank" rel="noopener">Eureka</a> 作为服务注册中心的相关知识，但是由于 <strong>Eureka 2.x</strong> 已经停止更新维护，具体说明可以 <a href="https://github.com/Netflix/eureka/wiki" target="_blank" rel="noopener">点击这里</a></p>
+<h2 id="一、前言"><a href="#一、前言" class="headerlink" title="一、前言"></a>一、前言</h2><p>&emsp;再上一章节我们学习了 <a href="https://lnzz.site/2020/07/14/SpringCloud-微服务实站（三）：服务注册中心之Eureka/">Eureka</a> 作为服务注册中心的相关知识，但是由于 <strong>Eureka 2.x</strong> 已经停止更新维护，具体说明可以 <a href="https://github.com/Netflix/eureka/wiki" target="_blank" rel="noopener">点击这里</a></p>
         
           <a class="article-more-a" href="/2020/07/17/SpringCloud-%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AE%9E%E7%AB%99%EF%BC%88%E5%9B%9B%EF%BC%89%EF%BC%9A%E6%9C%8D%E5%8A%A1%E6%B3%A8%E5%86%8C%E4%B8%AD%E5%BF%83%E4%B9%8BZookeeper/#more">more >></a>
         
@@ -555,7 +695,7 @@
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">SpringBoot</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Zookeeper</a>
         		</li>
       		
 		</ul>
@@ -706,7 +846,7 @@
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">SpringBoot</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Eureka</a>
         		</li>
       		
 		</ul>
@@ -717,156 +857,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2020/07/14/SpringCloud-%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AE%9E%E7%AB%99%EF%BC%88%E4%B8%89%EF%BC%89%EF%BC%9A%E6%9C%8D%E5%8A%A1%E6%B3%A8%E5%86%8C%E4%B8%AD%E5%BF%83%E4%B9%8BEureka/">more >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-SpringCloud 微服务实战（二）：微服务构建" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/07/12/SpringCloud%20%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AE%9E%E6%88%98%EF%BC%88%E4%BA%8C%EF%BC%89%EF%BC%9A%E5%BE%AE%E6%9C%8D%E5%8A%A1%E6%9E%84%E5%BB%BA/">SpringCloud 微服务实战（二）：微服务构建</a>
-    </h1>
-  
-
-		
-          <div style="margin-top:10px;">
-    <span class="post-time">
-      <span class="post-meta-item-icon">
-        <i class="fa fa-keyboard-o"></i>
-        <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">2.9k字</span>
-      </span>
-    </span>
-
-    <span class="post-time">
-      &nbsp; | &nbsp;
-      <span class="post-meta-item-icon">
-        <i class="fa fa-hourglass-half"></i>
-        <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">16分</span>
-      </span>
-    </span>
-	
-	
-	<!-- 添加代码 -->
-	
-</div>
-        
-        
-        <a href="/2020/07/12/SpringCloud%20%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AE%9E%E6%88%98%EF%BC%88%E4%BA%8C%EF%BC%89%EF%BC%9A%E5%BE%AE%E6%9C%8D%E5%8A%A1%E6%9E%84%E5%BB%BA/" class="archive-article-date">
-  	<time datetime="2020-07-12T13:48:02.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-12</time>
-</a>
-
-        
-
-      </header>
-    
-
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h4><ul>
-<li>Spring Cloud<ul>
-<li><a href="https://www.bookstack.cn/read/spring-cloud-docs/docs-index.md" target="_blank" rel="noopener">SpringCloud中文文档</a></li>
-<li><a href="https://cloud.spring.io/spring-cloud-static/Hoxton.SR1/reference/htmlsingle/" target="_blank" rel="noopener">SpringCloud官方文档</a></li>
-<li>书籍<ul>
-<li><a href="https://item.jd.com/12172344.html" target="_blank" rel="noopener">《 Spring Cloud微服务实战 》</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li>SpringBoot<ul>
-<li><a href="https://docs.spring.io/spring-boot/docs/2.2.2.RELEASE/reference/htmlsingle/" target="_blank" rel="noopener">SpringBoot官方文档</a></li>
-</ul>
-</li>
-<li>Github<ul>
-<li><a href="https://github.com/yyuguang/SpringCloud" target="_blank" rel="noopener">获取代码</a></li>
-</ul>
-</li>
-</ul>
-<h2 id="一、快速入门"><a href="#一、快速入门" class="headerlink" title="一、快速入门"></a>一、快速入门</h2><p>&emsp;在本节中，我们将逐步创建一个SpringBoot的基础项目，并且实现一份简单的RESTful API，通过这个例子对SpringBoot有一个初步的了解，并体验其结构简单、开发迅速的特性。</p>
-<h3 id="1-1-系统及工具版本要求"><a href="#1-1-系统及工具版本要求" class="headerlink" title="1.1 系统及工具版本要求"></a>1.1 系统及工具版本要求</h3><ul>
-<li>JDK -&gt; Java8</li>
-<li>SpringBoot -&gt; <strong>2.2.2.RELEASE</strong></li>
-<li>SpringCloud -&gt; <strong>Hoxton.SR1</strong></li>
-<li>Mavne -&gt; 3.5及以上</li>
-<li>Mysql -&gt; 5.7及以上</li>
-</ul>
-        
-          <a class="article-more-a" href="/2020/07/12/SpringCloud%20%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AE%9E%E6%88%98%EF%BC%88%E4%BA%8C%EF%BC%89%EF%BC%9A%E5%BE%AE%E6%9C%8D%E5%8A%A1%E6%9E%84%E5%BB%BA/#more">more >></a>
-        
-      
-	  
-	          <!-- 《添加版权声明 -->
-        
-            <!-- 《添加版权声明 -->
-<!--添加版权声明https://github.com/JoeyBling/hexo-theme-yilia-plus/commit/c1215e132f6d5621c5fea83d3c4f7ccbcca074a3-->
-
-
-<!-- #版权基础设定：0-关闭声明； 1-文章对应的md文件里有declare: true属性，才有版权声明； 2-所有文章均有版权声明 -->
-
-  <div class="declare" hidden="hidden"></div>
-
-<!-- 添加版权声明》 -->
-
-        
-        <!-- 添加版权声明》 -->
-
-
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">SpringCloud</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">SpringBoot</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/07/12/SpringCloud%20%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AE%9E%E6%88%98%EF%BC%88%E4%BA%8C%EF%BC%89%EF%BC%9A%E5%BE%AE%E6%9C%8D%E5%8A%A1%E6%9E%84%E5%BB%BA/">more >></a>
         </p>
       
 
@@ -1018,15 +1008,59 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">SpringBoot</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Mybatis</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Intellij IDEA</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Ribbon</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Feign</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Eureka</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Hystrix</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Consul</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Gateway</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Bus</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Config</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Zookeeper</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Sleuth</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Stream</a>
               </li>
             
             <div class="clearfix"></div>

@@ -6,23 +6,21 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://lnzz.site">
-  <title>Intellij IDEA中Mybatis Mapper自动注入警告的6种解决方案 | 你对我笑i</title>
+  <title>第一章 对象导论 | 你对我笑i</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="相信使用 Mybaits 的小伙伴们一定会经常编写类似如下的代码：   可以看到 userMapper 下有个红色警告。虽然代码本身并没有问题，能正常运行，但有个警告总归有点恶心。本文分析原因，并列出解决该警告的几种方案。">
+  <meta name="description" content="1.1 抽象过程所有编程语言都提供抽象机制，可以认为，人们所能够解决的问题的复杂性直接取决于抽象的类型和质量。 Smalltalk 的五个基本特性：  万物皆对象。理论上讲，可以抽取待解决问题的任何概念化构建（如狗、建筑物、服务等），将其表示为程序中的对象。 程序是对象的集合，他们通过发送消息来告知彼此所要做的。即，可以把消息想象为对某个特定对象的方法的调用请求。 每个对象都有自己的有其他对象所构">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Intellij IDEA中Mybatis Mapper自动注入警告的6种解决方案">
-<meta property="og:url" content="https://lnzz.site/2020/08/13/Intellij-IDEA%E4%B8%ADMybatis-Mapper%E8%87%AA%E5%8A%A8%E6%B3%A8%E5%85%A5%E8%AD%A6%E5%91%8A%E7%9A%846%E7%A7%8D%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/index.html">
+<meta property="og:title" content="第一章 对象导论">
+<meta property="og:url" content="https://lnzz.site/2020/09/10/%E7%AC%AC%E4%B8%80%E7%AB%A0-%E5%AF%B9%E8%B1%A1%E5%AF%BC%E8%AE%BA/index.html">
 <meta property="og:site_name" content="你对我笑i">
-<meta property="og:description" content="相信使用 Mybaits 的小伙伴们一定会经常编写类似如下的代码：   可以看到 userMapper 下有个红色警告。虽然代码本身并没有问题，能正常运行，但有个警告总归有点恶心。本文分析原因，并列出解决该警告的几种方案。">
+<meta property="og:description" content="1.1 抽象过程所有编程语言都提供抽象机制，可以认为，人们所能够解决的问题的复杂性直接取决于抽象的类型和质量。 Smalltalk 的五个基本特性：  万物皆对象。理论上讲，可以抽取待解决问题的任何概念化构建（如狗、建筑物、服务等），将其表示为程序中的对象。 程序是对象的集合，他们通过发送消息来告知彼此所要做的。即，可以把消息想象为对某个特定对象的方法的调用请求。 每个对象都有自己的有其他对象所构">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="http://cdn.lnzz.site/static/images/mybatis/idea-mybatis.png">
-<meta property="article:published_time" content="2020-08-13T14:25:51.000Z">
-<meta property="article:modified_time" content="2020-08-15T14:47:10.048Z">
+<meta property="article:published_time" content="2020-09-10T15:08:05.000Z">
+<meta property="article:modified_time" content="2020-09-10T15:11:25.985Z">
 <meta property="article:author" content="你对我笑i">
-<meta property="article:tag" content="Mybatis">
-<meta property="article:tag" content="Intellij IDEA">
+<meta property="article:tag" content="Java编程思想">
+<meta property="article:tag" content="读书笔记">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://cdn.lnzz.site/static/images/mybatis/idea-mybatis.png">
   
     <link rel="alternative" href="/atom.xml" title="你对我笑i" type="application/atom+xml">
   
@@ -176,14 +174,14 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-Intellij-IDEA中Mybatis-Mapper自动注入警告的6种解决方案" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-第一章-对象导论" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      Intellij IDEA中Mybatis Mapper自动注入警告的6种解决方案
+      第一章 对象导论
     </h1>
   
 
@@ -193,7 +191,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">927字</span>
+        <span class="post-count">2.3k字</span>
       </span>
     </span>
 
@@ -202,7 +200,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-hourglass-half"></i>
         <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">3分</span>
+        <span class="post-count">7分</span>
       </span>
     </span>
 	
@@ -217,8 +215,8 @@
 </div>
         
         
-        <a href="/2020/08/13/Intellij-IDEA%E4%B8%ADMybatis-Mapper%E8%87%AA%E5%8A%A8%E6%B3%A8%E5%85%A5%E8%AD%A6%E5%91%8A%E7%9A%846%E7%A7%8D%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/" class="archive-article-date">
-  	<time datetime="2020-08-13T14:25:51.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-08-13</time>
+        <a href="/2020/09/10/%E7%AC%AC%E4%B8%80%E7%AB%A0-%E5%AF%B9%E8%B1%A1%E5%AF%BC%E8%AE%BA/" class="archive-article-date">
+  	<time datetime="2020-09-10T15:08:05.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-09-10</time>
 </a>
 
         
@@ -228,55 +226,53 @@
 
     <div class="article-entry" itemprop="articleBody">
       
-        <p><strong>相信使用 Mybaits 的小伙伴们一定会经常编写类似如下的代码：</strong></p>
-<img src="http://cdn.lnzz.site/static/images/mybatis/idea-mybatis.png">
-
-<p>可以看到 <code>userMapper</code> 下有个红色警告。虽然代码本身并没有问题，能正常运行，但有个警告总归有点恶心。本文分析原因，并列出解决该警告的几种方案。</p>
+        <h2 id="1-1-抽象过程"><a href="#1-1-抽象过程" class="headerlink" title="1.1 抽象过程"></a>1.1 抽象过程</h2><p>所有编程语言都提供抽象机制，可以认为，人们所能够解决的问题的复杂性直接取决于抽象的类型和质量。</p>
+<p><strong>Smalltalk</strong> 的五个基本特性：</p>
+<ul>
+<li><strong>万物皆对象</strong>。理论上讲，可以抽取待解决问题的任何概念化构建（如狗、建筑物、服务等），将其表示为程序中的对象。</li>
+<li><strong>程序是对象的集合，他们通过发送消息来告知彼此所要做的。</strong>即，可以把消息想象为对某个特定对象的方法的调用请求。</li>
+<li><strong>每个对象都有自己的有其他对象所构成的存储。</strong>换句话说，可以通过创建包含现有对象的包的方式来创建新的类型对象。</li>
+<li><strong>每个对象都拥有其类型。</strong>每个类最重要的区别于其他类的特性就是“可以发送什么样的消息给它”。</li>
+<li><strong>某一特定类型的所有对象都可以接受同样的消息。</strong></li>
+</ul>
 <a id="more"></a>
 
-<h2 id="原因"><a href="#原因" class="headerlink" title="原因"></a>原因</h2><p>众所周知，IDEA是非常智能的，它可以理解Spring的上下文。然而 <code>UserMapper</code> 这个接口是Mybatis的，IDEA理解不了。</p>
-<p>而 <code>@Autowired</code> 注解，默认情况下要求依赖对象（也就是 <code>userMapper</code> ）必须存在。而IDEA认为这个对象的实例/代理是个null，所以就<strong>友好地给个提示</strong>。</p>
-<h2 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h2><h3 id="方法1：为-Autowired-注解设置required-false"><a href="#方法1：为-Autowired-注解设置required-false" class="headerlink" title="方法1：为 @Autowired 注解设置required = false"></a>方法1：为 <code>@Autowired</code> 注解设置required = false</h3><p>使用 <code>@Autowired</code> 注解时，若希望允许null值，可设置required = false，像这样：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Autowired</span>(required = <span class="keyword">false</span>)</span><br><span class="line"><span class="keyword">private</span> UserMapper userMapper;</span><br></pre></td></tr></table></figure>
-
-<p>这样就不会有警告了。原因很好理解：IDEA认为 userMapper 是个null，给了警告；加上<code>required = false</code>后，使用 <code>@Autowired</code> 注解不再去校验 userMapper 是否存在了。也就不会有警告了。</p>
-<p><strong>总结</strong>：这种方式有点蛋疼。一个庞大的既有项目，可能到处都在引用Mapper，总不能到处都补上 required = false 吧……而且对于新手/新员工，很难一眼看懂加required = false属性只是为了解决IDEA的警告。</p>
-<h3 id="方法2：用-Resource-替换-Autowired"><a href="#方法2：用-Resource-替换-Autowired" class="headerlink" title="方法2：用 @Resource 替换 @Autowired"></a>方法2：用 <code>@Resource</code> 替换 <code>@Autowired</code></h3><p>像这样：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Resource</span></span><br><span class="line"><span class="keyword">private</span> UserMapper userMapper;</span><br></pre></td></tr></table></figure>
-
-<p>这样也不会再有讨厌的警告。如果你对原因感兴趣，不妨了解一下<a href="https://blog.csdn.net/weixin_40423597/article/details/80643990" target="_blank" rel="noopener">《@Autowired 与@Resource的区别》</a></p>
-<p><strong>总结</strong>：这种方式挺赞，但如果一个项目已经大量使用 @Autowired，然后为了个警告到处改成@Resource，也有点蛋疼。</p>
-<h3 id="方法3：在Mapper接口上加上-Repository注解"><a href="#方法3：在Mapper接口上加上-Repository注解" class="headerlink" title="方法3：在Mapper接口上加上@Repository注解"></a>方法3：在Mapper接口上加上@Repository注解</h3><p>像这样：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Repository</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">UserMapper</span> <span class="keyword">extends</span> <span class="title">Mapper</span>&lt;<span class="title">User</span>&gt; </span>&#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>这样也能让你的</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Autowired</span></span><br><span class="line"><span class="keyword">private</span> UserMapper userMapper;</span><br></pre></td></tr></table></figure>
-
-<p>不再报错。</p>
-<p>当然，如果你用@Component替换@Repository也是可以的。原理大致：IDEA不是认为 <code>userMapper</code> 是个null嘛…加个@Repository注解骗一下IDEA就OK了……</p>
-<p><strong>总结</strong>：这种方式比较赞，改动小，也简单，我比较喜欢。</p>
-<h3 id="方法4：用Lombok"><a href="#方法4：用Lombok" class="headerlink" title="方法4：用Lombok"></a>方法4：用Lombok</h3><p>像这样：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Service</span></span><br><span class="line"><span class="meta">@RequiredArgsConstructor</span>(onConstructor = @__(<span class="meta">@Autowired</span>))</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TestService</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> UserMapper userMapper;</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>Lombok生成的代码是这样的：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Service</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TestService</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> UserMapper userMapper;</span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">TestService</span><span class="params">(<span class="keyword">final</span> UserMapper userMapper)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.userMapper = userMapper;</span><br><span class="line">    &#125;</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p><strong>但如果自己手写成Lombok生成的代码，IDEA依然会给你报警告</strong> 。我猜，应该是IDEA的Lombok插件把IDEA搞懵逼了…所以不提示了…</p>
-<p><strong>总结</strong> ：<strong>这是我目前最喜欢的方式</strong>。原因有2：</p>
+<p>更为简洁的描述：<strong>对象具有状态、行为、标识。</strong></p>
 <ul>
-<li>Spring官方并不建议直接在类的field上使用 @Autowired 注解，原因详见：<a href="http://olivergierke.de/2013/11/why-field-injection-is-evil/" target="_blank" rel="noopener">《Why field injection is evil》</a> ，用本方法可将field注入编程构造方法注入，Spring是比较推荐的。</li>
-<li>体现了 Lombok 的优势，简化了你的代码。而且你也不用在每个field上都加上 @Autowired 注解了。</li>
+<li>状态：内部数据。</li>
+<li>行为：方法。</li>
+<li>标识：地址。 </li>
 </ul>
-<p><strong>不过这种方式也有缺点</strong>：那就是如果你类之间的依赖关系比较复杂，特别是存在循环依赖(A引用B，B引用A，或者间接的循环引用)时，应用将会启动不起来……<strong>这其实是构造方法注入方式的缺点</strong>。</p>
-<h3 id="方法5：把IDEA的警告关闭掉"><a href="#方法5：把IDEA的警告关闭掉" class="headerlink" title="方法5：把IDEA的警告关闭掉"></a>方法5：把IDEA的警告关闭掉</h3><p>没有提示的IDEA是没有灵魂的</p>
-<h3 id="方法6：安装mybatis-plugin"><a href="#方法6：安装mybatis-plugin" class="headerlink" title="方法6：安装mybatis plugin"></a>方法6：安装mybatis plugin</h3><p>安装mybatis plugin即可解决该问题。</p>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>以上是解决问题的6种方法。问题本身其实比较简单，<strong>但其实隐藏的知识点其实挺多的</strong>，例如：</p>
+<h2 id="1-2-每个对象都有一个接口"><a href="#1-2-每个对象都有一个接口" class="headerlink" title="1.2 每个对象都有一个接口"></a>1.2 每个对象都有一个接口</h2><p>我们在面向对象程序设计中实际上进行的是创建新的数据类型，但事实上所有的面向对象程序设计语言都使用<strong>class</strong>个关键词来表示数据类型。</p>
+<p>因为类描述了具有相同特性（数据元素）和行为（功能）的对象集合，所以一个类实际上就是一个数据类型，例如所有浮点型数字具有相同的特性和行为集合。二者的差异在于，程序员通过定义类来适应问题，而不再被迫只能使用现有的用来表示机器中的存储单元的数据类型。可以根据需求，通过添加新的数据类型来扩展编程语言。编程系统欣然接受新的类，并且像对待内置类型一样地照管它们和进行类型检查</p>
+<p><strong>class：在程序执行期间具有不同状态而其他方面都类似的对象会被分组到对象的类中。</strong></p>
+<h2 id="1-3-封装"><a href="#1-3-封装" class="headerlink" title="1.3 封装"></a>1.3 封装</h2><p>被隐藏（也即封装）的部分通常代表对象内部脆弱的部分，它们很容易被程序员所毁坏，因此将实现隐藏起来可以减少程序的bug。</p>
+<p>隐藏是通过访问控制修饰符（public、protected、包访问、private）来实现的。</p>
+<p>访问控制的第一个存在原因就是让调用者无法直接触及他们不应该触及的部分，但从另一方面来看，其实这不失为一项服务，因为他们可以很容易地看出哪些东西对他们来说很重要，而哪些东西可能不关心；访问控制的第二个存在原因就是允许库设计者可以改变类的内部的工作方式而不用担心会影响到调用者。</p>
+<h2 id="1-4-继承"><a href="#1-4-继承" class="headerlink" title="1.4 继承"></a>1.4 继承</h2><p>代码复用：复用是面向对象程序设计所提供<strong>最了不起的优点之一。</strong></p>
+<p>最简单的代码复用就是直接调用类的方法，此外，我们还可以将该类置于某个新类中，使它成为新类的属性成员。新的类也可由任意数量、任意类型的其他对象以任意可以实现新的类中想要功能的方式所组成，这种使用现有的类合成新的类方式称为组合复用。</p>
+<p>组合复用带来了极大的灵活性，使得它能在运行时动态的修改其实现行为，但继承并不具备这样的灵活性，因为继承是在编译时期就已经确定其行为，在运行时期是不能修改的。</p>
+<p>继承两种实现方式，第一种方式非常直接：直接在子类中添加新的方法，即扩展父类接口。第二种方式就是子类覆写父类方法，但不新增父类没有接口。</p>
+<p>“is-a是一个”与“is-like-a像是一个”。继承时，我们使用第一种还是第二种方式呢？这可能引起争论：继承应该只覆盖基类的方法，而并不添加在基类中没有的新方法吗？如果这样做，就意味着子类与基类是完全相同的类型，因为它们具有完全相同的接口，结果可以用一个子类对象来完全替代一个基类对象，这可被认为是纯粹替代，通常称之为替代原则，这也是一种理想的方式，我们经常称这种情况下的子类与基类的关系是“is-a是一个”；有时必须在子类型中添加新的接口，这样也就扩展了接口，这个新的类型仍可以替代基类，但是这种替代并不完美，因为基类无法访问新添加的方法，这种情况下我们可以描述为“is-like-a像是一个”关系。</p>
+<h2 id="1-5-多态"><a href="#1-5-多态" class="headerlink" title="1.5 多态"></a>1.5 多态</h2><p>一个非面向对象编程的编译器产生的函数调用会引起所谓的前期绑定，而向对象程序设计语言使用了后期绑定的概念。</p>
+<p>方法的调用就是编译器将产生对一个具体函数名字的调用，前期绑定是在运行时将这个调用解析到将要被执行的代码的绝对地址。然而在OOP中，程序直到运行时才能够确定代码的地址，为了执行后期绑定，Java编译器使用了一小段特殊代码来替代绝对地址调用，这段代码使用对象中存储的信息来计算方法体的地址，根据这段特殊代码，每个对象都可以具有不同的行为表现。</p>
+<p>在某些语言中，必须明确地声明某个方法具备后期绑定属性所带来的灵活性，如C++使用virtual关键字来实现，在默认情况下，C++不是动态绑定的，而在Java中，动态绑定是默认行为，不需要添加额外的关键字来实现多态</p>
+<h2 id="1-6-Java语言支持的四种类型"><a href="#1-6-Java语言支持的四种类型" class="headerlink" title="1.6 Java语言支持的四种类型"></a>1.6 Java语言支持的四种类型</h2><ul>
+<li>接口（interface）</li>
+<li>类（class）</li>
+<li>数组（array）</li>
+<li>基本类型（primitive）</li>
+</ul>
+<p>前三种类型通常被称为<strong>引用类型（reference type），类实例和数组是对象（object）</strong>，而基本类型的值则不是对象。类的成员（member）由它的域（field）、方法（method）、成员类（member class）和成员接口（member interface）组成。方法签名（signature）由它的名称和所有参数类型组成；签名不包括它的返回类型。</p>
+<h2 id="1-7-类与类之间的关系"><a href="#1-7-类与类之间的关系" class="headerlink" title="1.7 类与类之间的关系"></a>1.7 类与类之间的关系</h2><p>类和类、类和接口、接口和接口之间有如下几种关系：<strong>泛化关系、实现关系、关联关系（聚合、合成）、依赖关系。</strong></p>
 <ul>
-<li>@Autowired 和 @Resource 有什么区别</li>
-<li>为什么Spring不建议使用field方式注入</li>
-<li>@Repository、@Component、@Controller、@Service有什么区别</li>
+<li>泛化：表示类与类之间的继承关系，使用extends关键字来表示。在图形上使用虚线三角形箭头表示。</li>
+<li>实现：表示类与接口之间的实现关系，使用implements关键字来表示。在图形上使用实线三角形箭头表示。</li>
+<li>关联：类与类之间的联接。关联可以是双向的，也可以是单向的，双向的关联可以有两个箭头或都没有箭头。单向的关联有一个箭头，表示关联的方向。在Java里，关联关系是使用实例变量实现的。在每一个关联的端点，还可以有一个基数，表时这一端的类可以有几个实例。常见的基数有：0..1（零个或者一个实例）、0..<em>或者</em>（没限制，可以是零）、1（只有一个实例）、1..*（至少有一个实例）。一个关联关系可以进一步确定为聚合与合成关系。在图形上使用实线的箭头表示。</li>
+<li>聚合：是关联关系的一种，是强的关联关系，聚合是整体和个体之间的关系。关联与聚合仅仅从Java语法是上是分辨不出的，需要考察所涉及的类之间的逻辑关系。如果不确定是聚合关系，可以将之设置为关联关系。图形是在实线的箭头的尾部多一个空心菱形。</li>
+<li>合成：是关联关系的一种，是比聚合关系强的关系。它要求普通的聚合关系中代表整体的对象负责代表部分的对象的生命周期。整体消亡，则部分与消亡。图形是在实线的箭头的尾部多一个黑心菱形。</li>
+<li>依赖：类与类之间的连接，依赖总是单向的。表示一个类依赖于另一个类的定义。一般而言，依赖关系在Java里体现为局部变量、方法的参数、以及对静态方法的调用。但如果对方出现在实例变量中，那关系就超过了依赖关系，而成了关联关系了。在图形上使用虚线的箭头表示。</li>
 </ul>
-<p>总之，硬货有时候就隐藏在很low的问题之下，哈哈哈。</p>
 
       
 	  
@@ -295,16 +291,16 @@
     
     <br>
     <strong class="create-time">发布时间：</strong>
-    2020-08-13
+    2020-09-10
     <br>
     <strong class="update-time">最后更新：</strong>
-    2020-08-15
+    2020-09-10
     <br>
     <strong class="article-titles">本文标题：</strong>
-    <a href="https://lnzz.site/2020/08/13/Intellij-IDEA中Mybatis-Mapper自动注入警告的6种解决方案/" title="Intellij IDEA中Mybatis Mapper自动注入警告的6种解决方案" target="_blank">Intellij IDEA中Mybatis Mapper自动注入警告的6种解决方案</a>
+    <a href="https://lnzz.site/2020/09/10/第一章-对象导论/" title="第一章 对象导论" target="_blank">第一章 对象导论</a>
     <br>
     <strong class="article-url">本文链接：</strong>
-    <a href="https://lnzz.site/2020/08/13/Intellij-IDEA中Mybatis-Mapper自动注入警告的6种解决方案/" title="Intellij IDEA中Mybatis Mapper自动注入警告的6种解决方案" target="_blank">https://lnzz.site/2020/08/13/Intellij-IDEA中Mybatis-Mapper自动注入警告的6种解决方案/</a>
+    <a href="https://lnzz.site/2020/09/10/第一章-对象导论/" title="第一章 对象导论" target="_blank">https://lnzz.site/2020/09/10/第一章-对象导论/</a>
     <br>
     <strong class="copyright">版权声明：</strong>
     本作品采用
@@ -361,11 +357,11 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Mybatis</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Java编程思想</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Intellij IDEA</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">读书笔记</a>
         		</li>
       		
 		</ul>
@@ -421,7 +417,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=https://lnzz.site/2020/08/13/Intellij-IDEA%E4%B8%ADMybatis-Mapper%E8%87%AA%E5%8A%A8%E6%B3%A8%E5%85%A5%E8%AD%A6%E5%91%8A%E7%9A%846%E7%A7%8D%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=https://lnzz.site/2020/09/10/%E7%AC%AC%E4%B8%80%E7%AB%A0-%E5%AF%B9%E8%B1%A1%E5%AF%BC%E8%AE%BA/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -435,18 +431,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2020/08/16/SpringCloud-%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AE%9E%E7%AB%99%EF%BC%9A%E4%BD%BF%E7%94%A8Feign%E6%9E%84%E9%80%A0%E5%A4%9A%E5%8F%82%E6%95%B0%E7%9A%84%E8%AF%B7%E6%B1%82/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          SpringCloud 微服务实站：使用Feign构造多参数的请求
-        
-      </div>
-    </a>
   
-  
-    <a href="/2020/08/02/SpringCloud-%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AE%9E%E7%AB%99%EF%BC%88%E5%8D%81%E4%BA%94%EF%BC%89%EF%BC%9A%E5%88%86%E5%B8%83%E5%BC%8F%E6%9C%8D%E5%8A%A1%E8%B7%9F%E8%B8%AA%E4%B9%8BSleuth/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">SpringCloud 微服务实站（十五）：分布式服务跟踪之Sleuth</div>
+    <a href="/2020/09/10/%E3%80%8AJava%E7%BC%96%E7%A8%8B%E6%80%9D%E6%83%B3%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">《Java编程思想》读书笔记</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -473,7 +460,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#原因"><span class="toc-number">1.</span> <span class="toc-text">原因</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#解决方案"><span class="toc-number">2.</span> <span class="toc-text">解决方案</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#方法1：为-Autowired-注解设置required-false"><span class="toc-number">2.1.</span> <span class="toc-text">方法1：为 @Autowired 注解设置required &#x3D; false</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#方法2：用-Resource-替换-Autowired"><span class="toc-number">2.2.</span> <span class="toc-text">方法2：用 @Resource 替换 @Autowired</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#方法3：在Mapper接口上加上-Repository注解"><span class="toc-number">2.3.</span> <span class="toc-text">方法3：在Mapper接口上加上@Repository注解</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#方法4：用Lombok"><span class="toc-number">2.4.</span> <span class="toc-text">方法4：用Lombok</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#方法5：把IDEA的警告关闭掉"><span class="toc-number">2.5.</span> <span class="toc-text">方法5：把IDEA的警告关闭掉</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#方法6：安装mybatis-plugin"><span class="toc-number">2.6.</span> <span class="toc-text">方法6：安装mybatis plugin</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#总结"><span class="toc-number">3.</span> <span class="toc-text">总结</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-1-抽象过程"><span class="toc-number">1.</span> <span class="toc-text">1.1 抽象过程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-2-每个对象都有一个接口"><span class="toc-number">2.</span> <span class="toc-text">1.2 每个对象都有一个接口</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-3-封装"><span class="toc-number">3.</span> <span class="toc-text">1.3 封装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-4-继承"><span class="toc-number">4.</span> <span class="toc-text">1.4 继承</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-5-多态"><span class="toc-number">5.</span> <span class="toc-text">1.5 多态</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-6-Java语言支持的四种类型"><span class="toc-number">6.</span> <span class="toc-text">1.6 Java语言支持的四种类型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-7-类与类之间的关系"><span class="toc-number">7.</span> <span class="toc-text">1.7 类与类之间的关系</span></a></li></ol>
                     </div>
                 </span>
             </div>

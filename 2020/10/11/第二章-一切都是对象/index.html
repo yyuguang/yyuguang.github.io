@@ -6,16 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://lnzz.site">
-  <title>Tag: Bus | 你对我笑i</title>
+  <title>第二章 一切都是对象 | 你对我笑i</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Do what you love,love what you do">
-<meta property="og:type" content="website">
-<meta property="og:title" content="你对我笑i">
-<meta property="og:url" content="https://lnzz.site/tags/Bus/index.html">
+  <meta name="description" content="2.1 用引用操作对象String s; 这里所创建的只是引用，并不是对象。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="第二章 一切都是对象">
+<meta property="og:url" content="https://lnzz.site/2020/10/11/%E7%AC%AC%E4%BA%8C%E7%AB%A0-%E4%B8%80%E5%88%87%E9%83%BD%E6%98%AF%E5%AF%B9%E8%B1%A1/index.html">
 <meta property="og:site_name" content="你对我笑i">
-<meta property="og:description" content="Do what you love,love what you do">
+<meta property="og:description" content="2.1 用引用操作对象String s; 这里所创建的只是引用，并不是对象。">
 <meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-10-11T07:42:17.000Z">
+<meta property="article:modified_time" content="2020-10-11T07:48:37.741Z">
 <meta property="article:author" content="你对我笑i">
+<meta property="article:tag" content="Java编程思想">
+<meta property="article:tag" content="读书笔记">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="你对我笑i" type="application/atom+xml">
@@ -172,65 +176,342 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-第二章-一切都是对象" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2020" class="archive-year">2020</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/07/31/SpringCloud-%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AE%9E%E7%AB%99%EF%BC%88%E5%8D%81%E4%B8%89%EF%BC%89%EF%BC%9A%E6%B6%88%E6%81%AF%E6%80%BB%E7%BA%BF%E4%B9%8BBus/" class="archive-article-date">
-  	<time datetime="2020-07-31T15:40:38.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-31</time>
-</a>
-
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/07/31/SpringCloud-%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AE%9E%E7%AB%99%EF%BC%88%E5%8D%81%E4%B8%89%EF%BC%89%EF%BC%9A%E6%B6%88%E6%81%AF%E6%80%BB%E7%BA%BF%E4%B9%8BBus/">SpringCloud 微服务实站（十三）：消息总线之Bus</a>
+    <h1 class="article-title" itemprop="name">
+      第二章 一切都是对象
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+		
+          <div style="margin-top:10px;">
+    <span class="post-time">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-keyboard-o"></i>
+        <span class="post-meta-item-text">  字数统计: </span>
+        <span class="post-count">3.5k字</span>
+      </span>
+    </span>
+
+    <span class="post-time">
+      &nbsp; | &nbsp;
+      <span class="post-meta-item-icon">
+        <i class="fa fa-hourglass-half"></i>
+        <span class="post-meta-item-text">  阅读时长: </span>
+        <span class="post-count">12分</span>
+      </span>
+    </span>
+	
+	
+	<!-- 添加代码 -->
+	
+	&nbsp; | &nbsp;
+		<span>
+			阅读量: &nbsp;<span id="busuanzi_value_page_pv"></span>&nbsp;次
+		</span>
+	
+</div>
+        
+        
+        <a href="/2020/10/11/%E7%AC%AC%E4%BA%8C%E7%AB%A0-%E4%B8%80%E5%88%87%E9%83%BD%E6%98%AF%E5%AF%B9%E8%B1%A1/" class="archive-article-date">
+  	<time datetime="2020-10-11T07:42:17.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-10-11</time>
+</a>
+
+        
+
+      </header>
+    
+
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="2-1-用引用操作对象"><a href="#2-1-用引用操作对象" class="headerlink" title="2.1 用引用操作对象"></a>2.1 用引用操作对象</h2><p>String s;</p>
+<p>这里所创建的只是引用，并不是对象。</p>
+<a id="more"></a>
+
+<h2 id="2-2-必须由你创建所有对象"><a href="#2-2-必须由你创建所有对象" class="headerlink" title="2.2 必须由你创建所有对象"></a>2.2 必须由你创建所有对象</h2><h3 id="2-2-1-保存到什么地方"><a href="#2-2-1-保存到什么地方" class="headerlink" title="2.2.1 保存到什么地方"></a>2.2.1 保存到什么地方</h3><ol>
+<li><strong>寄存器。</strong>这是<strong>最快</strong>的保存区域，因为它位于和其他所有保存方式不同的地方：处理器内部。然而，寄存器的数量十分有限，所以寄存器是根据需要由编译器分配。我们对此没有直接的控制权，也不可能在自己的程序里找到寄存器存在的任何踪迹。</li>
+<li><strong>堆栈。</strong>驻留于常规RAM（随机访问存储器）区域，但可通过它的“堆栈指针”获得处理的直接支持。堆栈指针若向下移，会创建新的内存；若向上移，则会释放那些内存。这是一种特别快、特别有效的数据保存方式，仅次于寄存器。创建程序时，Java编译器必须准确地知道堆栈内保存的所有数据的“长度”以及“存在时间”。这是由于它必须生成相应的代码，以便向上和向下移动指针。这一限制无疑影响了程序的灵活性，所以尽管有些Java数据要保存在堆栈里——特别是对象句柄，但Java对象并不放到其中。</li>
+<li><strong>堆。</strong>一种常规用途的内存池（也在RAM区域），其中保存了Java对象。和堆栈不同，“内存堆”或“堆”（Heap）最吸引人的地方在于编译器不必知道要从堆里分配多少存储空间，也不必知道存储的数据要在堆里停留多长的时间。因此，用堆保存数据时会得到更大的灵活性。要求创建一个对象时，只需用new命令编制相关的代码即可。执行这些代码时，会在堆里自动进行数据的保存。当然，为达到这种灵活性，必然会付出一定的代价：在堆里分配存储空间时会花掉更长的时间！</li>
+<li><strong>常量存储。</strong>。常量值通常直接置于程序代码内部。这样做是安全的，因为它们永远都不会改变。有的常数需要严格地保护，所以可考虑将它们置入只读存储器（ROM）。</li>
+<li><strong>非RAM存储。</strong>若数据完全独立于一个程序之外，则程序不运行时仍可存在，并在程序的控制范围之外。其中两个最主要的例子便是“流式对象”和“固定对象”。对于流式对象，对象会变成字节流，通常会发给另一台机器。而对于固定对象，对象保存在磁盘中。即使程序中止运行，它们仍可保持自己的状态不变。对于这些类型的数据存储，一个特别有用的技巧就是它们能存在于其他媒体中。一旦需要，甚至能将它们恢复成普通的、基于RAM的对象。Java 1.1提供了对Lightweight persistence的支持。未来的版本甚至可能提供更完整的方案。</li>
+</ol>
+<h3 id="2-2-2-特例：基本类型"><a href="#2-2-2-特例：基本类型" class="headerlink" title="2.2.2 特例：基本类型"></a>2.2.2 特例：基本类型</h3><p>不用new 来创建对象，而是创建一个并非引用的变量直接存储到堆栈中。</p>
+<p>boolean并没有明确说明占几个字节</p>
+<h2 id="2-3-永远不要销毁对象"><a href="#2-3-永远不要销毁对象" class="headerlink" title="2.3 永远不要销毁对象"></a>2.3 永远不要销毁对象</h2><p>Java对象不具备与主类型一样的存在时间。用new关键字创建一个Java对象的时候，它会超出作用域的范围之外。所以假若使用下面这段代码：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">String s = <span class="keyword">new</span> String(<span class="string">"a string"</span>);</span><br><span class="line">&#125; <span class="comment">/* 作用域的终点 */</span></span><br></pre></td></tr></table></figure>
+
+
+
+<p>那么句柄s会在作用域的终点处消失。然而，s指向的String对象依然占据着内存空间。在上面这段代码里，我们没有办法访问对象，因为指向它的唯一一个句柄已超出了作用域的边界。</p>
+<p>这样造成的结果便是：对于用new创建的对象，只要我们愿意，它们就会一直保留下去。这个编程问题在C和C++里特别突出。看来在C++里遇到的麻烦最大：由于不能从语言获得任何帮助，所以在需要对象的时候，根本无法确定它们是否可用。而且更麻烦的是，在C++里，一旦工作完成，必须保证将对象清除。</p>
+<p>这样便带来了一个有趣的问题。假如Java让对象依然故我，怎样才能防止它们大量充斥内存，并最终造成程序的“凝固”呢。在C++里，这个问题最令程序员头痛。但Java以后，情况却发生了改观。Java有一个特别的“垃圾收集器”，它会查找用new创建的所有对象，并辨别其中哪些不再被引用。随后，它会自动释放由那些闲置对象占据的内存，以便能由新对象使用。这意味着我们根本不必操心内存的回收问题。只需简单地创建对象，一旦不再需要它们，它们就会自动离去。这样做可防止在C++里很常见的一个编程问题：由于程序员忘记释放内存造成的“内存溢出”。</p>
+<h2 id="2-4-构建Java程序"><a href="#2-4-构建Java程序" class="headerlink" title="2.4 构建Java程序"></a>2.4 构建Java程序</h2><h3 id="2-4-1-名字可见性"><a href="#2-4-1-名字可见性" class="headerlink" title="2.4.1 名字可见性"></a>2.4.1 名字可见性</h3><p>在所有程序设计语言里，一个不可避免的问题是对名字或名称的控制。假设您在程序的某个模块里使用了一个名字，而另一名程序员在另一个模块里使用了相同的名字。此时，如何区分两个名字，并防止两个名字互相冲突呢？这个问题在C语言里特别突出。因为程序未提供很好的名字管理方法。C++的类（即Java类的基础）嵌套使用类里的函数，使其不至于同其他类里的嵌套函数名冲突。然而，C++仍然允许使用全局数据以及全局函数，所以仍然难以避免冲突。为解决这个问题，C++用额外的关键字引入了“命名空间”的概念。</p>
+<p>由于采用全新的机制，所以Java能完全避免这些问题。为了给一个库生成明确的名字，采用了与Internet域名类似的名字。事实上，Java的设计者鼓励程序员反转使用自己的Internet域名，因为它们肯定是独一无二的。由于我的域名是BruceEckel.com，所以我的实用工具库就可命名为com.bruceeckel.utility.foibles。反转了域名后，可将点号想象成子目录。</p>
+<p>在Java 1.0和Java 1.1中，域扩展名com，edu，org，net等都约定为大写形式。所以库的样子就变成：COM.bruceeckel.utility.foibles。然而，在Java 1.2的开发过程中，设计者发现这样做会造成一些问题。所以目前的整个软件包都以小写字母为标准。</p>
+<p>Java的这种特殊机制意味着所有文件都自动存在于自己的命名空间里。而且一个文件里的每个类都自动获得一个独一无二的标识符（当然，一个文件里的类名必须是唯一的）。所以不必学习特殊的语言知识来解决这个问题——语言本身已帮我们照顾到这一点。</p>
+<h3 id="2-4-2-使用其它组件"><a href="#2-4-2-使用其它组件" class="headerlink" title="2.4.2 使用其它组件"></a>2.4.2 使用其它组件</h3><p>一旦要在自己的程序里使用一个预先定义好的类，编译器就必须知道如何找到它。当然，这个类可能就在发出调用的那个相同的源码文件里。如果是那种情况，只需简单地使用这个类即可——即使它直到文件的后面仍未得到定义。Java消除了“向前引用”的问题，所以不要关心这些事情。</p>
+<p>但假若那个类位于其他文件里呢？您或许认为编译器应该足够“联盟”，可以自行发现它。但实情并非如此。假设我们想使用一个具有特定名称的类，但那个类的定义位于多个文件里。或者更糟，假设我们准备写一个程序，但在创建它的时候，却向自己的库加入了一个新类，它与现有某个类的名字发生了冲突。</p>
+<p>为解决这个问题，必须消除所有潜在的、纠缠不清的情况。为达到这个目的，要用import关键字准确告诉Java编译器我们希望的类是什么。import的作用是指示编译器导入一个“包”——或者说一个“类库”（在其他语言里，可将“库”想象成一系列函数、数据以及类的集合。但请记住，Java的所有代码都必须写入一个类中）。</p>
+<p>大多数时候，我们直接采用来自标准Java库的组件（部件）即可，它们是与编译器配套提供的。使用这些组件时，没有必要关心冗长的保留域名；举个例子来说，只需象下面这样写一行代码即可：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.Vector;</span><br></pre></td></tr></table></figure>
+
+<p>它的作用是告诉编译器我们想使用Java的Vector类。然而，util包含了数量众多的类，我们有时希望使用其中的几个，同时不想全部明确地声明它们。为达到这个目的，可使用“*”通配符。如下所示：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.*;</span><br></pre></td></tr></table></figure>
+
+<p>需导入一系列类时，采用的通常是这个办法。应尽量避免一个一个地导入类。</p>
+<h3 id="2-4-3-static-关键字"><a href="#2-4-3-static-关键字" class="headerlink" title="2.4.3 static 关键字"></a>2.4.3 static 关键字</h3><p>通常，我们创建类时会指出那个类的对象的外观与行为。除非用new创建那个类的一个对象，否则实际上并未得到任何东西。只有执行了new后，才会正式生成数据存储空间，并可使用相应的方法。</p>
+<p>但在两种特殊的情形下，上述方法并不堪用。一种情形是只想用一个存储区域来保存一个特定的数据——无论要创建多少个对象，甚至根本不创建对象。另一种情形是我们需要一个特殊的方法，它没有与这个类的任何对象关联。也就是说，即使没有创建对象，也需要一个能调用的方法。为满足这两方面的要求，可使用static（静态）关键字。一旦将什么东西设为static，数据或方法就不会同那个类的任何对象实例联系到一起。所以尽管从未创建那个类的一个对象，仍能调用一个static方法，或访问一些static数据。而在这之前，对于非static数据和方法，我们必须创建一个对象，并用那个对象访问数据或方法。这是由于非static数据和方法必须知道它们操作的具体对象。当然，在正式使用前，由于static方法不需要创建任何对象，所以它们不可简单地调用其他那些成员，同时不引用一个已命名的对象，从而直接访问非static成员或方法（因为非static成员和方法必须同一个特定的对象关联到一起）。 有些面向对象的语言使用了“类数据”和“类方法”这两个术语。它们意味着数据和方法只是为作为一个整体的类而存在的，并不是为那个类的任何特定对象。有时，您会在其他一些Java书刊里发现这样的称呼。</p>
+<p>为了将数据成员或方法设为static，只需在定义前置和这个关键字即可。例如，下述代码能生成一个static数据成员，并对其初始化：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">StaticTest</span> </span>&#123;</span><br><span class="line">Static <span class="keyword">int</span> i = <span class="number">47</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>现在，尽管我们制作了两个StaticTest对象，但它们仍然只占据StaticTest.i的一个存储空间。这两个对象都共享同样的i。请考察下述代码：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">StaticTest st1 = <span class="keyword">new</span> StaticTest();</span><br><span class="line">StaticTest st2 = <span class="keyword">new</span> StaticTest();</span><br></pre></td></tr></table></figure>
+
+<p>此时，无论st1.i还是st2.i都有同样的值47，因为它们引用的是同样的内存区域。</p>
+<p>有两个办法可引用一个static变量。正如上面展示的那样，可通过一个对象命名它，如st2.i。亦可直接用它的类名引用，而这在非静态成员里是行不通的（最好用这个办法引用static变量，因为它强调了那个变量的“静态”本质）。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">StaticTest.i++;</span><br></pre></td></tr></table></figure>
+
+<p>其中，++运算符会使变量增值。此时，无论st1.i还是st2.i的值都是48。</p>
+<p>类似的逻辑也适用于静态方法。既可象对其他任何方法那样通过一个对象引用静态方法，亦可用特殊的语法格式“类名.方法()”加以引用。静态方法的定义是类似的：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">StaticFun</span> </span>&#123;</span><br><span class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">incr</span><span class="params">()</span> </span>&#123; StaticTest.i++; &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>从中可看出，StaticFun的方法incr()使静态数据i增值。通过对象，可用典型的方法调用incr()：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">StaticFun sf = <span class="keyword">new</span> StaticFun();</span><br><span class="line">sf.incr();</span><br></pre></td></tr></table></figure>
+
+<p>或者，由于incr()是一种静态方法，所以可通过它的类直接调用：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">StaticFun.incr();</span><br></pre></td></tr></table></figure>
+
+<p>尽管是“静态”的，但只要应用于一个数据成员，就会明确改变数据的创建方式（一个类一个成员，以及每个对象一个非静态成员）。若应用于一个方法，就没有那么戏剧化了。对方法来说，static一项重要的用途就是帮助我们在不必创建对象的前提下调用那个方法。正如以后会看到的那样，这一点是至关重要的——特别是在定义程序运行入口方法main()的时候。</p>
+<p>和其他任何方法一样，static方法也能创建自己类型的命名对象。所以经常把static方法作为一个“领头羊”使用，用它生成一系列自己类型的“实例”。</p>
+
+      
+	  
+	          <!-- 《添加版权声明 -->
+        
+            <!-- 《添加版权声明 -->
+<!--添加版权声明https://github.com/JoeyBling/hexo-theme-yilia-plus/commit/c1215e132f6d5621c5fea83d3c4f7ccbcca074a3-->
+
+
+<!-- #版权基础设定：0-关闭声明； 1-文章对应的md文件里有declare: true属性，才有版权声明； 2-所有文章均有版权声明 -->
+
+  <div class="declare">
+    <strong class="author">本文作者：</strong>
+    
+      你对我笑i
+    
+    <br>
+    <strong class="create-time">发布时间：</strong>
+    2020-10-11
+    <br>
+    <strong class="update-time">最后更新：</strong>
+    2020-10-11
+    <br>
+    <strong class="article-titles">本文标题：</strong>
+    <a href="https://lnzz.site/2020/10/11/第二章-一切都是对象/" title="第二章 一切都是对象" target="_blank">第二章 一切都是对象</a>
+    <br>
+    <strong class="article-url">本文链接：</strong>
+    <a href="https://lnzz.site/2020/10/11/第二章-一切都是对象/" title="第二章 一切都是对象" target="_blank">https://lnzz.site/2020/10/11/第二章-一切都是对象/</a>
+    <br>
+    <strong class="copyright">版权声明：</strong>
+    本作品采用
+    <a rel="license noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" title="知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议">CC BY-NC-SA 4.0</a>
+    许可协议进行许可。转载请注明出处！
+    
+  </div>
+
+<!-- 添加版权声明》 -->
+
+        
+        <!-- 添加版权声明》 -->
+
+
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/alipay.jpg">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/wx_pay.jpg">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">SpringCloud</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Java编程思想</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Bus</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">读书笔记</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=https://lnzz.site/2020/10/11/%E7%AC%AC%E4%BA%8C%E7%AB%A0-%E4%B8%80%E5%88%87%E9%83%BD%E6%98%AF%E5%AF%B9%E8%B1%A1/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
   
   
-    </div></section>
+    <a href="/2020/10/09/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B9%8B%EF%BC%9A%E5%8D%95%E4%B8%80%E8%81%8C%E8%B4%A3%E5%8E%9F%E5%88%99/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">设计模式之：单一职责原则</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#2-1-用引用操作对象"><span class="toc-number">1.</span> <span class="toc-text">2.1 用引用操作对象</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-2-必须由你创建所有对象"><span class="toc-number">2.</span> <span class="toc-text">2.2 必须由你创建所有对象</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-1-保存到什么地方"><span class="toc-number">2.1.</span> <span class="toc-text">2.2.1 保存到什么地方</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-2-特例：基本类型"><span class="toc-number">2.2.</span> <span class="toc-text">2.2.2 特例：基本类型</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-3-永远不要销毁对象"><span class="toc-number">3.</span> <span class="toc-text">2.3 永远不要销毁对象</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-4-构建Java程序"><span class="toc-number">4.</span> <span class="toc-text">2.4 构建Java程序</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-4-1-名字可见性"><span class="toc-number">4.1.</span> <span class="toc-text">2.4.1 名字可见性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-4-2-使用其它组件"><span class="toc-number">4.2.</span> <span class="toc-text">2.4.2 使用其它组件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-4-3-static-关键字"><span class="toc-number">4.3.</span> <span class="toc-text">2.4.3 static 关键字</span></a></li></ol></li></ol>
+                    </div>
+                </span>
+            </div>
+        </div>
+        
+    </div>
+</aside>
+
+
+
+  
+  
   
 
-    
+  
+
+  
+    <section id="comments">
+      <div id="disqus_thread">
+	 
+	  </div>
+        <script type="text/javascript">
+        /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+        var disqus_shortname = 'lnzz'; // required: replace example with your forum shortname
+
+        /* * * DON'T EDIT BELOW THIS LINE * * */
+        (function() {
+          var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+          dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+      </script>
+      <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" target="_blank" rel="noopener">comments powered by Disqus.</a></noscript>
+    </section>
+  
+
+  
 
 
           </div>
@@ -284,9 +565,9 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: true,
 		toc_hide_index: true,

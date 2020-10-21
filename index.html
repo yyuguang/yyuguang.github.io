@@ -81,7 +81,7 @@
 		
 		<nav>
 			<ul style="font-size:12px; font-style:oblique; font-weight:100">
-				总文章数：31
+				总文章数：32
 			</ul>
 		</nav>
 		<br/>
@@ -191,7 +191,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">16字</span>
+        <span class="post-count">32字</span>
       </span>
     </span>
 
@@ -221,7 +221,7 @@
 
     <div class="article-entry" itemprop="articleBody">
       
-        <h4 id="深入理解JVM系列教程（01）-JVM与Java体系结构"><a href="#深入理解JVM系列教程（01）-JVM与Java体系结构" class="headerlink" title="深入理解JVM系列教程（01）-JVM与Java体系结构"></a><a href="https://lnzz.site/2020/10/19/深入理解JVM系列教程（01）-JVM与Java体系结构/">深入理解JVM系列教程（01）-JVM与Java体系结构</a></h4>
+        <h4 id="深入理解JVM系列教程（01）-JVM与Java体系结构"><a href="#深入理解JVM系列教程（01）-JVM与Java体系结构" class="headerlink" title="深入理解JVM系列教程（01）- JVM与Java体系结构"></a><a href="https://lnzz.site/2020/10/19/深入理解JVM系列教程（01）-JVM与Java体系结构/">深入理解JVM系列教程（01）- JVM与Java体系结构</a></h4><h4 id="深入理解JVM系列教程（02）-类加载器子系统"><a href="#深入理解JVM系列教程（02）-类加载器子系统" class="headerlink" title="深入理解JVM系列教程（02）- 类加载器子系统"></a><a href="https://lnzz.site/2020/10/21/深入理解JVM系列教程（02）-类加载器子系统/">深入理解JVM系列教程（02）- 类加载器子系统</a></h4>
       
 	  
 	          <!-- 《添加版权声明 -->
@@ -678,14 +678,14 @@
 
 
   
-    <article id="post-第二章-开放之道" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-深入理解JVM系列教程（02）-类加载器子系统" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2020/10/19/%E7%AC%AC%E4%BA%8C%E7%AB%A0-%E5%BC%80%E6%94%BE%E4%B9%8B%E9%81%93/">第二章 开放之道</a>
+      <a class="article-title" href="/2020/10/21/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3JVM%E7%B3%BB%E5%88%97%E6%95%99%E7%A8%8B%EF%BC%8802%EF%BC%89-%E7%B1%BB%E5%8A%A0%E8%BD%BD%E5%99%A8%E5%AD%90%E7%B3%BB%E7%BB%9F/">深入理解JVM系列教程（02）- 类加载器子系统</a>
     </h1>
   
 
@@ -695,7 +695,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">580字</span>
+        <span class="post-count">3k字</span>
       </span>
     </span>
 
@@ -704,7 +704,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-hourglass-half"></i>
         <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">2分</span>
+        <span class="post-count">10分</span>
       </span>
     </span>
 	
@@ -714,8 +714,8 @@
 </div>
         
         
-        <a href="/2020/10/19/%E7%AC%AC%E4%BA%8C%E7%AB%A0-%E5%BC%80%E6%94%BE%E4%B9%8B%E9%81%93/" class="archive-article-date">
-  	<time datetime="2020-10-19T13:19:33.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-10-19</time>
+        <a href="/2020/10/21/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3JVM%E7%B3%BB%E5%88%97%E6%95%99%E7%A8%8B%EF%BC%8802%EF%BC%89-%E7%B1%BB%E5%8A%A0%E8%BD%BD%E5%99%A8%E5%AD%90%E7%B3%BB%E7%BB%9F/" class="archive-article-date">
+  	<time datetime="2020-10-21T13:49:08.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-10-21</time>
 </a>
 
         
@@ -725,10 +725,13 @@
 
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="1-初始OAuth-2-0"><a href="#1-初始OAuth-2-0" class="headerlink" title="1. 初始OAuth 2.0"></a>1. 初始OAuth 2.0</h2><p>OAuth 是让第三方应用不需要用户名和密码即可读取用户数据的一个认证过程。</p>
-<p>OAuth2.0 是 OAuth 协议的第二代版本，但不向后兼容OAuth1.0。</p>
+        <h2 id="一、类加载器子系统作用"><a href="#一、类加载器子系统作用" class="headerlink" title="一、类加载器子系统作用"></a>一、类加载器子系统作用</h2><ul>
+<li>类加载器子系统负责从文件系统或者网络中加载 Class 文件，class文件在文件开头有特定的文件标识。</li>
+<li>ClassLoader 只负责class文件的加载，至于它是否可以运行，则由 Execution Engine决定。</li>
+<li>加载的类信息存放于一块称为方法区的内存空间。除了类的信息外，方法区中还会存放运行时常量池信息，可能还包括字符串字面量和数字常量（这部分常量信息是Class文件中常量池部分的内存映射）</li>
+</ul>
         
-          <a class="article-more-a" href="/2020/10/19/%E7%AC%AC%E4%BA%8C%E7%AB%A0-%E5%BC%80%E6%94%BE%E4%B9%8B%E9%81%93/#more">more >></a>
+          <a class="article-more-a" href="/2020/10/21/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3JVM%E7%B3%BB%E5%88%97%E6%95%99%E7%A8%8B%EF%BC%8802%EF%BC%89-%E7%B1%BB%E5%8A%A0%E8%BD%BD%E5%99%A8%E5%AD%90%E7%B3%BB%E7%BB%9F/#more">more >></a>
         
       
 	  
@@ -759,11 +762,11 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">架构修炼之道</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">读书笔记</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">JVM</a>
         		</li>
       		
 		</ul>
@@ -773,7 +776,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2020/10/19/%E7%AC%AC%E4%BA%8C%E7%AB%A0-%E5%BC%80%E6%94%BE%E4%B9%8B%E9%81%93/">more >></a>
+          <a class="article-more-a" href="/2020/10/21/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3JVM%E7%B3%BB%E5%88%97%E6%95%99%E7%A8%8B%EF%BC%8802%EF%BC%89-%E7%B1%BB%E5%8A%A0%E8%BD%BD%E5%99%A8%E5%AD%90%E7%B3%BB%E7%BB%9F/">more >></a>
         </p>
       
 

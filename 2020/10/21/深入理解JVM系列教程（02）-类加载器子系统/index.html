@@ -6,24 +6,30 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://lnzz.site">
-  <title>SpringCloud 微服务实站（六）：服务注册中心对比 | 你对我笑i</title>
+  <title>深入理解JVM系列教程（02）- 类加载器子系统 | 你对我笑i</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="参考资料 Spring Cloud SpringCloud中文文档 SpringCloud官方文档 书籍 《 Spring Cloud微服务实战 》     SpringBoot SpringBoot官方文档   Github 获取代码    一、前言&amp;emsp;在前面几个章节我们分别学习了 Eureka 、Zookeeper 和 Consul 作为 Spring Cloud 的服务注册中心，在本">
+  <meta name="description" content="一、类加载器子系统作用 类加载器子系统负责从文件系统或者网络中加载 Class 文件，class文件在文件开头有特定的文件标识。 ClassLoader 只负责class文件的加载，至于它是否可以运行，则由 Execution Engine决定。 加载的类信息存放于一块称为方法区的内存空间。除了类的信息外，方法区中还会存放运行时常量池信息，可能还包括字符串字面量和数字常量（这部分常量信息是Clas">
 <meta property="og:type" content="article">
-<meta property="og:title" content="SpringCloud 微服务实站（六）：服务注册中心对比">
-<meta property="og:url" content="https://lnzz.site/2020/07/18/SpringCloud-%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AE%9E%E7%AB%99%EF%BC%88%E5%85%AD%EF%BC%89%EF%BC%9A%E6%9C%8D%E5%8A%A1%E6%B3%A8%E5%86%8C%E4%B8%AD%E5%BF%83%E5%AF%B9%E6%AF%94/index.html">
+<meta property="og:title" content="深入理解JVM系列教程（02）- 类加载器子系统">
+<meta property="og:url" content="https://lnzz.site/2020/10/21/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3JVM%E7%B3%BB%E5%88%97%E6%95%99%E7%A8%8B%EF%BC%8802%EF%BC%89-%E7%B1%BB%E5%8A%A0%E8%BD%BD%E5%99%A8%E5%AD%90%E7%B3%BB%E7%BB%9F/index.html">
 <meta property="og:site_name" content="你对我笑i">
-<meta property="og:description" content="参考资料 Spring Cloud SpringCloud中文文档 SpringCloud官方文档 书籍 《 Spring Cloud微服务实战 》     SpringBoot SpringBoot官方文档   Github 获取代码    一、前言&amp;emsp;在前面几个章节我们分别学习了 Eureka 、Zookeeper 和 Consul 作为 Spring Cloud 的服务注册中心，在本">
+<meta property="og:description" content="一、类加载器子系统作用 类加载器子系统负责从文件系统或者网络中加载 Class 文件，class文件在文件开头有特定的文件标识。 ClassLoader 只负责class文件的加载，至于它是否可以运行，则由 Execution Engine决定。 加载的类信息存放于一块称为方法区的内存空间。除了类的信息外，方法区中还会存放运行时常量池信息，可能还包括字符串字面量和数字常量（这部分常量信息是Clas">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="http://cdn.lnzz.site/static/images/SpringCloud/06/1.png">
-<meta property="og:image" content="http://cdn.lnzz.site/static/images/SpringCloud/06/2.png">
-<meta property="og:image" content="http://cdn.lnzz.site/static/images/SpringCloud/06/3.png">
-<meta property="article:published_time" content="2020-07-18T14:25:06.000Z">
-<meta property="article:modified_time" content="2020-08-16T14:12:49.048Z">
+<meta property="og:image" content="http://cdn.lnzz.site/static/images/JVM/02/01.png">
+<meta property="og:image" content="http://cdn.lnzz.site/static/images/JVM/02/02.png">
+<meta property="og:image" content="http://cdn.lnzz.site/static/images/JVM/02/03.png">
+<meta property="og:image" content="http://cdn.lnzz.site/static/images/JVM/02/04.png">
+<meta property="og:image" content="http://cdn.lnzz.site/static/images/JVM/02/05.png">
+<meta property="og:image" content="http://cdn.lnzz.site/static/images/JVM/02/06.png">
+<meta property="og:image" content="http://cdn.lnzz.site/static/images/JVM/02/07.png">
+<meta property="og:image" content="http://cdn.lnzz.site/static/images/JVM/02/08.png">
+<meta property="article:published_time" content="2020-10-21T13:49:08.000Z">
+<meta property="article:modified_time" content="2020-10-21T13:58:26.751Z">
 <meta property="article:author" content="你对我笑i">
-<meta property="article:tag" content="SpringCloud">
+<meta property="article:tag" content="Java">
+<meta property="article:tag" content="JVM">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://cdn.lnzz.site/static/images/SpringCloud/06/1.png">
+<meta name="twitter:image" content="http://cdn.lnzz.site/static/images/JVM/02/01.png">
   
     <link rel="alternative" href="/atom.xml" title="你对我笑i" type="application/atom+xml">
   
@@ -179,14 +185,14 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-SpringCloud-微服务实站（六）：服务注册中心对比" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-深入理解JVM系列教程（02）-类加载器子系统" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      SpringCloud 微服务实站（六）：服务注册中心对比
+      深入理解JVM系列教程（02）- 类加载器子系统
     </h1>
   
 
@@ -196,7 +202,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">3.3k字</span>
+        <span class="post-count">3k字</span>
       </span>
     </span>
 
@@ -205,7 +211,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-hourglass-half"></i>
         <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">11分</span>
+        <span class="post-count">10分</span>
       </span>
     </span>
 	
@@ -220,8 +226,8 @@
 </div>
         
         
-        <a href="/2020/07/18/SpringCloud-%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AE%9E%E7%AB%99%EF%BC%88%E5%85%AD%EF%BC%89%EF%BC%9A%E6%9C%8D%E5%8A%A1%E6%B3%A8%E5%86%8C%E4%B8%AD%E5%BF%83%E5%AF%B9%E6%AF%94/" class="archive-article-date">
-  	<time datetime="2020-07-18T14:25:06.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-18</time>
+        <a href="/2020/10/21/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3JVM%E7%B3%BB%E5%88%97%E6%95%99%E7%A8%8B%EF%BC%8802%EF%BC%89-%E7%B1%BB%E5%8A%A0%E8%BD%BD%E5%99%A8%E5%AD%90%E7%B3%BB%E7%BB%9F/" class="archive-article-date">
+  	<time datetime="2020-10-21T13:49:08.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-10-21</time>
 </a>
 
         
@@ -231,216 +237,190 @@
 
     <div class="article-entry" itemprop="articleBody">
       
-        <h4 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h4><ul>
-<li>Spring Cloud<ul>
-<li><a href="https://www.bookstack.cn/read/spring-cloud-docs/docs-index.md" target="_blank" rel="noopener">SpringCloud中文文档</a></li>
-<li><a href="https://cloud.spring.io/spring-cloud-static/Hoxton.SR1/reference/htmlsingle/" target="_blank" rel="noopener">SpringCloud官方文档</a></li>
-<li>书籍<ul>
-<li><a href="https://item.jd.com/12172344.html" target="_blank" rel="noopener">《 Spring Cloud微服务实战 》</a></li>
+        <h2 id="一、类加载器子系统作用"><a href="#一、类加载器子系统作用" class="headerlink" title="一、类加载器子系统作用"></a>一、类加载器子系统作用</h2><ul>
+<li>类加载器子系统负责从文件系统或者网络中加载 Class 文件，class文件在文件开头有特定的文件标识。</li>
+<li>ClassLoader 只负责class文件的加载，至于它是否可以运行，则由 Execution Engine决定。</li>
+<li>加载的类信息存放于一块称为方法区的内存空间。除了类的信息外，方法区中还会存放运行时常量池信息，可能还包括字符串字面量和数字常量（这部分常量信息是Class文件中常量池部分的内存映射）</li>
 </ul>
-</li>
-</ul>
-</li>
-<li>SpringBoot<ul>
-<li><a href="https://docs.spring.io/spring-boot/docs/2.2.2.RELEASE/reference/htmlsingle/" target="_blank" rel="noopener">SpringBoot官方文档</a></li>
-</ul>
-</li>
-<li>Github<ul>
-<li><a href="https://github.com/yyuguang/SpringCloud" target="_blank" rel="noopener">获取代码</a></li>
-</ul>
-</li>
-</ul>
-<h2 id="一、前言"><a href="#一、前言" class="headerlink" title="一、前言"></a>一、前言</h2><p>&emsp;在前面几个章节我们分别学习了 <a href="https://lnzz.site/2020/07/14/SpringCloud-微服务实站（三）：服务注册中心之Eureka/">Eureka</a> 、<a href="https://lnzz.site/2020/07/17/SpringCloud-微服务实站（四）：服务注册中心之Zookeeper/">Zookeeper</a> 和 <a href="https://lnzz.site/2020/07/18/SpringCloud-微服务实站（五）：服务注册中心之Consul/">Consul</a> 作为 Spring Cloud 的服务注册中心，在本章节，我们将详细对比这几种服务注册中心的区别</p>
 <a id="more"></a>
 
-<p>&emsp;服务注册中心本质上是为了解耦服务提供者和服务消费者。对于任何一个微服务，原则上都应存在或者支持多个提供者，这是由微服务的分布式属性决定的。更进一步，为了支持弹性扩缩容特性，一个微服务的提供者的数量和分布往往是动态变化的，也是无法预先确定的。因此，原本在单体应用阶段常用的静态LB机制就不再适用了，需要引入额外的组件来管理微服务提供者的注册与发现，而这个组件就是服务注册中心。</p>
-<h2 id="二、CAP理论"><a href="#二、CAP理论" class="headerlink" title="二、CAP理论"></a>二、CAP理论</h2><img src="http://cdn.lnzz.site/static/images/SpringCloud/06/1.png">
+<img src="http://cdn.lnzz.site/static/images/JVM/02/01.png">
+
+<img src="http://cdn.lnzz.site/static/images/JVM/02/02.png">
+
+<h2 id="二、类加载器-ClassLoader-角色"><a href="#二、类加载器-ClassLoader-角色" class="headerlink" title="二、类加载器 ClassLoader 角色"></a>二、类加载器 ClassLoader 角色</h2><img src="http://cdn.lnzz.site/static/images/JVM/02/03.png">
 
 <ul>
-<li>一致性(Consistency) ：所有节点在同一时间的数据完全一致 <ul>
-<li>可用性(Availability) ： 服务在正常响应时间内一直可用 </li>
-<li>分区容错性(Partition Tolerance) ：系统中任意信息的丢失或失败不会影响系统的继续运作</li>
+<li>class file存在于本地硬盘上，可以理解为设计师画在纸上的模板，而最终这个模板在执行的时候是要加载到 JVM 当中来，根据这个文件实例化出n个一模一样的实例。</li>
+<li>class file 加载到JVM中，被称为DNA元数据模板，放在方法区。</li>
+<li>在<strong>class文件 –&gt; JVM –&gt;最终成为元数据模板</strong>，此过程就要一个运输工具（类装载器 Class Loader），扮演一个快递员的角色</li>
 </ul>
-</li>
-</ul>
-<p>&emsp;CAP理论的核心是：一个分布式系统不可能同时很好地满足<strong>一致性</strong>，<strong>可用性</strong>和<strong>分区容错性</strong>这三个需求，因此，根据 CAP 原理将 NoSQL 数据库分成了<strong>满足 CA原则、满足CP原则</strong>和<strong>满足 AP原则</strong>三大类：</p>
-<ul>
-<li><strong>CA：</strong>单点集群，满足一致性，可用性地系统，通常在可扩展性上不太强大</li>
-<li><strong>CP：</strong>满足一致性，分区容错性的系统，通常性能不是特别高</li>
-<li><strong>AP：</strong>满足可用性，分区容错性的系统，通常可能对一致性要求低一些</li>
-</ul>
-<p><strong>一致性与可用性的决择：</strong></p>
-<p>&emsp;CAP理论就是说在分布式存储系统中，最多只能实现上面的两点。而由于当前的网络硬件肯定会出现延迟丢包等问题，所以分区容忍性是我们必须需要实现的。所以我们只能在一致性和可用性之间进行权衡，没有NoSQL系统能同时保证这三点。</p>
-<p>对于web2.0网站来说，关系数据库的很多主要特性却往往无用武之地</p>
-<ol>
-<li><strong>数据库事务一致性需求 ：</strong>很多web实时系统并不要求严格的数据库事务，对读一致性的要求很低，有些场合对写一致性要求并不高。允许实现最终一致性。</li>
-<li><strong>数据库的写实时性和读实时性需求：</strong>对关系数据库来说，插入一条数据之后立刻查询，是肯定可以读出来这条数据的，但是对于很多web应用来说，并不要求这么高的实时性，比方说发一条消息之 后，过几秒乃至十几秒之后，我的订阅者才看到这条动态是完全可以接受的。</li>
-<li><strong>对复杂的SQL查询，特别是多表关联查询的需求 ：</strong>任何大数据量的web系统，都非常忌讳多个大表的关联查询，以及复杂的数据分析类型的报表查询，特别是SNS类型的网站，从需求以及产品设计角 度，就避免了这种情况的产生。往往更多的只是单表的主键查询，以及单表的简单条件分页查询，SQL的功能被极大的弱化了。</li>
+<h2 id="三、类的加载过程"><a href="#三、类的加载过程" class="headerlink" title="三、类的加载过程"></a>三、类的加载过程</h2><img src="http://cdn.lnzz.site/static/images/JVM/02/04.png">
+
+<h3 id="3-1-加载"><a href="#3-1-加载" class="headerlink" title="3.1 加载"></a>3.1 加载</h3><ol>
+<li>通过一个类的全限定名获取定义此类的二进制字节流</li>
+<li>将这个字节流所代表的静态存储结构转化为方法区的运行时数据结构</li>
+<li>在内存中生成一个代表这个类的 java.lang.Class 对象，作为方法区这个类的各种数据的访问入口</li>
 </ol>
-<h2 id="三、服务注册中心解决方案"><a href="#三、服务注册中心解决方案" class="headerlink" title="三、服务注册中心解决方案"></a>三、服务注册中心解决方案</h2><p>设计或者选型一个服务注册中心，首先要考虑的就是服务注册与发现机制。纵观当下各种主流的服务注册中心解决方案，大致可归为三类： </p>
-<ul>
-<li><p>应用内：直接集成到应用中，依赖于应用自身完成服务的注册与发现，最典型的是Netflix提供的<a href="https://github.com/Netflix/eureka" target="_blank" rel="noopener">Eureka</a> </p>
+<h4 id="补充：加载-class-文件的方式"><a href="#补充：加载-class-文件的方式" class="headerlink" title="补充：加载 .class 文件的方式"></a>补充：加载 .class 文件的方式</h4><ul>
+<li>从本地系统中直接加载</li>
+<li>通过网络获取，典型场景：Web Applet</li>
+<li>从zip压缩包中读取，成为日后jar、war格式的基础</li>
+<li>运行时计算生成，使用最多的是动态代理技术</li>
+<li>由其他文件生成，典型场景：JSP应用</li>
+<li>从专有数据库中提取 .class 文件，比较少见</li>
+<li>从加密文件中获取，典型的防lass文件被反编译的保护措施</li>
+</ul>
+<h3 id="3-2-链接"><a href="#3-2-链接" class="headerlink" title="3.2 链接"></a>3.2 链接</h3><h4 id="验证（Verify）"><a href="#验证（Verify）" class="headerlink" title="验证（Verify）"></a>验证（Verify）</h4><ul>
+<li>目的在于确保 Class 文件的字节流中包含信息符合当前虚拟机要求，保证被加载类的正确性，不会危害虚拟机自身安全。</li>
+<li>主要包括四种验证：文件格式验证，元数据验证，字节码验证，符号引用验证。</li>
+</ul>
+<h4 id="准备（Prepare）"><a href="#准备（Prepare）" class="headerlink" title="准备（Prepare）"></a>准备（Prepare）</h4><ul>
+<li>为类变量分配内存并且设置该类变量的默认初始值，即零值。</li>
+<li>这里不包含用final修饰的 static，因为final在编译的时候就会分配了，准备阶段会显式初始化</li>
+<li>这里不会为实例变量分配初始化，类变量会分配在方法区中，而实例变量是会随着对象一起分配到Java堆中。</li>
+</ul>
+<h4 id="解析（Resolve）"><a href="#解析（Resolve）" class="headerlink" title="解析（Resolve）"></a>解析（Resolve）</h4><ul>
+<li>将常量池内的符号引用转换为直接引用的过程。</li>
+<li>事实上，解析操作往往会伴随着 JVM 在执行完初始化之后再执行。</li>
+<li>符号引用就是一组符号来描述所引用的目标。符号引用的字面量形式明确定义在《Java虚拟机规范》的Class文件格式中。直接引用就是直接指向目标的指针、相对偏移量或一个间接定位到目标的句柄。</li>
+<li>解析动作主要针对类或接口、字段、类方法、接口方法、方法类型等。对应常量池中的CONSTANT_Class_info， CONSTANT_Fieldref_info，CONSTANT_Methodref_info 等</li>
+</ul>
+<h3 id="3-3-初始化"><a href="#3-3-初始化" class="headerlink" title="3.3 初始化"></a>3.3 初始化</h3><ul>
+<li>初始化阶段是执行类构造器方法<clinit>()的过程。</li>
+<li>此方法不需定义，是 javac编译器自动收集类中的所有类变量的赋值动作和静态代码块中的语句合并而来。</li>
+<li>构造器方法中指令按语句在源文件中出现的顺序执行。</li>
+<li><clinit>()不同于类的构造器。(关联：构造器是虚拟机视角下的<clinit>()）</li>
+<li>若该类具有父类，JVM会保证子类的<c1init>()执行前,父类的<clinit>()已经执行完毕。</li>
+<li>虚拟机必须保证一个类的<c1init>()方法在多线程下被同步加锁</li>
+</ul>
+<h2 id="四、类加载器的分类"><a href="#四、类加载器的分类" class="headerlink" title="四、类加载器的分类"></a>四、类加载器的分类</h2><ul>
+<li><p>JVM 支持两种类型的类加载器，分别为<strong>引导类加载器（Bootstrap ClassLoader）</strong>和<strong>自定义类加载器（User-Defined ClassLoader ）</strong></p>
 </li>
-<li><p>应用外：把应用当成黑盒，通过应用外的某种机制将服务注册到注册中心，最小化对应用的侵入性，比如HashiCorp的<a href="https://www.consul.io/" target="_blank" rel="noopener">Consul</a> </p>
+<li><p>从概念上来讲，自定义类加载器一般指的是程序中由开发人员自定义的一类类加载器，但是Java虚拟机规范却没有这么定义，而是<strong>将所有派生于抽象类 ClassLoader 的类加载器都划分为自定义类加载器</strong></p>
 </li>
-<li><p>DNS：将服务注册为DNS的SRV记录，严格来说，是一种特殊的应用外注册方式，<a href="https://github.com/skynetservices/skydns" target="_blank" rel="noopener">SkyDNS</a>是其中的代表 </p>
-<blockquote>
-<p><em>对于第一类注册方式，除了Eureka这种一站式解决方案，还可以基于ZooKeeper自行实现一套服务注册机制，这在大公司比较常见，但对于小公司而言显然性价比太低。</em> </p>
-</blockquote>
+<li><p>无论类加载器的类型如何划分，在程序中我们最常见的类加载器始终只有3个，如下所示</p>
 </li>
 </ul>
-<p>除了基本的服务注册与发现机制，从开发和运维角度，至少还要考虑如下五个方面： </p>
-<ul>
-<li>测活：服务注册之后，如何对服务进行测活以保证服务的可用性？</li>
-<li>负载均衡：当存在多个服务提供者时，如何均衡各个提供者的负载？</li>
-<li>集成：在服务提供端或者调用端，如何集成注册中心？</li>
-<li>运行时依赖：引入注册中心之后，对应用的运行时环境有何影响？</li>
-<li>可用性：如何保证注册中心本身的可用性，特别是消除单点故障？</li>
+<img src="http://cdn.lnzz.site/static/images/JVM/02/05.png">
+
+<h3 id="4-1-虚拟机自带的加载器"><a href="#4-1-虚拟机自带的加载器" class="headerlink" title="4.1 虚拟机自带的加载器"></a>4.1 虚拟机自带的加载器</h3><h4 id="启动类加载器（引导类加载器，Bootstrap-ClassLoader）"><a href="#启动类加载器（引导类加载器，Bootstrap-ClassLoader）" class="headerlink" title="启动类加载器（引导类加载器，Bootstrap ClassLoader）"></a>启动类加载器（引导类加载器，Bootstrap ClassLoader）</h4><ul>
+<li><p>这个类加载使用 C/C++ 语言实现的，嵌套在JVM内部</p>
+</li>
+<li><p>它用来加载Java的核心库（JAVA_HOME/jre/lib/rt.jar、resources.jar或sun.boot.class.path路径下的内容），用于提供JVM自身需要的类</p>
+</li>
+<li><p>并不继承自 java.lang.ClassLoader，没有父类加载器</p>
+</li>
+<li><p>加载扩展类和应用程序类加载器，并指定为他们的父类加载器</p>
+</li>
+<li><p>出于安全考虑，Bootstrap启动类加载器只加载包名为java、javax、sun等开头的类</p>
+</li>
 </ul>
-<h3 id="3-1-主流注册中心和产品"><a href="#3-1-主流注册中心和产品" class="headerlink" title="3.1 主流注册中心和产品"></a>3.1 主流注册中心和产品</h3><table>
+<h4 id="扩展类加载器（Extension-ClassLoader）"><a href="#扩展类加载器（Extension-ClassLoader）" class="headerlink" title="扩展类加载器（Extension ClassLoader）"></a>扩展类加载器（Extension ClassLoader）</h4><ul>
+<li><p>Java语言编写，由 sun.misc.Launcher$ExtClassLoader 实现</p>
+</li>
+<li><p>派生于 ClassLoader 类</p>
+</li>
+<li><p>父类加载器为启动类加载器</p>
+</li>
+<li><p>从 java.ext.dirs 系统属性所指定的目录中加载类库，或从JDK的安装目录的jre/lib/ext子目录（扩展目录）下加载类库。如果用户创建的JAR放在此目录下，也会自动由扩展类加载器加载</p>
+</li>
+</ul>
+<h4 id="应用程序类加载器（系统类加载器，AppClassLoader）"><a href="#应用程序类加载器（系统类加载器，AppClassLoader）" class="headerlink" title="应用程序类加载器（系统类加载器，AppClassLoader）"></a>应用程序类加载器（系统类加载器，AppClassLoader）</h4><ul>
+<li>Java语言编写，由sun.misc.Launcher$AppClassLoader 实现</li>
+<li>派生于 ClassLoader 类</li>
+<li>父类加载器为扩展类加载器</li>
+<li>它负责加载环境遍历classpath或系统属性 java.class.path 指定路径下的类库</li>
+<li>该类加载是程序中默认的类加载器，一般来说，Java应用的类都是由它来完成加载</li>
+<li>通过ClassLoader#getSystemClassLoader()方法可以获取到该类加载器</li>
+</ul>
+<h3 id="4-2-用户自定义类加载器"><a href="#4-2-用户自定义类加载器" class="headerlink" title="4.2 用户自定义类加载器"></a>4.2 用户自定义类加载器</h3><p>在Java的日常应用程序开发中，类的加载几乎是由上述3种类加载器相互配合执行的，在必要时，我们还可以自定义类加载器，来定制类的加载方式</p>
+<h4 id="为什么要自定义类加载器"><a href="#为什么要自定义类加载器" class="headerlink" title="为什么要自定义类加载器"></a>为什么要自定义类加载器</h4><ul>
+<li>隔离加载类</li>
+<li>修改类加载的方式</li>
+<li>扩展加载源</li>
+<li>防止源码泄漏</li>
+</ul>
+<h4 id="用户自定义加载类实现步骤"><a href="#用户自定义加载类实现步骤" class="headerlink" title="用户自定义加载类实现步骤"></a>用户自定义加载类实现步骤</h4><ul>
+<li>开发人员可以通过继承抽象类java.lang.ClassLoader类的方式，实现自己的类加载器，以满足一些特殊的需求</li>
+<li>在JDK1.2之前，在自定义类加载器时，总会去继承ClassLoader类并重写loadClass()方法，从而实现自定义的类加载类，但是在JDK1.2之后已不再建议用户去覆盖loadClass()方法，而是建议把自定义的类加载逻辑写在 findClass()方法中</li>
+<li>在编写自定义类加载器时，如果没有太过于复杂的需求，可以直接继承 URLClassLoader类，这样就可以避免自己去编写 findClass()方法及其获取字节码流的方式，使自定义类加载器编写更加简洁。</li>
+</ul>
+<h2 id="五、关于ClassLoader"><a href="#五、关于ClassLoader" class="headerlink" title="五、关于ClassLoader"></a>五、关于ClassLoader</h2><p>ClassLoader 类，是一个抽象类，其后所有的类加载器都继承自ClassLoader（不包括启动类加载器）</p>
+<table>
 <thead>
 <tr>
-<th></th>
-<th>Nacos</th>
-<th>Eureka</th>
-<th>Consul</th>
-<th>Zookeeper</th>
+<th>方法名称</th>
+<th>描述</th>
 </tr>
 </thead>
 <tbody><tr>
-<td>编写语言</td>
-<td>Java</td>
-<td>Java</td>
-<td>Java</td>
-<td>Go</td>
+<td><code>getParent()</code></td>
+<td>返回该类加载器的超类加载器</td>
 </tr>
 <tr>
-<td>一致性协议</td>
-<td>CP+AP</td>
-<td>AP</td>
-<td>CP</td>
-<td>CP</td>
+<td><code>loadClass(String name)</code></td>
+<td>加载名称为name的类，返回结果为 java.lang.Class 类的实例</td>
 </tr>
 <tr>
-<td>健康检查</td>
-<td>TCP/HTTP/MYSQL/Client Beat</td>
-<td>Client Beat</td>
-<td>TCP/HTTP/gRPC/Cmd</td>
-<td>Keep Alive</td>
+<td><code>findClass(String name)</code></td>
+<td>查找名称为name的类，返回结果为 java.lang.Class 类的实例</td>
 </tr>
 <tr>
-<td>负载均衡策略</td>
-<td>权重/ metadata/Selector</td>
-<td>Ribbon</td>
-<td>Fabio</td>
-<td>一</td>
+<td><code>findLoadedClass(String name)</code></td>
+<td>查找名称为name的已经被加载过的类，返回结果为 java.lang.Class 类的实例</td>
 </tr>
 <tr>
-<td>雪崩保护</td>
-<td>有</td>
-<td>有</td>
-<td>无</td>
-<td>无</td>
+<td><code>defineClass(String name,byte[] b,int off,int len)</code></td>
+<td>把字节数组b中的内容转换为一个Java类，返回结果为 java.lang.Class 类的实例</td>
 </tr>
 <tr>
-<td>自动注销实例</td>
-<td>支持</td>
-<td>支持</td>
-<td>不支持</td>
-<td>支持</td>
-</tr>
-<tr>
-<td>访问协议</td>
-<td>HTTP/DNS</td>
-<td>HTTP</td>
-<td>HTTP/DNS</td>
-<td>TCP</td>
-</tr>
-<tr>
-<td>监听支持</td>
-<td>支持</td>
-<td>支持</td>
-<td>支持</td>
-<td>支持</td>
-</tr>
-<tr>
-<td>多数据中心</td>
-<td>支持</td>
-<td>支持</td>
-<td>支持</td>
-<td>不支持</td>
-</tr>
-<tr>
-<td>跨注册中心同步</td>
-<td>支持</td>
-<td>不支持</td>
-<td>支持</td>
-<td>不支持</td>
-</tr>
-<tr>
-<td>SpringCloud集成</td>
-<td>支持</td>
-<td>支持</td>
-<td>支持</td>
-<td>不支持</td>
-</tr>
-<tr>
-<td>Dubbo集成</td>
-<td>支持</td>
-<td>不支持</td>
-<td>不支持</td>
-<td>支持</td>
-</tr>
-<tr>
-<td>K8S集成</td>
-<td>支持</td>
-<td>不支持</td>
-<td>支持</td>
-<td>不支持</td>
+<td><code>resolveClass(Class&lt;?&gt; c)</code></td>
+<td>连接指定的一个Java类</td>
 </tr>
 </tbody></table>
-<h3 id="3-2-Eureka-gt-AP"><a href="#3-2-Eureka-gt-AP" class="headerlink" title="3.2 Eureka -&gt; AP"></a>3.2 Eureka -&gt; AP</h3><img src="http://cdn.lnzz.site/static/images/SpringCloud/06/2.png">
+<img src="http://cdn.lnzz.site/static/images/JVM/02/06.png">
 
-<p>Spring Cloud Netflix 在设计 Eureka 时就紧遵AP原则。</p>
-<p>Eureka Server 也可以运行多个实例来构建集群，解决单点问题，但不同于 ZooKeeper 的<strong>选举 leader 的过程</strong>，Eureka Server 采用的是Peer to Peer 对等通信。这是一种去中心化的架构，无 master/slave 之分，每一个 Peer 都是对等的。在这种架构风格中，节点通过彼此互相注册来提高可用性，每个节点需要添加一个或多个有效的 serviceUrl 指向其他节点。每个节点都可被视为其他节点的副本。</p>
-<p>在集群环境中如果某台 Eureka Server 宕机，Eureka Client 的请求会自动切换到新的 Eureka Server 节点上，当宕机的服务器重新恢复后，Eureka 会再次将其纳入到服务器集群管理之中。当节点开始接受客户端请求时，所有的操作都会在节点间进行复制（replicate To Peer）操作，将请求复制到该 Eureka Server 当前所知的其它所有节点中。</p>
-<p>当一个新的 Eureka Server 节点启动后，会首先尝试从邻近节点获取所有注册列表信息，并完成初始化。Eureka Server 通过 <code>getEurekaServiceUrls()</code> 方法获取所有的节点，并且会通过心跳契约的方式定期更新。</p>
-<p>默认情况下，如果 Eureka Server 在一定时间内没有接收到某个服务实例的心跳（默认周期为30秒），Eureka Server 将会注销该实例（默认为90秒， <code>eureka.instance.lease-expiration-duration-in-seconds</code> 进行自定义配置）。</p>
-<p>当 Eureka Server 节点在短时间内丢失过多的心跳时，那么这个节点就会进入自我保护模式。</p>
-<p>Eureka的集群中，只要有一台 Eureka 还在，就能保证注册服务可用（保证可用性），只不过查到的信息可能不是最新的（不保证强一致性）。除此之外，Eureka 还有一种自我保护机制，如果在15分钟内超过<strong>85%</strong>的节点都没有正常的心跳，那么 Eureka 就认为客户端与注册中心出现了网络故障，此时会出现以下几种情况：</p>
-<ul>
-<li>Eureka不再从注册表中移除因为长时间没有收到心跳而过期的服务；</li>
-<li>Eureka仍然能够接受新服务注册和查询请求，但是不会被同步到其它节点上（即保证当前节点依然可用）；</li>
-<li>当网络稳定时，当前实例新注册的信息会被同步到其它节点中；</li>
+<h3 id="获取ClassLoader的路径"><a href="#获取ClassLoader的路径" class="headerlink" title="获取ClassLoader的路径"></a>获取ClassLoader的路径</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line"></span><br><span class="line">            <span class="comment">//1.方式一： clazz.getClassLoader()</span></span><br><span class="line">            ClassLoader classLoader = Class.forName(<span class="string">"java.lang.String"</span>).getClassLoader();</span><br><span class="line">            System.out.println(classLoader);</span><br><span class="line">            <span class="comment">//2.方式二：Thread.currentThread().getContextClassLoader();</span></span><br><span class="line">            ClassLoader contextClassLoader = Thread.currentThread().getContextClassLoader();</span><br><span class="line">            System.out.println(contextClassLoader);</span><br><span class="line">            <span class="comment">//3.方式三：ClassLoader.getSystemClassLoader()</span></span><br><span class="line">            ClassLoader parent = ClassLoader.getSystemClassLoader().getParent();</span><br><span class="line">            System.out.println(parent);</span><br><span class="line">        &#125; <span class="keyword">catch</span> (ClassNotFoundException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="六、双亲委派机制"><a href="#六、双亲委派机制" class="headerlink" title="六、双亲委派机制"></a>六、双亲委派机制</h2><p>Java虚拟机对class文件采用的是按需加载的方式，也就是说当需要使用该类时才会将它的class文件加载到内存生成class对象。而且加载某个类的class文件时，Java虚拟机采用的是双亲委派模式，即把请求交由父类处理，它是一种任务委派模式。</p>
+<img src="http://cdn.lnzz.site/static/images/JVM/02/07.png">
+
+<h3 id="6-1-工作原理"><a href="#6-1-工作原理" class="headerlink" title="6.1 工作原理"></a>6.1 工作原理</h3><ul>
+<li>如果一个类加载器收到了类加载请求，它并不会自己先去加载，而是把这个请求委托给父类的加载器去执行</li>
+<li>如果父类加载器还存在其父类加载器，则进一步向上委托，依次递归请求最终将到达顶层的启动类加载器</li>
+<li>如果父类加载器可以完成类加载任务，就成功返回，倘若父类加载器无法完成此加载任务，子加载器才会尝试自已去加载，这就是双亲委派模式</li>
 </ul>
-<p><strong>因此，Eureka可以很好的应对因网络故障导致部分节点失去联系的情况，而不会像 Zookeeper 那样使得整个注册服务瘫痪。</strong></p>
-<h3 id="3-3-Zookeeper-gt-CP"><a href="#3-3-Zookeeper-gt-CP" class="headerlink" title="3.3 Zookeeper -&gt; CP"></a>3.3 Zookeeper -&gt; CP</h3><p>与 Eureka 有所不同，Apache Zookeeper 在设计时就紧遵CP原则，即任何时候对 Zookeeper 的访问请求能得到一致的数据结果，同时系统对网络分割具备容错性，但是 Zookeeper 不能保证每次服务请求都是可达的。 </p>
-<p>从 Zookeeper 的实际应用情况来看，在使用 Zookeeper 获取服务列表时，如果此时的 Zookeeper 集群中的 Leader 宕机了，该集群就要进行 Leader 的选举，又或者 Zookeeper 集群中半数以上服务器节点不可用（例如有三个节点，如果节点一检测到节点三挂了 ，节点二也检测到节点三挂了，那这个节点才算是真的挂了），那么将无法处理该请求。所以说，<strong>Zookeeper 不能保证服务可用性</strong>。</p>
-<p>当然，在大多数分布式环境中，尤其是涉及到数据存储的场景，数据一致性应该是首先被保证的，这也是 Zookeeper 设计紧遵CP原则的另一个原因。</p>
-<p>但是对于服务发现来说，情况就不太一样了，针对同一个服务，即使注册中心的不同节点保存的服务提供者信息不尽相同，也并不会造成灾难性的后果。</p>
-<p>因为对于服务消费者来说，能消费才是最重要的，消费者虽然拿到可能不正确的服务实例信息后尝试消费一下，也要胜过因为无法获取实例信息而不去消费，导致系统异常要好（<strong>淘宝的双十一，京东的618就是紧遵AP的最好参照</strong>）。</p>
-<p>当master节点因为网络故障与其他节点失去联系时，剩余节点会重新进行leader选举。问题在于，选举leader的时间太长，<strong>30~120s</strong>，而且选举期间整个zk集群都是不可用的，这就导致在选举期间注册服务瘫痪。</p>
-<p>在云部署环境下， 因为网络问题使得zk集群失去master节点是大概率事件，虽然服务能最终恢复，但是漫长的选举事件导致注册长期不可用是不能容忍的。</p>
-<h3 id="3-4-Consul-gt-CP"><a href="#3-4-Consul-gt-CP" class="headerlink" title="3.4 Consul -&gt; CP"></a>3.4 Consul -&gt; CP</h3><img src="http://cdn.lnzz.site/static/images/SpringCloud/06/3.png">
+<h3 id="6-2-优势"><a href="#6-2-优势" class="headerlink" title="6.2 优势"></a>6.2 优势</h3><ul>
+<li>避免类的重复加载</li>
+<li>保护程序安全，防止核心API被随意篡改</li>
+</ul>
+<h3 id="6-3-沙箱安全机制"><a href="#6-3-沙箱安全机制" class="headerlink" title="6.3 沙箱安全机制"></a>6.3 沙箱安全机制</h3><p>自定义String类，但是在加载自定义String类的时候会率先使用引导类加载器加载，而引导类加载器在加载过程中会先加载jdk自带的文件（rt.jar包中java\lang\String.class)，报错信息说没有main方法，就是因为加载的是rt.jar包中的String类。这样可以保证对java核心源代码的保护，这就是沙箱安全机制     </p>
+<img src="http://cdn.lnzz.site/static/images/JVM/02/08.png">
 
-<p>Consul 是 HashiCorp 公司推出的开源工具，用于实现分布式系统的服务发现与配置。Consul 使用 <strong>Go</strong> 语言编写，因此具有天然可移植性（支持Linux、windows和Mac OS X）。 </p>
-<p>Consul 内置了服务注册与发现框架、分布一致性协议实现、健康检查、Key/Value 存储、多数据中心方案，不再需要依赖其他工具（比如 ZooKeeper 等），使用起来也较为简单。 </p>
-<p>Consul 遵循CAP原理中的CP原则，保证了强一致性和分区容错性，且使用的是 Raft 算法，比Zookeeper 使用的 Paxos 算法更加简单。虽然保证了强一致性，但是可用性就相应下降了，例如服务注册的时间会稍长一些，因为 Consul 的 raft 协议要求必须过半数的节点都写入成功才认为注册成功；在leader挂掉了之后，重新选举出leader之前会导致Consul 服务不可用。</p>
-<p><strong>Consul 对比 Eureka：</strong></p>
+<h2 id="七、其它"><a href="#七、其它" class="headerlink" title="七、其它"></a>七、其它</h2><p>在JVM中，表示两个class对象是否为同一个类存在两个必要条件：</p>
+<ol>
+<li>类的完整类名必须一致，包括包名。</li>
+<li>加载这个类的ClassLoader（指ClassLoader实例对象）必须相同</li>
+</ol>
+<p>换句话说，在JVM中，即使这两个类对象（Class对象）来源于同一个Class文件，被同一个虚拟机所加载，但只要加载它们的ClassLoader实例对象不同，那么这两个类对象也是不相等的</p>
+<h3 id="对类加载器的引用"><a href="#对类加载器的引用" class="headerlink" title="对类加载器的引用"></a>对类加载器的引用</h3><p>JVM必须知道一个类型是由启动加载器加载的还是由用户类加载器加载的。如果一个类型是由用户类加载器加载的，那么JVM会将这个类加载器的一个引用作为类型信息的一部分保存在方法区中。当解<br>析一个类型到另一个类型的引用的时候，JVM需要保证这两个类型的类加载器是相同的</p>
+<h3 id="类的主动使用和被动使用"><a href="#类的主动使用和被动使用" class="headerlink" title="类的主动使用和被动使用"></a>类的主动使用和被动使用</h3><p><strong>Java对程序类的使用方式分为：主动使用和被动使用</strong></p>
 <ul>
-<li><strong>Consul强一致性(C)带来的是：</strong> <ul>
-<li>服务注册相比Eureka会稍慢一些。因为Consul的raft协议要求必须过半数的节点都写入成功才认为注册成功 </li>
-<li>Leader挂掉时，重新选举期间整个consul不可用。保证了强一致性但牺牲了可用性。 </li>
+<li><strong>主动使用，分为七种情况</strong><ul>
+<li>创建类的实例</li>
+<li>访问某个类或接口的静态变量，或者对静态变量赋值</li>
+<li>调用类的静态方法</li>
+<li>反射（比如：Class.forName(“com.lnzz.Test”)）</li>
+<li>初始化一个类的子类</li>
+<li>Java虚拟机启动时被标名为启动类的类</li>
+<li>Java7开始提供动态语言支持：<code>java.lang.invokeMethodHandle</code>实例的解析结果REF_getStatic、REF_putStatic、REF_invokeStatic句柄对应的类没有初始化，则初始化</li>
 </ul>
 </li>
-<li><strong>Eureka保证高可用(A)和最终一致性：</strong> <ul>
-<li>服务注册相对要快，因为不需要等注册信息replicate到其他节点，也不保证注册信息是否replicate成功</li>
-<li>当数据出现不一致时，虽然A, B上的注册信息不完全相同，但每个Eureka节点依然能够正常对外提供服务，这会出现查询服务信息时如果请求A查不到，但请求B就能查到。如此保证了可用性但牺牲了一致性。</li>
+<li><strong>除了以上七种情况，其他使用Java类的方式都被看作是对类的被动使用，都不会导致类的初始化</strong></li>
 </ul>
-</li>
-<li><strong>其他方面：</strong>Eureka 本质就是个<strong>Servlet</strong>程序，泡在Servlet容器中；Consul 则是用 <strong>Go</strong> 编写的</li>
-</ul>
-<h3 id="3-5-Nacos"><a href="#3-5-Nacos" class="headerlink" title="3.5 Nacos"></a>3.5 Nacos</h3><p>我们将在教程高级部分详细讲解 Nacos，尽请期待</p>
 
       
 	  
@@ -459,16 +439,16 @@
     
     <br>
     <strong class="create-time">发布时间：</strong>
-    2020-07-18
+    2020-10-21
     <br>
     <strong class="update-time">最后更新：</strong>
-    2020-08-16
+    2020-10-21
     <br>
     <strong class="article-titles">本文标题：</strong>
-    <a href="https://lnzz.site/2020/07/18/SpringCloud-微服务实站（六）：服务注册中心对比/" title="SpringCloud 微服务实站（六）：服务注册中心对比" target="_blank">SpringCloud 微服务实站（六）：服务注册中心对比</a>
+    <a href="https://lnzz.site/2020/10/21/深入理解JVM系列教程（02）-类加载器子系统/" title="深入理解JVM系列教程（02）- 类加载器子系统" target="_blank">深入理解JVM系列教程（02）- 类加载器子系统</a>
     <br>
     <strong class="article-url">本文链接：</strong>
-    <a href="https://lnzz.site/2020/07/18/SpringCloud-微服务实站（六）：服务注册中心对比/" title="SpringCloud 微服务实站（六）：服务注册中心对比" target="_blank">https://lnzz.site/2020/07/18/SpringCloud-微服务实站（六）：服务注册中心对比/</a>
+    <a href="https://lnzz.site/2020/10/21/深入理解JVM系列教程（02）-类加载器子系统/" title="深入理解JVM系列教程（02）- 类加载器子系统" target="_blank">https://lnzz.site/2020/10/21/深入理解JVM系列教程（02）-类加载器子系统/</a>
     <br>
     <strong class="copyright">版权声明：</strong>
     本作品采用
@@ -525,7 +505,11 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">SpringCloud</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">JVM</a>
         		</li>
       		
 		</ul>
@@ -581,7 +565,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=https://lnzz.site/2020/07/18/SpringCloud-%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AE%9E%E7%AB%99%EF%BC%88%E5%85%AD%EF%BC%89%EF%BC%9A%E6%9C%8D%E5%8A%A1%E6%B3%A8%E5%86%8C%E4%B8%AD%E5%BF%83%E5%AF%B9%E6%AF%94/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=https://lnzz.site/2020/10/21/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3JVM%E7%B3%BB%E5%88%97%E6%95%99%E7%A8%8B%EF%BC%8802%EF%BC%89-%E7%B1%BB%E5%8A%A0%E8%BD%BD%E5%99%A8%E5%AD%90%E7%B3%BB%E7%BB%9F/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -595,18 +579,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2020/07/19/SpringCloud-%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AE%9E%E7%AB%99%EF%BC%88%E4%B8%83%EF%BC%89%EF%BC%9A%E5%AE%A2%E6%88%B7%E7%AB%AF%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1%E4%B9%8BRibbon/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          SpringCloud 微服务实站（七）：客户端负载均衡之Ribbon
-        
-      </div>
-    </a>
   
-  
-    <a href="/2020/07/18/SpringCloud-%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AE%9E%E7%AB%99%EF%BC%88%E4%BA%94%EF%BC%89%EF%BC%9A%E6%9C%8D%E5%8A%A1%E6%B3%A8%E5%86%8C%E4%B8%AD%E5%BF%83%E4%B9%8BConsul/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">SpringCloud 微服务实站（五）：服务注册中心之Consul</div>
+    <a href="/2020/10/19/%E7%AC%AC%E4%BA%8C%E7%AB%A0-%E5%BC%80%E6%94%BE%E4%B9%8B%E9%81%93/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">第二章 开放之道</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -633,7 +608,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#参考资料"><span class="toc-number">1.</span> <span class="toc-text">参考资料</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#一、前言"><span class="toc-number"></span> <span class="toc-text">一、前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二、CAP理论"><span class="toc-number"></span> <span class="toc-text">二、CAP理论</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#三、服务注册中心解决方案"><span class="toc-number"></span> <span class="toc-text">三、服务注册中心解决方案</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-主流注册中心和产品"><span class="toc-number"></span> <span class="toc-text">3.1 主流注册中心和产品</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-Eureka-gt-AP"><span class="toc-number"></span> <span class="toc-text">3.2 Eureka -&gt; AP</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-3-Zookeeper-gt-CP"><span class="toc-number"></span> <span class="toc-text">3.3 Zookeeper -&gt; CP</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-4-Consul-gt-CP"><span class="toc-number"></span> <span class="toc-text">3.4 Consul -&gt; CP</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-5-Nacos"><span class="toc-number"></span> <span class="toc-text">3.5 Nacos</span></a>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#一、类加载器子系统作用"><span class="toc-number">1.</span> <span class="toc-text">一、类加载器子系统作用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二、类加载器-ClassLoader-角色"><span class="toc-number">2.</span> <span class="toc-text">二、类加载器 ClassLoader 角色</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#三、类的加载过程"><span class="toc-number">3.</span> <span class="toc-text">三、类的加载过程</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-加载"><span class="toc-number">3.1.</span> <span class="toc-text">3.1 加载</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#补充：加载-class-文件的方式"><span class="toc-number">3.1.1.</span> <span class="toc-text">补充：加载 .class 文件的方式</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-链接"><span class="toc-number">3.2.</span> <span class="toc-text">3.2 链接</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#验证（Verify）"><span class="toc-number">3.2.1.</span> <span class="toc-text">验证（Verify）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#准备（Prepare）"><span class="toc-number">3.2.2.</span> <span class="toc-text">准备（Prepare）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#解析（Resolve）"><span class="toc-number">3.2.3.</span> <span class="toc-text">解析（Resolve）</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-3-初始化"><span class="toc-number">3.3.</span> <span class="toc-text">3.3 初始化</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#四、类加载器的分类"><span class="toc-number">4.</span> <span class="toc-text">四、类加载器的分类</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#4-1-虚拟机自带的加载器"><span class="toc-number">4.1.</span> <span class="toc-text">4.1 虚拟机自带的加载器</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#启动类加载器（引导类加载器，Bootstrap-ClassLoader）"><span class="toc-number">4.1.1.</span> <span class="toc-text">启动类加载器（引导类加载器，Bootstrap ClassLoader）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#扩展类加载器（Extension-ClassLoader）"><span class="toc-number">4.1.2.</span> <span class="toc-text">扩展类加载器（Extension ClassLoader）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#应用程序类加载器（系统类加载器，AppClassLoader）"><span class="toc-number">4.1.3.</span> <span class="toc-text">应用程序类加载器（系统类加载器，AppClassLoader）</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-2-用户自定义类加载器"><span class="toc-number">4.2.</span> <span class="toc-text">4.2 用户自定义类加载器</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#为什么要自定义类加载器"><span class="toc-number">4.2.1.</span> <span class="toc-text">为什么要自定义类加载器</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#用户自定义加载类实现步骤"><span class="toc-number">4.2.2.</span> <span class="toc-text">用户自定义加载类实现步骤</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#五、关于ClassLoader"><span class="toc-number">5.</span> <span class="toc-text">五、关于ClassLoader</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#获取ClassLoader的路径"><span class="toc-number">5.1.</span> <span class="toc-text">获取ClassLoader的路径</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#六、双亲委派机制"><span class="toc-number">6.</span> <span class="toc-text">六、双亲委派机制</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#6-1-工作原理"><span class="toc-number">6.1.</span> <span class="toc-text">6.1 工作原理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-2-优势"><span class="toc-number">6.2.</span> <span class="toc-text">6.2 优势</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-3-沙箱安全机制"><span class="toc-number">6.3.</span> <span class="toc-text">6.3 沙箱安全机制</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#七、其它"><span class="toc-number">7.</span> <span class="toc-text">七、其它</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#对类加载器的引用"><span class="toc-number">7.1.</span> <span class="toc-text">对类加载器的引用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#类的主动使用和被动使用"><span class="toc-number">7.2.</span> <span class="toc-text">类的主动使用和被动使用</span></a></li></ol></li></ol>
                     </div>
                 </span>
             </div>

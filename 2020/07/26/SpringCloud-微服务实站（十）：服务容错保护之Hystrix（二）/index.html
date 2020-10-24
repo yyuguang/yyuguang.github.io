@@ -15,23 +15,23 @@
 <meta property="og:site_name" content="你对我笑i">
 <meta property="og:description" content="参考资料 Spring Cloud SpringCloud中文文档 SpringCloud官方文档 书籍 《 Spring Cloud微服务实战 》     SpringBoot SpringBoot官方文档   Github 获取代码    一、前言在上一章我们通过学习 Hystrix 的快速入门实例，来了解了什么是服务熔断，什么是服务降级，以及Hystrix的一些基础知识，在本章节我们来深入学">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="http://cdn.lnzz.site/static/images/SpringCloud/10/1.png">
-<meta property="og:image" content="http://cdn.lnzz.site/static/images/SpringCloud/10/2.png">
-<meta property="og:image" content="http://cdn.lnzz.site/static/images/SpringCloud/10/3.png">
-<meta property="og:image" content="http://cdn.lnzz.site/static/images/SpringCloud/10/4.png">
-<meta property="og:image" content="http://cdn.lnzz.site/static/images/SpringCloud/10/5.png">
-<meta property="og:image" content="http://cdn.lnzz.site/static/images/SpringCloud/10/6.png">
-<meta property="og:image" content="http://cdn.lnzz.site/static/images/SpringCloud/10/7.png">
-<meta property="og:image" content="http://cdn.lnzz.site/static/images/SpringCloud/10/8.png">
-<meta property="og:image" content="http://cdn.lnzz.site/static/images/SpringCloud/10/9.png">
-<meta property="og:image" content="http://cdn.lnzz.site/static/images/SpringCloud/10/10.png">
+<meta property="og:image" content="https://lnzz.site/2020/07/26/SpringCloud-%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AE%9E%E7%AB%99%EF%BC%88%E5%8D%81%EF%BC%89%EF%BC%9A%E6%9C%8D%E5%8A%A1%E5%AE%B9%E9%94%99%E4%BF%9D%E6%8A%A4%E4%B9%8BHystrix%EF%BC%88%E4%BA%8C%EF%BC%89/qihjf4962.hn-bkt.clouddn.com/static/images/SpringCloud/10/1.png">
+<meta property="og:image" content="https://lnzz.site/2020/07/26/SpringCloud-%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AE%9E%E7%AB%99%EF%BC%88%E5%8D%81%EF%BC%89%EF%BC%9A%E6%9C%8D%E5%8A%A1%E5%AE%B9%E9%94%99%E4%BF%9D%E6%8A%A4%E4%B9%8BHystrix%EF%BC%88%E4%BA%8C%EF%BC%89/qihjf4962.hn-bkt.clouddn.com/static/images/SpringCloud/10/2.png">
+<meta property="og:image" content="https://lnzz.site/2020/07/26/SpringCloud-%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AE%9E%E7%AB%99%EF%BC%88%E5%8D%81%EF%BC%89%EF%BC%9A%E6%9C%8D%E5%8A%A1%E5%AE%B9%E9%94%99%E4%BF%9D%E6%8A%A4%E4%B9%8BHystrix%EF%BC%88%E4%BA%8C%EF%BC%89/qihjf4962.hn-bkt.clouddn.com/static/images/SpringCloud/10/3.png">
+<meta property="og:image" content="https://lnzz.site/2020/07/26/SpringCloud-%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AE%9E%E7%AB%99%EF%BC%88%E5%8D%81%EF%BC%89%EF%BC%9A%E6%9C%8D%E5%8A%A1%E5%AE%B9%E9%94%99%E4%BF%9D%E6%8A%A4%E4%B9%8BHystrix%EF%BC%88%E4%BA%8C%EF%BC%89/qihjf4962.hn-bkt.clouddn.com/static/images/SpringCloud/10/4.png">
+<meta property="og:image" content="https://lnzz.site/2020/07/26/SpringCloud-%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AE%9E%E7%AB%99%EF%BC%88%E5%8D%81%EF%BC%89%EF%BC%9A%E6%9C%8D%E5%8A%A1%E5%AE%B9%E9%94%99%E4%BF%9D%E6%8A%A4%E4%B9%8BHystrix%EF%BC%88%E4%BA%8C%EF%BC%89/qihjf4962.hn-bkt.clouddn.com/static/images/SpringCloud/10/5.png">
+<meta property="og:image" content="https://lnzz.site/2020/07/26/SpringCloud-%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AE%9E%E7%AB%99%EF%BC%88%E5%8D%81%EF%BC%89%EF%BC%9A%E6%9C%8D%E5%8A%A1%E5%AE%B9%E9%94%99%E4%BF%9D%E6%8A%A4%E4%B9%8BHystrix%EF%BC%88%E4%BA%8C%EF%BC%89/qihjf4962.hn-bkt.clouddn.com/static/images/SpringCloud/10/6.png">
+<meta property="og:image" content="https://lnzz.site/2020/07/26/SpringCloud-%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AE%9E%E7%AB%99%EF%BC%88%E5%8D%81%EF%BC%89%EF%BC%9A%E6%9C%8D%E5%8A%A1%E5%AE%B9%E9%94%99%E4%BF%9D%E6%8A%A4%E4%B9%8BHystrix%EF%BC%88%E4%BA%8C%EF%BC%89/qihjf4962.hn-bkt.clouddn.com/static/images/SpringCloud/10/7.png">
+<meta property="og:image" content="https://lnzz.site/2020/07/26/SpringCloud-%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AE%9E%E7%AB%99%EF%BC%88%E5%8D%81%EF%BC%89%EF%BC%9A%E6%9C%8D%E5%8A%A1%E5%AE%B9%E9%94%99%E4%BF%9D%E6%8A%A4%E4%B9%8BHystrix%EF%BC%88%E4%BA%8C%EF%BC%89/qihjf4962.hn-bkt.clouddn.com/static/images/SpringCloud/10/8.png">
+<meta property="og:image" content="https://lnzz.site/2020/07/26/SpringCloud-%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AE%9E%E7%AB%99%EF%BC%88%E5%8D%81%EF%BC%89%EF%BC%9A%E6%9C%8D%E5%8A%A1%E5%AE%B9%E9%94%99%E4%BF%9D%E6%8A%A4%E4%B9%8BHystrix%EF%BC%88%E4%BA%8C%EF%BC%89/qihjf4962.hn-bkt.clouddn.com/static/images/SpringCloud/10/9.png">
+<meta property="og:image" content="https://lnzz.site/2020/07/26/SpringCloud-%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AE%9E%E7%AB%99%EF%BC%88%E5%8D%81%EF%BC%89%EF%BC%9A%E6%9C%8D%E5%8A%A1%E5%AE%B9%E9%94%99%E4%BF%9D%E6%8A%A4%E4%B9%8BHystrix%EF%BC%88%E4%BA%8C%EF%BC%89/qihjf4962.hn-bkt.clouddn.com/static/images/SpringCloud/10/10.png">
 <meta property="article:published_time" content="2020-07-26T15:01:11.000Z">
 <meta property="article:modified_time" content="2020-08-16T14:15:26.363Z">
 <meta property="article:author" content="你对我笑i">
 <meta property="article:tag" content="SpringCloud">
 <meta property="article:tag" content="Hystrix">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://cdn.lnzz.site/static/images/SpringCloud/10/1.png">
+<meta name="twitter:image" content="https://lnzz.site/2020/07/26/SpringCloud-%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AE%9E%E7%AB%99%EF%BC%88%E5%8D%81%EF%BC%89%EF%BC%9A%E6%9C%8D%E5%8A%A1%E5%AE%B9%E9%94%99%E4%BF%9D%E6%8A%A4%E4%B9%8BHystrix%EF%BC%88%E4%BA%8C%EF%BC%89/qihjf4962.hn-bkt.clouddn.com/static/images/SpringCloud/10/1.png">
   
     <link rel="alternative" href="/atom.xml" title="你对我笑i" type="application/atom+xml">
   
@@ -262,7 +262,7 @@
 <a id="more"></a>
 
 <h2 id="二、流程图"><a href="#二、流程图" class="headerlink" title="二、流程图"></a>二、流程图</h2><p>下面的流程图展示了当使用Hystrix的依赖请求，Hystrix是如何工作的 。</p>
-<img src="http://cdn.lnzz.site/static/images/SpringCloud/10/1.png">
+<img src="qihjf4962.hn-bkt.clouddn.com/static/images/SpringCloud/10/1.png">
 
 <p>下面将更详细的解析每一个步骤都发生哪些动作 ：</p>
 <h4 id="2-1-构建一个HystrixCommand或者HystrixObservableCommand对象。"><a href="#2-1-构建一个HystrixCommand或者HystrixObservableCommand对象。" class="headerlink" title="2.1 构建一个HystrixCommand或者HystrixObservableCommand对象。"></a>2.1 构建一个<code>HystrixCommand</code>或者<code>HystrixObservableCommand</code>对象。</h4><p>第一步是构造一个<code>HystrixCommand</code>或<code>HystrixObservableCommand</code>对象，以表示您对依赖项提出的请求。向构造函数传递发出请求时所需的任何参数。</p>
@@ -319,7 +319,7 @@
 <li><code>toObservable()</code>—返回一个<code>Observable</code>，当您订阅时，它将通过调用订阅者的<code>onError</code>方法终止</li>
 </ul>
 <h4 id="2-9-返回成功的回应"><a href="#2-9-返回成功的回应" class="headerlink" title="2.9 返回成功的回应"></a>2.9 返回成功的回应</h4><p>如果Hystrix命令成功执行，它将以的形式将一个或多个响应返回给调用方<code>Observable</code>。根据上面步骤2中调用命令的方式，在<code>Observable</code>返回给您之前，可能会对其进行转换：</p>
-<img src="http://cdn.lnzz.site/static/images/SpringCloud/10/2.png">
+<img src="qihjf4962.hn-bkt.clouddn.com/static/images/SpringCloud/10/2.png">
 
 <ul>
 <li><code>execute()</code>：通过调用<code>queue()</code>来得到一个Future对象，然后调用<code>get()</code>方法来获取Future中包含的值。  </li>
@@ -328,7 +328,7 @@
 <li><code>toObservable()</code>：返回一个没有改变的Observable，你必须订阅它，它才能够开始执行命令的逻辑。  </li>
 </ul>
 <h2 id="三、断路器"><a href="#三、断路器" class="headerlink" title="三、断路器"></a>三、断路器</h2><p>下图展示了<code>HystrixCommand</code>和<code>HystrixObservableCommand</code>如何与<code>HystrixCircuitBroker</code>进行交互。</p>
-<img src="http://cdn.lnzz.site/static/images/SpringCloud/10/3.png">
+<img src="qihjf4962.hn-bkt.clouddn.com/static/images/SpringCloud/10/3.png">
 
 <p>电路打开和关闭的精确方式如下：</p>
 <ul>
@@ -339,11 +339,11 @@
 <li>经过一段时间（<code>HystrixCommandProperties.circuitBreakerSleepWindowInMilliseconds()</code>）后，下一个单个请求被允许通过（这是<code>HALF-OPEN</code>状态）。如果请求失败，断路器将<code>OPEN</code>在睡眠窗口期间返回到该状态。如果请求成功，则断路器会被置为关闭状态，重新开启 <strong>1</strong> 步骤的逻辑。</li>
 </ul>
 <h2 id="四、隔离"><a href="#四、隔离" class="headerlink" title="四、隔离"></a>四、隔离</h2><p>Hystrix采用舱壁模式来隔离相互之间的依赖关系，并限制对其中任何一个的并发访问。</p>
-<img src="http://cdn.lnzz.site/static/images/SpringCloud/10/4.png">
+<img src="qihjf4962.hn-bkt.clouddn.com/static/images/SpringCloud/10/4.png">
 
 <h2 id="五、线程和线程池"><a href="#五、线程和线程池" class="headerlink" title="五、线程和线程池"></a>五、线程和线程池</h2><p>客户端（库，网络调用等）在单独的线程上执行。这将它们与调用线程（Tomcat线程池）隔离开，以便调用者可以“摆脱”花费太长时间的依赖项调用。</p>
 <p>Hystrix使用单独的，每个依赖关系的线程池来约束任何给定的依赖关系，因此对基础执行的延迟将仅使该池中的可用线程饱和。</p>
-<img src="http://cdn.lnzz.site/static/images/SpringCloud/10/5.png">
+<img src="qihjf4962.hn-bkt.clouddn.com/static/images/SpringCloud/10/5.png">
 
 <p>你可以在不使用线程池的情况下防止失败，但这需要信任的客户端非常迅速地失败（网络连接/读取超时和重试配置），并且始终表现良好。</p>
 <p>Netflix 在Hystrix的设计中选择使用线程和线程池来实现隔离的原因很多，其中包括：</p>
@@ -360,7 +360,7 @@
 <li>大多数网络访问是同步执行的。</li>
 <li>故障和延迟也可能在客户端代码中发生，而不仅仅是在网络调用中。</li>
 </ul>
-<img src="http://cdn.lnzz.site/static/images/SpringCloud/10/6.png">
+<img src="qihjf4962.hn-bkt.clouddn.com/static/images/SpringCloud/10/6.png">
 
 <h4 id="5-1-线程池的好处"><a href="#5-1-线程池的好处" class="headerlink" title="5.1 线程池的好处"></a>5.1 线程池的好处</h4><p>通过自己线程池中的线程进行隔离的好处是：</p>
 <ul>
@@ -378,7 +378,7 @@
 <h4 id="5-3-线程成本"><a href="#5-3-线程成本" class="headerlink" title="5.3 线程成本"></a>5.3 线程成本</h4><p>Hystrix测量在子线程上执行<code>construct()</code>or <code>run()</code>方法时的延迟以及父线程上的总的端到端时间。这样，你可以看到Hystrix开销（线程，度量，日志记录，断路器等）的成本。</p>
 <p>Netflix API使用线程隔离每天处理 <strong>10+亿次</strong> Hystrix命令执行。每个API实例有40多个线程池，每个线程池中有5-20个线程（大多数设置为10）。</p>
 <p>下图表示一个<code>HystrixCommand</code>在单个API实例上以每秒60个请求的速度执行的情况（每个服务器每秒约350个线程执行总数）：</p>
-<img src="http://cdn.lnzz.site/static/images/SpringCloud/10/7.png">
+<img src="qihjf4962.hn-bkt.clouddn.com/static/images/SpringCloud/10/7.png">
 
 <p>在中位数（或更低）处，拥有一个单独的线程是没有成本的。</p>
 <p>在第90 个百分位数处，拥有一个单独的线程要花费3ms的时间。</p>
@@ -396,7 +396,7 @@
 <p>一旦达到限制，信号灯拒绝将开始，但是填充信号灯的线程无法走开。</p>
 <h2 id="六、请求折叠"><a href="#六、请求折叠" class="headerlink" title="六、请求折叠"></a>六、请求折叠</h2><p>你可以<code>HystrixCommand</code>在请求折叠器（<a href="http://netflix.github.io/Hystrix/javadoc/index.html?com/netflix/hystrix/HystrixCollapser.html" target="_blank" rel="noopener"><code>HystrixCollapser</code></a>是抽象父项）的前面加上，可以将多个请求折叠到单个后端依赖项调用中。</p>
 <p>下图显示了两种情况下的线程和网络连接数：首先是没有连接，然后是请求折叠（假设所有连接在较短的时间窗口内（在这种情况下为10ms）是“并发的”）。</p>
-<img src="http://cdn.lnzz.site/static/images/SpringCloud/10/8.png">
+<img src="qihjf4962.hn-bkt.clouddn.com/static/images/SpringCloud/10/8.png">
 
 <h4 id="为什么使用请求折叠？"><a href="#为什么使用请求折叠？" class="headerlink" title="为什么使用请求折叠？"></a>为什么使用请求折叠？</h4><p>使用请求折叠可减少执行并发<code>HystrixCommand</code>执行所需的线程数和网络连接数。请求折叠以一种自动化的方式完成，不会强制所有代码库的开发人员协调手动的请求批处理。</p>
 <h5 id="全局上下文（跨所有Tomcat线程）"><a href="#全局上下文（跨所有Tomcat线程）" class="headerlink" title="全局上下文（跨所有Tomcat线程）"></a>全局上下文（跨所有Tomcat线程）</h5><p>理想的折叠类型是在全局应用程序级别完成的，因此可以将来自任何Tomcat线程上任何<em>用户的</em>请求折叠在一起。</p>
@@ -415,11 +415,11 @@
 <p>如果您有一条命令需要花费5ms的中位数来执行，并且有10ms的批处理窗口，则在最坏的情况下执行时间可能变为15ms。通常，一个请求不会在打开时就被提交到窗口，因此中值损失是窗口时间的一半，在这种情况下为5ms。</p>
 <p>确定此成本是否值得取决于所执行的命令。高延迟命令不会受到少量额外平均延迟的影响。同样，给定命令的并发量很关键：如果很少有超过1或2个请求被一起批处理，那么付出代价是没有意义的。实际上，在单线程顺序迭代中，折叠将是主要的性能瓶颈，因为每次迭代将等待10ms的批处理窗口时间。</p>
 <p>但是，如果某个特定命令被大量同时使用，并且可以将数十个甚至数百个呼叫分批处理，则由于Hystrix减少了所需的线程数和与之连接的网络数，因此获得的吞吐量通常远远超过了成本。依赖性。</p>
-<h5 id="塌方流"><a href="#塌方流" class="headerlink" title="塌方流"></a>塌方流</h5><img src="http://cdn.lnzz.site/static/images/SpringCloud/10/9.png">
+<h5 id="塌方流"><a href="#塌方流" class="headerlink" title="塌方流"></a>塌方流</h5><img src="qihjf4962.hn-bkt.clouddn.com/static/images/SpringCloud/10/9.png">
 
 <h2 id="七、请求缓存"><a href="#七、请求缓存" class="headerlink" title="七、请求缓存"></a>七、请求缓存</h2><p><code>HystrixCommand</code>和<code>HystrixObservableCommand</code>实施方式可以定义一个缓存键，然后将其在并发感知方式用于重复数据删除的呼叫的请求范围内。</p>
 <p>这是一个示例流程，涉及一个HTTP请求生命周期以及两个在该请求中执行工作的线程：</p>
-<img src="http://cdn.lnzz.site/static/images/SpringCloud/10/10.png">
+<img src="qihjf4962.hn-bkt.clouddn.com/static/images/SpringCloud/10/10.png">
 
 <p>请求缓存的好处是：</p>
 <ul>
@@ -789,23 +789,43 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">架构修炼之道</a>
+                <a href="javascript:void(0)" class="js-tag color2">SpringCloud</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">读书笔记</a>
+                <a href="javascript:void(0)" class="js-tag color3">Hystrix</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Java编程思想</a>
+                <a href="javascript:void(0)" class="js-tag color2">Ribbon</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Java</a>
+                <a href="javascript:void(0)" class="js-tag color2">Eureka</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">多线程</a>
+                <a href="javascript:void(0)" class="js-tag color2">Consul</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Gateway</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Feign</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Zookeeper</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Config</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Bus</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -817,7 +837,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">SpringCloud</a>
+                <a href="javascript:void(0)" class="js-tag color2">Stream</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -825,7 +845,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Stream</a>
+                <a href="javascript:void(0)" class="js-tag color5">Java</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">多线程</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -837,31 +861,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Feign</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Eureka</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Ribbon</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Hystrix</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Gateway</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Consul</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Bus</a>
+                <a href="javascript:void(0)" class="js-tag color4">JVM</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -869,7 +869,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Config</a>
+                <a href="javascript:void(0)" class="js-tag color2">架构修炼之道</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">读书笔记</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -877,11 +881,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Zookeeper</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">JVM</a>
+                <a href="javascript:void(0)" class="js-tag color4">Java编程思想</a>
               </li>
             
             <div class="clearfix"></div>

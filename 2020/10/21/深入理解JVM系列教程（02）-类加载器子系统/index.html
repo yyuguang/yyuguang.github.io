@@ -5,31 +5,31 @@
   
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
-  <link rel="dns-prefetch" href="https://lnzz.site">
+  <link rel="dns-prefetch" href="http://lengnzz.top">
   <title>深入理解JVM系列教程（02）- 类加载器子系统 | 你对我笑i</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="一、类加载器子系统作用 类加载器子系统负责从文件系统或者网络中加载 Class 文件，class文件在文件开头有特定的文件标识。 ClassLoader 只负责class文件的加载，至于它是否可以运行，则由 Execution Engine决定。 加载的类信息存放于一块称为方法区的内存空间。除了类的信息外，方法区中还会存放运行时常量池信息，可能还包括字符串字面量和数字常量（这部分常量信息是Clas">
 <meta property="og:type" content="article">
 <meta property="og:title" content="深入理解JVM系列教程（02）- 类加载器子系统">
-<meta property="og:url" content="https://lnzz.site/2020/10/21/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3JVM%E7%B3%BB%E5%88%97%E6%95%99%E7%A8%8B%EF%BC%8802%EF%BC%89-%E7%B1%BB%E5%8A%A0%E8%BD%BD%E5%99%A8%E5%AD%90%E7%B3%BB%E7%BB%9F/index.html">
+<meta property="og:url" content="http://lengnzz.top/2020/10/21/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3JVM%E7%B3%BB%E5%88%97%E6%95%99%E7%A8%8B%EF%BC%8802%EF%BC%89-%E7%B1%BB%E5%8A%A0%E8%BD%BD%E5%99%A8%E5%AD%90%E7%B3%BB%E7%BB%9F/index.html">
 <meta property="og:site_name" content="你对我笑i">
 <meta property="og:description" content="一、类加载器子系统作用 类加载器子系统负责从文件系统或者网络中加载 Class 文件，class文件在文件开头有特定的文件标识。 ClassLoader 只负责class文件的加载，至于它是否可以运行，则由 Execution Engine决定。 加载的类信息存放于一块称为方法区的内存空间。除了类的信息外，方法区中还会存放运行时常量池信息，可能还包括字符串字面量和数字常量（这部分常量信息是Clas">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://lnzz.site/2020/10/21/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3JVM%E7%B3%BB%E5%88%97%E6%95%99%E7%A8%8B%EF%BC%8802%EF%BC%89-%E7%B1%BB%E5%8A%A0%E8%BD%BD%E5%99%A8%E5%AD%90%E7%B3%BB%E7%BB%9F/qihjf4962.hn-bkt.clouddn.com/static/images/JVM/02/01.png">
-<meta property="og:image" content="https://lnzz.site/2020/10/21/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3JVM%E7%B3%BB%E5%88%97%E6%95%99%E7%A8%8B%EF%BC%8802%EF%BC%89-%E7%B1%BB%E5%8A%A0%E8%BD%BD%E5%99%A8%E5%AD%90%E7%B3%BB%E7%BB%9F/qihjf4962.hn-bkt.clouddn.com/static/images/JVM/02/02.png">
-<meta property="og:image" content="https://lnzz.site/2020/10/21/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3JVM%E7%B3%BB%E5%88%97%E6%95%99%E7%A8%8B%EF%BC%8802%EF%BC%89-%E7%B1%BB%E5%8A%A0%E8%BD%BD%E5%99%A8%E5%AD%90%E7%B3%BB%E7%BB%9F/qihjf4962.hn-bkt.clouddn.com/static/images/JVM/02/03.png">
-<meta property="og:image" content="https://lnzz.site/2020/10/21/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3JVM%E7%B3%BB%E5%88%97%E6%95%99%E7%A8%8B%EF%BC%8802%EF%BC%89-%E7%B1%BB%E5%8A%A0%E8%BD%BD%E5%99%A8%E5%AD%90%E7%B3%BB%E7%BB%9F/qihjf4962.hn-bkt.clouddn.com/static/images/JVM/02/04.png">
-<meta property="og:image" content="https://lnzz.site/2020/10/21/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3JVM%E7%B3%BB%E5%88%97%E6%95%99%E7%A8%8B%EF%BC%8802%EF%BC%89-%E7%B1%BB%E5%8A%A0%E8%BD%BD%E5%99%A8%E5%AD%90%E7%B3%BB%E7%BB%9F/qihjf4962.hn-bkt.clouddn.com/static/images/JVM/02/05.png">
-<meta property="og:image" content="https://lnzz.site/2020/10/21/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3JVM%E7%B3%BB%E5%88%97%E6%95%99%E7%A8%8B%EF%BC%8802%EF%BC%89-%E7%B1%BB%E5%8A%A0%E8%BD%BD%E5%99%A8%E5%AD%90%E7%B3%BB%E7%BB%9F/qihjf4962.hn-bkt.clouddn.com/static/images/JVM/02/06.png">
-<meta property="og:image" content="https://lnzz.site/2020/10/21/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3JVM%E7%B3%BB%E5%88%97%E6%95%99%E7%A8%8B%EF%BC%8802%EF%BC%89-%E7%B1%BB%E5%8A%A0%E8%BD%BD%E5%99%A8%E5%AD%90%E7%B3%BB%E7%BB%9F/qihjf4962.hn-bkt.clouddn.com/static/images/JVM/02/07.png">
-<meta property="og:image" content="https://lnzz.site/2020/10/21/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3JVM%E7%B3%BB%E5%88%97%E6%95%99%E7%A8%8B%EF%BC%8802%EF%BC%89-%E7%B1%BB%E5%8A%A0%E8%BD%BD%E5%99%A8%E5%AD%90%E7%B3%BB%E7%BB%9F/qihjf4962.hn-bkt.clouddn.com/static/images/JVM/02/08.png">
+<meta property="og:image" content="http://cdn.lengnzz.top/static/images/JVM/02/01.png">
+<meta property="og:image" content="http://cdn.lengnzz.top/static/images/JVM/02/02.png">
+<meta property="og:image" content="http://cdn.lengnzz.top/static/images/JVM/02/03.png">
+<meta property="og:image" content="http://cdn.lengnzz.top/static/images/JVM/02/04.png">
+<meta property="og:image" content="http://cdn.lengnzz.top/static/images/JVM/02/05.png">
+<meta property="og:image" content="http://cdn.lengnzz.top/static/images/JVM/02/06.png">
+<meta property="og:image" content="http://cdn.lengnzz.top/static/images/JVM/02/07.png">
+<meta property="og:image" content="http://cdn.lengnzz.top/static/images/JVM/02/08.png">
 <meta property="article:published_time" content="2020-10-21T13:49:08.000Z">
 <meta property="article:modified_time" content="2020-10-21T13:58:26.751Z">
 <meta property="article:author" content="你对我笑i">
 <meta property="article:tag" content="Java">
 <meta property="article:tag" content="JVM">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://lnzz.site/2020/10/21/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3JVM%E7%B3%BB%E5%88%97%E6%95%99%E7%A8%8B%EF%BC%8802%EF%BC%89-%E7%B1%BB%E5%8A%A0%E8%BD%BD%E5%99%A8%E5%AD%90%E7%B3%BB%E7%BB%9F/qihjf4962.hn-bkt.clouddn.com/static/images/JVM/02/01.png">
+<meta name="twitter:image" content="http://cdn.lengnzz.top/static/images/JVM/02/01.png">
   
     <link rel="alternative" href="/atom.xml" title="你对我笑i" type="application/atom+xml">
   
@@ -244,18 +244,18 @@
 </ul>
 <a id="more"></a>
 
-<img src="qihjf4962.hn-bkt.clouddn.com/static/images/JVM/02/01.png">
+<img src="http://cdn.lengnzz.top/static/images/JVM/02/01.png">
 
-<img src="qihjf4962.hn-bkt.clouddn.com/static/images/JVM/02/02.png">
+<img src="http://cdn.lengnzz.top/static/images/JVM/02/02.png">
 
-<h2 id="二、类加载器-ClassLoader-角色"><a href="#二、类加载器-ClassLoader-角色" class="headerlink" title="二、类加载器 ClassLoader 角色"></a>二、类加载器 ClassLoader 角色</h2><img src="qihjf4962.hn-bkt.clouddn.com/static/images/JVM/02/03.png">
+<h2 id="二、类加载器-ClassLoader-角色"><a href="#二、类加载器-ClassLoader-角色" class="headerlink" title="二、类加载器 ClassLoader 角色"></a>二、类加载器 ClassLoader 角色</h2><img src="http://cdn.lengnzz.top/static/images/JVM/02/03.png">
 
 <ul>
 <li>class file存在于本地硬盘上，可以理解为设计师画在纸上的模板，而最终这个模板在执行的时候是要加载到 JVM 当中来，根据这个文件实例化出n个一模一样的实例。</li>
 <li>class file 加载到JVM中，被称为DNA元数据模板，放在方法区。</li>
 <li>在<strong>class文件 –&gt; JVM –&gt;最终成为元数据模板</strong>，此过程就要一个运输工具（类装载器 Class Loader），扮演一个快递员的角色</li>
 </ul>
-<h2 id="三、类的加载过程"><a href="#三、类的加载过程" class="headerlink" title="三、类的加载过程"></a>三、类的加载过程</h2><img src="qihjf4962.hn-bkt.clouddn.com/static/images/JVM/02/04.png">
+<h2 id="三、类的加载过程"><a href="#三、类的加载过程" class="headerlink" title="三、类的加载过程"></a>三、类的加载过程</h2><img src="http://cdn.lengnzz.top/static/images/JVM/02/04.png">
 
 <h3 id="3-1-加载"><a href="#3-1-加载" class="headerlink" title="3.1 加载"></a>3.1 加载</h3><ol>
 <li>通过一个类的全限定名获取定义此类的二进制字节流</li>
@@ -302,7 +302,7 @@
 <li><p>无论类加载器的类型如何划分，在程序中我们最常见的类加载器始终只有3个，如下所示</p>
 </li>
 </ul>
-<img src="qihjf4962.hn-bkt.clouddn.com/static/images/JVM/02/05.png">
+<img src="http://cdn.lengnzz.top/static/images/JVM/02/05.png">
 
 <h3 id="4-1-虚拟机自带的加载器"><a href="#4-1-虚拟机自带的加载器" class="headerlink" title="4.1 虚拟机自带的加载器"></a>4.1 虚拟机自带的加载器</h3><h4 id="启动类加载器（引导类加载器，Bootstrap-ClassLoader）"><a href="#启动类加载器（引导类加载器，Bootstrap-ClassLoader）" class="headerlink" title="启动类加载器（引导类加载器，Bootstrap ClassLoader）"></a>启动类加载器（引导类加载器，Bootstrap ClassLoader）</h4><ul>
 <li><p>这个类加载使用 C/C++ 语言实现的，嵌套在JVM内部</p>
@@ -379,14 +379,14 @@
 <td>连接指定的一个Java类</td>
 </tr>
 </tbody></table>
-<img src="qihjf4962.hn-bkt.clouddn.com/static/images/JVM/02/06.png">
+<img src="http://cdn.lengnzz.top/static/images/JVM/02/06.png">
 
 <h3 id="获取ClassLoader的路径"><a href="#获取ClassLoader的路径" class="headerlink" title="获取ClassLoader的路径"></a>获取ClassLoader的路径</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line"></span><br><span class="line">            <span class="comment">//1.方式一： clazz.getClassLoader()</span></span><br><span class="line">            ClassLoader classLoader = Class.forName(<span class="string">"java.lang.String"</span>).getClassLoader();</span><br><span class="line">            System.out.println(classLoader);</span><br><span class="line">            <span class="comment">//2.方式二：Thread.currentThread().getContextClassLoader();</span></span><br><span class="line">            ClassLoader contextClassLoader = Thread.currentThread().getContextClassLoader();</span><br><span class="line">            System.out.println(contextClassLoader);</span><br><span class="line">            <span class="comment">//3.方式三：ClassLoader.getSystemClassLoader()</span></span><br><span class="line">            ClassLoader parent = ClassLoader.getSystemClassLoader().getParent();</span><br><span class="line">            System.out.println(parent);</span><br><span class="line">        &#125; <span class="keyword">catch</span> (ClassNotFoundException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
 
 
 
 <h2 id="六、双亲委派机制"><a href="#六、双亲委派机制" class="headerlink" title="六、双亲委派机制"></a>六、双亲委派机制</h2><p>Java虚拟机对class文件采用的是按需加载的方式，也就是说当需要使用该类时才会将它的class文件加载到内存生成class对象。而且加载某个类的class文件时，Java虚拟机采用的是双亲委派模式，即把请求交由父类处理，它是一种任务委派模式。</p>
-<img src="qihjf4962.hn-bkt.clouddn.com/static/images/JVM/02/07.png">
+<img src="http://cdn.lengnzz.top/static/images/JVM/02/07.png">
 
 <h3 id="6-1-工作原理"><a href="#6-1-工作原理" class="headerlink" title="6.1 工作原理"></a>6.1 工作原理</h3><ul>
 <li>如果一个类加载器收到了类加载请求，它并不会自己先去加载，而是把这个请求委托给父类的加载器去执行</li>
@@ -398,7 +398,7 @@
 <li>保护程序安全，防止核心API被随意篡改</li>
 </ul>
 <h3 id="6-3-沙箱安全机制"><a href="#6-3-沙箱安全机制" class="headerlink" title="6.3 沙箱安全机制"></a>6.3 沙箱安全机制</h3><p>自定义String类，但是在加载自定义String类的时候会率先使用引导类加载器加载，而引导类加载器在加载过程中会先加载jdk自带的文件（rt.jar包中java\lang\String.class)，报错信息说没有main方法，就是因为加载的是rt.jar包中的String类。这样可以保证对java核心源代码的保护，这就是沙箱安全机制     </p>
-<img src="qihjf4962.hn-bkt.clouddn.com/static/images/JVM/02/08.png">
+<img src="http://cdn.lengnzz.top/static/images/JVM/02/08.png">
 
 <h2 id="七、其它"><a href="#七、其它" class="headerlink" title="七、其它"></a>七、其它</h2><p>在JVM中，表示两个class对象是否为同一个类存在两个必要条件：</p>
 <ol>
@@ -445,10 +445,10 @@
     2020-10-21
     <br>
     <strong class="article-titles">本文标题：</strong>
-    <a href="https://lnzz.site/2020/10/21/深入理解JVM系列教程（02）-类加载器子系统/" title="深入理解JVM系列教程（02）- 类加载器子系统" target="_blank">深入理解JVM系列教程（02）- 类加载器子系统</a>
+    <a href="http://lengnzz.top/2020/10/21/深入理解JVM系列教程（02）-类加载器子系统/" title="深入理解JVM系列教程（02）- 类加载器子系统" target="_blank">深入理解JVM系列教程（02）- 类加载器子系统</a>
     <br>
     <strong class="article-url">本文链接：</strong>
-    <a href="https://lnzz.site/2020/10/21/深入理解JVM系列教程（02）-类加载器子系统/" title="深入理解JVM系列教程（02）- 类加载器子系统" target="_blank">https://lnzz.site/2020/10/21/深入理解JVM系列教程（02）-类加载器子系统/</a>
+    <a href="http://lengnzz.top/2020/10/21/深入理解JVM系列教程（02）-类加载器子系统/" title="深入理解JVM系列教程（02）- 类加载器子系统" target="_blank">http://lengnzz.top/2020/10/21/深入理解JVM系列教程（02）-类加载器子系统/</a>
     <br>
     <strong class="copyright">版权声明：</strong>
     本作品采用
@@ -565,7 +565,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=https://lnzz.site/2020/10/21/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3JVM%E7%B3%BB%E5%88%97%E6%95%99%E7%A8%8B%EF%BC%8802%EF%BC%89-%E7%B1%BB%E5%8A%A0%E8%BD%BD%E5%99%A8%E5%AD%90%E7%B3%BB%E7%BB%9F/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://lengnzz.top/2020/10/21/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3JVM%E7%B3%BB%E5%88%97%E6%95%99%E7%A8%8B%EF%BC%8802%EF%BC%89-%E7%B1%BB%E5%8A%A0%E8%BD%BD%E5%99%A8%E5%AD%90%E7%B3%BB%E7%BB%9F/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -765,15 +765,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Hystrix</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Ribbon</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Eureka</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Hystrix</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Feign</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -785,35 +789,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Feign</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Zookeeper</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Config</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Bus</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Mybatis</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Intellij IDEA</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Stream</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Sleuth</a>
+                <a href="javascript:void(0)" class="js-tag color2">Config</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -825,6 +805,22 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Mybatis</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Intellij IDEA</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Zookeeper</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Sleuth</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Spring Cloud Alibaba</a>
               </li>
              
@@ -833,15 +829,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">JVM</a>
+                <a href="javascript:void(0)" class="js-tag color2">Stream</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">设计模式</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">架构修炼之道</a>
+                <a href="javascript:void(0)" class="js-tag color4">Java编程思想</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -849,11 +841,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">面向对象设计原则</a>
+                <a href="javascript:void(0)" class="js-tag color2">架构修炼之道</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Java编程思想</a>
+                <a href="javascript:void(0)" class="js-tag color5">设计模式</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">JVM</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">面向对象设计原则</a>
               </li>
             
             <div class="clearfix"></div>

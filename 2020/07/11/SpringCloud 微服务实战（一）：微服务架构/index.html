@@ -5,25 +5,25 @@
   
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
-  <link rel="dns-prefetch" href="https://lnzz.site">
+  <link rel="dns-prefetch" href="http://lengnzz.top">
   <title>SpringCloud 微服务实战（一）：微服务架构 | 你对我笑i</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="参考资料 Spring Cloud SpringCloud中文文档 SpringCloud官方文档 书籍 《 Spring Cloud微服务实战 》     SpringBoot SpringBoot官方文档   Github 获取代码    一、前言 &amp;emsp; 在进行Spring Cloud的具体内容介绍之前，我们先通过本章学习一些关于微服务架构以及Spring Cloud的基础知识。对Sp">
 <meta property="og:type" content="article">
 <meta property="og:title" content="SpringCloud 微服务实战（一）：微服务架构">
-<meta property="og:url" content="https://lnzz.site/2020/07/11/SpringCloud%20%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AE%9E%E6%88%98%EF%BC%88%E4%B8%80%EF%BC%89%EF%BC%9A%E5%BE%AE%E6%9C%8D%E5%8A%A1%E6%9E%B6%E6%9E%84/index.html">
+<meta property="og:url" content="http://lengnzz.top/2020/07/11/SpringCloud%20%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AE%9E%E6%88%98%EF%BC%88%E4%B8%80%EF%BC%89%EF%BC%9A%E5%BE%AE%E6%9C%8D%E5%8A%A1%E6%9E%B6%E6%9E%84/index.html">
 <meta property="og:site_name" content="你对我笑i">
 <meta property="og:description" content="参考资料 Spring Cloud SpringCloud中文文档 SpringCloud官方文档 书籍 《 Spring Cloud微服务实战 》     SpringBoot SpringBoot官方文档   Github 获取代码    一、前言 &amp;emsp; 在进行Spring Cloud的具体内容介绍之前，我们先通过本章学习一些关于微服务架构以及Spring Cloud的基础知识。对Sp">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://lnzz.site/2020/07/11/SpringCloud%20%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AE%9E%E6%88%98%EF%BC%88%E4%B8%80%EF%BC%89%EF%BC%9A%E5%BE%AE%E6%9C%8D%E5%8A%A1%E6%9E%B6%E6%9E%84/qihjf4962.hn-bkt.clouddn.com/static/images/SpringCloud/01/1.png">
-<meta property="og:image" content="https://lnzz.site/2020/07/11/SpringCloud%20%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AE%9E%E6%88%98%EF%BC%88%E4%B8%80%EF%BC%89%EF%BC%9A%E5%BE%AE%E6%9C%8D%E5%8A%A1%E6%9E%B6%E6%9E%84/qihjf4962.hn-bkt.clouddn.com/static/images/SpringCloud/01/2.png">
-<meta property="og:image" content="https://lnzz.site/2020/07/11/SpringCloud%20%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AE%9E%E6%88%98%EF%BC%88%E4%B8%80%EF%BC%89%EF%BC%9A%E5%BE%AE%E6%9C%8D%E5%8A%A1%E6%9E%B6%E6%9E%84/qihjf4962.hn-bkt.clouddn.com/static/images/SpringCloud/01/3.png">
+<meta property="og:image" content="http://cdn.lengnzz.top/static/images/SpringCloud/01/1.png">
+<meta property="og:image" content="http://cdn.lengnzz.top/static/images/SpringCloud/01/2.png">
+<meta property="og:image" content="http://cdn.lengnzz.top/static/images/SpringCloud/01/3.png">
 <meta property="article:published_time" content="2020-07-11T15:49:55.000Z">
 <meta property="article:modified_time" content="2020-08-16T14:12:36.353Z">
 <meta property="article:author" content="你对我笑i">
 <meta property="article:tag" content="SpringCloud">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://lnzz.site/2020/07/11/SpringCloud%20%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AE%9E%E6%88%98%EF%BC%88%E4%B8%80%EF%BC%89%EF%BC%9A%E5%BE%AE%E6%9C%8D%E5%8A%A1%E6%9E%B6%E6%9E%84/qihjf4962.hn-bkt.clouddn.com/static/images/SpringCloud/01/1.png">
+<meta name="twitter:image" content="http://cdn.lengnzz.top/static/images/SpringCloud/01/1.png">
   
     <link rel="alternative" href="/atom.xml" title="你对我笑i" type="application/atom+xml">
   
@@ -256,7 +256,7 @@
 <h2 id="二、什么是微服务架构"><a href="#二、什么是微服务架构" class="headerlink" title="二、什么是微服务架构"></a>二、什么是微服务架构</h2><p>​    <strong>“微服务”</strong>一词源于<strong>Martin Fowler</strong>的名为<a href="https://martinfowler.com/articles/microservices.html" target="_blank" rel="noopener">Microservices</a>的博文。</p>
 <p> &emsp; 简单地说，微服务是系统架构上的一种设计风格，它的主旨是将一个原本独立的系统图拆分成多个小型服务，这些小型服务都在各自独立的进程中运行，服务之间通过基于<strong>HTTP</strong>的RESTful API进行通信协作。被拆分成的每一个小型服务都围绕着系统中的某一项或一些耦合度较高的业务功能进行构建，并且每个服务都维护着自身的数据存储、业务开发、自动化测试案例以及独立部署机制。由于有了轻量级的通信协作基础，所以这些微服务可以使用不同的语言来编写。</p>
 <h3 id="2-1-与单体系统的区别"><a href="#2-1-与单体系统的区别" class="headerlink" title="2.1 与单体系统的区别"></a>2.1 与单体系统的区别</h3><p> &emsp; 在以往传统的企业系统架构中，我们针对一个复杂的业务需求通常使用对象或业务类型来构建-一个单体项目。在项目中我们通常将需求分为三个主要部分</p>
-<img src="qihjf4962.hn-bkt.clouddn.com/static/images/SpringCloud/01/1.png">
+<img src="http://cdn.lengnzz.top/static/images/SpringCloud/01/1.png">
 
 <p> &emsp; 在业务发展初期，由于所有的业务逻辑在一个应用中，<strong>开发、测试、部署</strong>都还比较容易且方便。但是，随着企业的发展，系统为了应对不同的业务需求会不断为该单体项目增加不同的业务模块;同时随着移动端设备的进步，前端展现模块已经不仅仅局限于Web的形式，这对于系统后端向前端的支持需要更多的接口模块。单体应用由于面对的业务需求更为宽泛，不断扩大的需求会使得单体应用变得越来越臃肿。单体应用的问题就逐渐凸显出来，由于单体系统部署在一个进程内， 往往我们修改了一个很小的功能，为了部署上线会影响其他功能的运行。并且，单体应用中的这些功能模块的使用场景、并发量、消耗的资源类型都各有不同，对于资源的利用又互相影响，这样使得我们对各个业务模块的系统容量很难给出较为准确的评估。所以，单体系统在初期虽然可以非常方便地进行开发和使用，但是随着系统的发展，维护成本会变得越来越大，且难以控制。</p>
 <p>&emsp;为了解决单体系统变得庞大臃肿之后产生的难以维护的问题，微服务架构诞生了并被大家所关注。我们将系统中的不同功能模块拆分成多个不同的服务，这些服务都能够独立部署和扩展。由于每个服务都运行在自己的进程内，在部署上有稳固的边界，这样每个服务的更新都不会影响其他服务的运行。同时，由于是独立部署的，我们可以更准确地为每个服务评估性能容量，通过配合服务间的协作流程也可以更容易地发现系统的瓶颈位置，以及给出较为准确的系统级性能容量评估。</p>
@@ -281,7 +281,7 @@
 </ul>
 <h2 id="三、SpringCloud组件介绍"><a href="#三、SpringCloud组件介绍" class="headerlink" title="三、SpringCloud组件介绍"></a>三、SpringCloud组件介绍</h2><h3 id="3-1-关于Cloud各种组件的停更-升级-替换"><a href="#3-1-关于Cloud各种组件的停更-升级-替换" class="headerlink" title="3.1 关于Cloud各种组件的停更 / 升级 / 替换"></a>3.1 关于Cloud各种组件的停更 / 升级 / 替换</h3><ul>
 <li><p>以前</p>
-<img src="qihjf4962.hn-bkt.clouddn.com/static/images/SpringCloud/01/2.png">
+<img src="http://cdn.lengnzz.top/static/images/SpringCloud/01/2.png">
 
 
 
@@ -289,7 +289,7 @@
 </ul>
 <ul>
 <li><p>NOW（2020）</p>
-<img src="qihjf4962.hn-bkt.clouddn.com/static/images/SpringCloud/01/3.png"></li>
+<img src="http://cdn.lengnzz.top/static/images/SpringCloud/01/3.png"></li>
 </ul>
 
       
@@ -315,10 +315,10 @@
     2020-08-16
     <br>
     <strong class="article-titles">本文标题：</strong>
-    <a href="https://lnzz.site/2020/07/11/SpringCloud 微服务实战（一）：微服务架构/" title="SpringCloud 微服务实战（一）：微服务架构" target="_blank">SpringCloud 微服务实战（一）：微服务架构</a>
+    <a href="http://lengnzz.top/2020/07/11/SpringCloud 微服务实战（一）：微服务架构/" title="SpringCloud 微服务实战（一）：微服务架构" target="_blank">SpringCloud 微服务实战（一）：微服务架构</a>
     <br>
     <strong class="article-url">本文链接：</strong>
-    <a href="https://lnzz.site/2020/07/11/SpringCloud 微服务实战（一）：微服务架构/" title="SpringCloud 微服务实战（一）：微服务架构" target="_blank">https://lnzz.site/2020/07/11/SpringCloud 微服务实战（一）：微服务架构/</a>
+    <a href="http://lengnzz.top/2020/07/11/SpringCloud 微服务实战（一）：微服务架构/" title="SpringCloud 微服务实战（一）：微服务架构" target="_blank">http://lengnzz.top/2020/07/11/SpringCloud 微服务实战（一）：微服务架构/</a>
     <br>
     <strong class="copyright">版权声明：</strong>
     本作品采用
@@ -431,7 +431,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=https://lnzz.site/2020/07/11/SpringCloud%20%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AE%9E%E6%88%98%EF%BC%88%E4%B8%80%EF%BC%89%EF%BC%9A%E5%BE%AE%E6%9C%8D%E5%8A%A1%E6%9E%B6%E6%9E%84/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://lengnzz.top/2020/07/11/SpringCloud%20%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AE%9E%E6%88%98%EF%BC%88%E4%B8%80%EF%BC%89%EF%BC%9A%E5%BE%AE%E6%9C%8D%E5%8A%A1%E6%9E%B6%E6%9E%84/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -635,15 +635,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Hystrix</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Ribbon</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Eureka</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Hystrix</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Feign</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -655,35 +659,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Feign</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Zookeeper</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Config</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Bus</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Mybatis</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Intellij IDEA</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Stream</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Sleuth</a>
+                <a href="javascript:void(0)" class="js-tag color2">Config</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -695,6 +675,22 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Mybatis</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Intellij IDEA</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Zookeeper</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Sleuth</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Spring Cloud Alibaba</a>
               </li>
              
@@ -703,15 +699,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">JVM</a>
+                <a href="javascript:void(0)" class="js-tag color2">Stream</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">设计模式</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">架构修炼之道</a>
+                <a href="javascript:void(0)" class="js-tag color4">Java编程思想</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -719,11 +711,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">面向对象设计原则</a>
+                <a href="javascript:void(0)" class="js-tag color2">架构修炼之道</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Java编程思想</a>
+                <a href="javascript:void(0)" class="js-tag color5">设计模式</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">JVM</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">面向对象设计原则</a>
               </li>
             
             <div class="clearfix"></div>

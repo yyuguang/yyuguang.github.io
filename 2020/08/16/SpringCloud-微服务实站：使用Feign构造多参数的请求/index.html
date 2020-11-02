@@ -5,13 +5,13 @@
   
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
-  <link rel="dns-prefetch" href="https://lnzz.site">
+  <link rel="dns-prefetch" href="http://lengnzz.top">
   <title>SpringCloud 微服务实站：使用Feign构造多参数的请求 | 你对我笑i</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="​    本文基于Spring Cloud Greenwich SR1，理论上支持Finchley及更高版本。   本节来探讨如何使用Feign构造多参数的请求。笔者以GET及POST请求为例讲解，其他方式（例如DELETE、PUT等）的请求原理相通，读者可自行研究。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="SpringCloud 微服务实站：使用Feign构造多参数的请求">
-<meta property="og:url" content="https://lnzz.site/2020/08/16/SpringCloud-%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AE%9E%E7%AB%99%EF%BC%9A%E4%BD%BF%E7%94%A8Feign%E6%9E%84%E9%80%A0%E5%A4%9A%E5%8F%82%E6%95%B0%E7%9A%84%E8%AF%B7%E6%B1%82/index.html">
+<meta property="og:url" content="http://lengnzz.top/2020/08/16/SpringCloud-%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AE%9E%E7%AB%99%EF%BC%9A%E4%BD%BF%E7%94%A8Feign%E6%9E%84%E9%80%A0%E5%A4%9A%E5%8F%82%E6%95%B0%E7%9A%84%E8%AF%B7%E6%B1%82/index.html">
 <meta property="og:site_name" content="你对我笑i">
 <meta property="og:description" content="​    本文基于Spring Cloud Greenwich SR1，理论上支持Finchley及更高版本。   本节来探讨如何使用Feign构造多参数的请求。笔者以GET及POST请求为例讲解，其他方式（例如DELETE、PUT等）的请求原理相通，读者可自行研究。">
 <meta property="og:locale" content="en_US">
@@ -284,10 +284,10 @@
     2020-08-20
     <br>
     <strong class="article-titles">本文标题：</strong>
-    <a href="https://lnzz.site/2020/08/16/SpringCloud-微服务实站：使用Feign构造多参数的请求/" title="SpringCloud 微服务实站：使用Feign构造多参数的请求" target="_blank">SpringCloud 微服务实站：使用Feign构造多参数的请求</a>
+    <a href="http://lengnzz.top/2020/08/16/SpringCloud-微服务实站：使用Feign构造多参数的请求/" title="SpringCloud 微服务实站：使用Feign构造多参数的请求" target="_blank">SpringCloud 微服务实站：使用Feign构造多参数的请求</a>
     <br>
     <strong class="article-url">本文链接：</strong>
-    <a href="https://lnzz.site/2020/08/16/SpringCloud-微服务实站：使用Feign构造多参数的请求/" title="SpringCloud 微服务实站：使用Feign构造多参数的请求" target="_blank">https://lnzz.site/2020/08/16/SpringCloud-微服务实站：使用Feign构造多参数的请求/</a>
+    <a href="http://lengnzz.top/2020/08/16/SpringCloud-微服务实站：使用Feign构造多参数的请求/" title="SpringCloud 微服务实站：使用Feign构造多参数的请求" target="_blank">http://lengnzz.top/2020/08/16/SpringCloud-微服务实站：使用Feign构造多参数的请求/</a>
     <br>
     <strong class="copyright">版权声明：</strong>
     本作品采用
@@ -404,7 +404,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=https://lnzz.site/2020/08/16/SpringCloud-%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AE%9E%E7%AB%99%EF%BC%9A%E4%BD%BF%E7%94%A8Feign%E6%9E%84%E9%80%A0%E5%A4%9A%E5%8F%82%E6%95%B0%E7%9A%84%E8%AF%B7%E6%B1%82/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://lengnzz.top/2020/08/16/SpringCloud-%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AE%9E%E7%AB%99%EF%BC%9A%E4%BD%BF%E7%94%A8Feign%E6%9E%84%E9%80%A0%E5%A4%9A%E5%8F%82%E6%95%B0%E7%9A%84%E8%AF%B7%E6%B1%82/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -613,15 +613,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Hystrix</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Ribbon</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Eureka</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Hystrix</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Feign</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -633,35 +637,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Feign</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Zookeeper</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Config</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Bus</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Mybatis</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Intellij IDEA</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Stream</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Sleuth</a>
+                <a href="javascript:void(0)" class="js-tag color2">Config</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -673,6 +653,22 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Mybatis</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Intellij IDEA</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Zookeeper</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Sleuth</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Spring Cloud Alibaba</a>
               </li>
              
@@ -681,15 +677,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">JVM</a>
+                <a href="javascript:void(0)" class="js-tag color2">Stream</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">设计模式</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">架构修炼之道</a>
+                <a href="javascript:void(0)" class="js-tag color4">Java编程思想</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -697,11 +689,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">面向对象设计原则</a>
+                <a href="javascript:void(0)" class="js-tag color2">架构修炼之道</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Java编程思想</a>
+                <a href="javascript:void(0)" class="js-tag color5">设计模式</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">JVM</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">面向对象设计原则</a>
               </li>
             
             <div class="clearfix"></div>

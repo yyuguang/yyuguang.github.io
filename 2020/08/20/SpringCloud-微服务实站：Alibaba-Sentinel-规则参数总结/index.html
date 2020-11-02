@@ -5,21 +5,21 @@
   
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
-  <link rel="dns-prefetch" href="https://lnzz.site">
+  <link rel="dns-prefetch" href="http://lengnzz.top">
   <title>SpringCloud 微服务实站：Alibaba Sentinel 规则参数总结 | 你对我笑i</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="TIPS 本文总结了Alibaba Sentinel各种规则的参数。 基于Sentinel 1.6.2编写">
 <meta property="og:type" content="article">
 <meta property="og:title" content="SpringCloud 微服务实站：Alibaba Sentinel 规则参数总结">
-<meta property="og:url" content="https://lnzz.site/2020/08/20/SpringCloud-%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AE%9E%E7%AB%99%EF%BC%9AAlibaba-Sentinel-%E8%A7%84%E5%88%99%E5%8F%82%E6%95%B0%E6%80%BB%E7%BB%93/index.html">
+<meta property="og:url" content="http://lengnzz.top/2020/08/20/SpringCloud-%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AE%9E%E7%AB%99%EF%BC%9AAlibaba-Sentinel-%E8%A7%84%E5%88%99%E5%8F%82%E6%95%B0%E6%80%BB%E7%BB%93/index.html">
 <meta property="og:site_name" content="你对我笑i">
 <meta property="og:description" content="TIPS 本文总结了Alibaba Sentinel各种规则的参数。 基于Sentinel 1.6.2编写">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://lnzz.site/2020/08/20/SpringCloud-%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AE%9E%E7%AB%99%EF%BC%9AAlibaba-Sentinel-%E8%A7%84%E5%88%99%E5%8F%82%E6%95%B0%E6%80%BB%E7%BB%93/qihjf4962.hn-bkt.clouddn.com/static/images/SpringCloud/Sentinel/01/1.png">
-<meta property="og:image" content="https://lnzz.site/2020/08/20/SpringCloud-%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AE%9E%E7%AB%99%EF%BC%9AAlibaba-Sentinel-%E8%A7%84%E5%88%99%E5%8F%82%E6%95%B0%E6%80%BB%E7%BB%93/qihjf4962.hn-bkt.clouddn.com/static/images/SpringCloud/Sentinel/01/2.png">
-<meta property="og:image" content="https://lnzz.site/2020/08/20/SpringCloud-%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AE%9E%E7%AB%99%EF%BC%9AAlibaba-Sentinel-%E8%A7%84%E5%88%99%E5%8F%82%E6%95%B0%E6%80%BB%E7%BB%93/qihjf4962.hn-bkt.clouddn.com/static/images/SpringCloud/Sentinel/01/3.png">
-<meta property="og:image" content="https://lnzz.site/2020/08/20/SpringCloud-%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AE%9E%E7%AB%99%EF%BC%9AAlibaba-Sentinel-%E8%A7%84%E5%88%99%E5%8F%82%E6%95%B0%E6%80%BB%E7%BB%93/qihjf4962.hn-bkt.clouddn.com/static/images/SpringCloud/Sentinel/01/4.png">
-<meta property="og:image" content="https://lnzz.site/2020/08/20/SpringCloud-%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AE%9E%E7%AB%99%EF%BC%9AAlibaba-Sentinel-%E8%A7%84%E5%88%99%E5%8F%82%E6%95%B0%E6%80%BB%E7%BB%93/qihjf4962.hn-bkt.clouddn.com/static/images/SpringCloud/Sentinel/01/5.png">
+<meta property="og:image" content="http://cdn.lengnzz.top/static/images/SpringCloud/Sentinel/01/1.png">
+<meta property="og:image" content="http://cdn.lengnzz.top/static/images/SpringCloud/Sentinel/01/2.png">
+<meta property="og:image" content="http://cdn.lengnzz.top/static/images/SpringCloud/Sentinel/01/3.png">
+<meta property="og:image" content="http://cdn.lengnzz.top/static/images/SpringCloud/Sentinel/01/4.png">
+<meta property="og:image" content="http://cdn.lengnzz.top/static/images/SpringCloud/Sentinel/01/5.png">
 <meta property="article:published_time" content="2020-08-20T13:18:19.000Z">
 <meta property="article:modified_time" content="2020-08-20T13:54:25.226Z">
 <meta property="article:author" content="你对我笑i">
@@ -27,7 +27,7 @@
 <meta property="article:tag" content="Spring Cloud Alibaba">
 <meta property="article:tag" content="Sentinel">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://lnzz.site/2020/08/20/SpringCloud-%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AE%9E%E7%AB%99%EF%BC%9AAlibaba-Sentinel-%E8%A7%84%E5%88%99%E5%8F%82%E6%95%B0%E6%80%BB%E7%BB%93/qihjf4962.hn-bkt.clouddn.com/static/images/SpringCloud/Sentinel/01/1.png">
+<meta name="twitter:image" content="http://cdn.lengnzz.top/static/images/SpringCloud/Sentinel/01/1.png">
   
     <link rel="alternative" href="/atom.xml" title="你对我笑i" type="application/atom+xml">
   
@@ -242,7 +242,7 @@
 </blockquote>
 <a id="more"></a>
 
-<h2 id="一、流控规则"><a href="#一、流控规则" class="headerlink" title="一、流控规则"></a>一、流控规则</h2><h3 id="1-1-配置"><a href="#1-1-配置" class="headerlink" title="1.1 配置"></a>1.1 配置</h3><img src="qihjf4962.hn-bkt.clouddn.com/static/images/SpringCloud/Sentinel/01/1.png">
+<h2 id="一、流控规则"><a href="#一、流控规则" class="headerlink" title="一、流控规则"></a>一、流控规则</h2><h3 id="1-1-配置"><a href="#1-1-配置" class="headerlink" title="1.1 配置"></a>1.1 配置</h3><img src="http://cdn.lengnzz.top/static/images/SpringCloud/Sentinel/01/1.png">
 
 <h3 id="1-2-参数"><a href="#1-2-参数" class="headerlink" title="1.2 参数"></a>1.2 参数</h3><table>
 <thead>
@@ -287,7 +287,7 @@
 
 <h3 id="1-4-参考"><a href="#1-4-参考" class="headerlink" title="1.4 参考"></a>1.4 参考</h3><p><a href="https://github.com/alibaba/Sentinel/wiki/如何使用#流量控制规则-flowrule" target="_blank" rel="noopener">https://github.com/alibaba/Sentinel/wiki/如何使用#流量控制规则-flowrule</a></p>
 <p><a href="https://github.com/alibaba/Sentinel/wiki/流量控制" target="_blank" rel="noopener">https://github.com/alibaba/Sentinel/wiki/流量控制</a></p>
-<h2 id="二、降级规则"><a href="#二、降级规则" class="headerlink" title="二、降级规则"></a>二、降级规则</h2><h3 id="2-1-配置"><a href="#2-1-配置" class="headerlink" title="2.1 配置"></a>2.1 配置</h3><img src="qihjf4962.hn-bkt.clouddn.com/static/images/SpringCloud/Sentinel/01/2.png">
+<h2 id="二、降级规则"><a href="#二、降级规则" class="headerlink" title="二、降级规则"></a>二、降级规则</h2><h3 id="2-1-配置"><a href="#2-1-配置" class="headerlink" title="2.1 配置"></a>2.1 配置</h3><img src="http://cdn.lengnzz.top/static/images/SpringCloud/Sentinel/01/2.png">
 
 <h3 id="2-2-参数"><a href="#2-2-参数" class="headerlink" title="2.2 参数"></a>2.2 参数</h3><table>
 <thead>
@@ -321,7 +321,7 @@
 <h3 id="2-3-代码配置示例"><a href="#2-3-代码配置示例" class="headerlink" title="2.3 代码配置示例"></a>2.3 代码配置示例</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">initDegradeRule</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    List&lt;DegradeRule&gt; rules = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">    DegradeRule rule = <span class="keyword">new</span> DegradeRule();</span><br><span class="line">    rule.setResource(KEY);</span><br><span class="line">    <span class="comment">// set threshold RT, 10 ms</span></span><br><span class="line">    rule.setCount(<span class="number">10</span>);</span><br><span class="line">    rule.setGrade(RuleConstant.DEGRADE_GRADE_RT);</span><br><span class="line">    rule.setTimeWindow(<span class="number">10</span>);</span><br><span class="line">    rules.add(rule);</span><br><span class="line">    DegradeRuleManager.loadRules(rules);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <h3 id="2-4-参考"><a href="#2-4-参考" class="headerlink" title="2.4 参考"></a>2.4 参考</h3><p><a href="https://github.com/alibaba/Sentinel/wiki/如何使用#熔断降级规则-degraderule" target="_blank" rel="noopener">https://github.com/alibaba/Sentinel/wiki/如何使用#熔断降级规则-degraderule</a></p>
-<h2 id="三、热点规则"><a href="#三、热点规则" class="headerlink" title="三、热点规则"></a>三、热点规则</h2><h3 id="3-1-配置"><a href="#3-1-配置" class="headerlink" title="3.1 配置"></a>3.1 配置</h3><img src="qihjf4962.hn-bkt.clouddn.com/static/images/SpringCloud/Sentinel/01/3.png">
+<h2 id="三、热点规则"><a href="#三、热点规则" class="headerlink" title="三、热点规则"></a>三、热点规则</h2><h3 id="3-1-配置"><a href="#3-1-配置" class="headerlink" title="3.1 配置"></a>3.1 配置</h3><img src="http://cdn.lengnzz.top/static/images/SpringCloud/Sentinel/01/3.png">
 
 <h3 id="3-2-参数"><a href="#3-2-参数" class="headerlink" title="3.2 参数"></a>3.2 参数</h3><table>
 <thead>
@@ -385,7 +385,7 @@
 <h3 id="3-3-代码配置示例"><a href="#3-3-代码配置示例" class="headerlink" title="3.3 代码配置示例"></a>3.3 代码配置示例</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">ParamFlowRule rule = <span class="keyword">new</span> ParamFlowRule(resourceName)</span><br><span class="line">    .setParamIdx(<span class="number">0</span>)</span><br><span class="line">    .setCount(<span class="number">5</span>);</span><br><span class="line"><span class="comment">// 针对 int 类型的参数 PARAM_B，单独设置限流 QPS 阈值为 10，而不是全局的阈值 5.</span></span><br><span class="line">ParamFlowItem item = <span class="keyword">new</span> ParamFlowItem().setObject(String.valueOf(PARAM_B))</span><br><span class="line">    .setClassType(<span class="keyword">int</span><span class="class">.<span class="keyword">class</span>.<span class="title">getName</span>())</span></span><br><span class="line"><span class="class">    .<span class="title">setCount</span>(10)</span>;</span><br><span class="line">rule.setParamFlowItemList(Collections.singletonList(item));</span><br><span class="line"></span><br><span class="line">ParamFlowRuleManager.loadRules(Collections.singletonList(rule));</span><br></pre></td></tr></table></figure>
 
 <h3 id="3-4-参考"><a href="#3-4-参考" class="headerlink" title="3.4 参考"></a>3.4 参考</h3><p><a href="https://github.com/alibaba/Sentinel/wiki/热点参数限流" target="_blank" rel="noopener">https://github.com/alibaba/Sentinel/wiki/热点参数限流</a></p>
-<h2 id="四、系统规则"><a href="#四、系统规则" class="headerlink" title="四、系统规则"></a>四、系统规则</h2><h3 id="4-1-配置"><a href="#4-1-配置" class="headerlink" title="4.1 配置"></a>4.1 配置</h3><img src="qihjf4962.hn-bkt.clouddn.com/static/images/SpringCloud/Sentinel/01/4.png">
+<h2 id="四、系统规则"><a href="#四、系统规则" class="headerlink" title="四、系统规则"></a>四、系统规则</h2><h3 id="4-1-配置"><a href="#4-1-配置" class="headerlink" title="4.1 配置"></a>4.1 配置</h3><img src="http://cdn.lengnzz.top/static/images/SpringCloud/Sentinel/01/4.png">
 
 <h3 id="4-2-参数"><a href="#4-2-参数" class="headerlink" title="4.2 参数"></a>4.2 参数</h3><table>
 <thead>
@@ -424,7 +424,7 @@
 <h3 id="4-3-代码配置示例"><a href="#4-3-代码配置示例" class="headerlink" title="4.3 代码配置示例"></a>4.3 代码配置示例</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">initSystemRule</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    List&lt;SystemRule&gt; rules = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">    SystemRule rule = <span class="keyword">new</span> SystemRule();</span><br><span class="line">    rule.setHighestSystemLoad(<span class="number">10</span>);</span><br><span class="line">    rules.add(rule);</span><br><span class="line">    SystemRuleManager.loadRules(rules);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <h3 id="4-4-参考"><a href="#4-4-参考" class="headerlink" title="4.4 参考"></a>4.4 参考</h3><p><a href="https://github.com/alibaba/Sentinel/wiki/如何使用#系统保护规则-systemrule" target="_blank" rel="noopener">https://github.com/alibaba/Sentinel/wiki/如何使用#系统保护规则-systemrule</a></p>
-<h2 id="五、授权规则"><a href="#五、授权规则" class="headerlink" title="五、授权规则"></a>五、授权规则</h2><h3 id="5-1-配置"><a href="#5-1-配置" class="headerlink" title="5.1 配置"></a>5.1 配置</h3><img src="qihjf4962.hn-bkt.clouddn.com/static/images/SpringCloud/Sentinel/01/5.png">
+<h2 id="五、授权规则"><a href="#五、授权规则" class="headerlink" title="五、授权规则"></a>五、授权规则</h2><h3 id="5-1-配置"><a href="#5-1-配置" class="headerlink" title="5.1 配置"></a>5.1 配置</h3><img src="http://cdn.lengnzz.top/static/images/SpringCloud/Sentinel/01/5.png">
 
 <h3 id="5-2-参数"><a href="#5-2-参数" class="headerlink" title="5.2 参数"></a>5.2 参数</h3><table>
 <thead>
@@ -477,10 +477,10 @@
     2020-08-20
     <br>
     <strong class="article-titles">本文标题：</strong>
-    <a href="https://lnzz.site/2020/08/20/SpringCloud-微服务实站：Alibaba-Sentinel-规则参数总结/" title="SpringCloud 微服务实站：Alibaba Sentinel 规则参数总结" target="_blank">SpringCloud 微服务实站：Alibaba Sentinel 规则参数总结</a>
+    <a href="http://lengnzz.top/2020/08/20/SpringCloud-微服务实站：Alibaba-Sentinel-规则参数总结/" title="SpringCloud 微服务实站：Alibaba Sentinel 规则参数总结" target="_blank">SpringCloud 微服务实站：Alibaba Sentinel 规则参数总结</a>
     <br>
     <strong class="article-url">本文链接：</strong>
-    <a href="https://lnzz.site/2020/08/20/SpringCloud-微服务实站：Alibaba-Sentinel-规则参数总结/" title="SpringCloud 微服务实站：Alibaba Sentinel 规则参数总结" target="_blank">https://lnzz.site/2020/08/20/SpringCloud-微服务实站：Alibaba-Sentinel-规则参数总结/</a>
+    <a href="http://lengnzz.top/2020/08/20/SpringCloud-微服务实站：Alibaba-Sentinel-规则参数总结/" title="SpringCloud 微服务实站：Alibaba Sentinel 规则参数总结" target="_blank">http://lengnzz.top/2020/08/20/SpringCloud-微服务实站：Alibaba-Sentinel-规则参数总结/</a>
     <br>
     <strong class="copyright">版权声明：</strong>
     本作品采用
@@ -601,7 +601,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=https://lnzz.site/2020/08/20/SpringCloud-%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AE%9E%E7%AB%99%EF%BC%9AAlibaba-Sentinel-%E8%A7%84%E5%88%99%E5%8F%82%E6%95%B0%E6%80%BB%E7%BB%93/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://lengnzz.top/2020/08/20/SpringCloud-%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AE%9E%E7%AB%99%EF%BC%9AAlibaba-Sentinel-%E8%A7%84%E5%88%99%E5%8F%82%E6%95%B0%E6%80%BB%E7%BB%93/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -810,15 +810,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Hystrix</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Ribbon</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Eureka</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Hystrix</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Feign</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -830,35 +834,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Feign</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Zookeeper</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Config</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Bus</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Mybatis</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Intellij IDEA</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Stream</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Sleuth</a>
+                <a href="javascript:void(0)" class="js-tag color2">Config</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -870,6 +850,22 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Mybatis</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Intellij IDEA</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Zookeeper</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Sleuth</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Spring Cloud Alibaba</a>
               </li>
              
@@ -878,15 +874,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">JVM</a>
+                <a href="javascript:void(0)" class="js-tag color2">Stream</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">设计模式</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">架构修炼之道</a>
+                <a href="javascript:void(0)" class="js-tag color4">Java编程思想</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -894,11 +886,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">面向对象设计原则</a>
+                <a href="javascript:void(0)" class="js-tag color2">架构修炼之道</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Java编程思想</a>
+                <a href="javascript:void(0)" class="js-tag color5">设计模式</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">JVM</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">面向对象设计原则</a>
               </li>
             
             <div class="clearfix"></div>

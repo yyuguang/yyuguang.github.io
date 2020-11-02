@@ -5,29 +5,29 @@
   
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
-  <link rel="dns-prefetch" href="https://lnzz.site">
+  <link rel="dns-prefetch" href="http://lengnzz.top">
   <title>SpringCloud 微服务实站（四）：服务注册中心之Zookeeper | 你对我笑i</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="参考资料 Spring Cloud SpringCloud中文文档 SpringCloud官方文档 书籍 《 Spring Cloud微服务实战 》     SpringBoot SpringBoot官方文档   Github 获取代码    一、前言&amp;emsp;再上一章节我们学习了 Eureka 作为服务注册中心的相关知识，但是由于 Eureka 2.x 已经停止更新维护，具体说明可以 点击这里">
 <meta property="og:type" content="article">
 <meta property="og:title" content="SpringCloud 微服务实站（四）：服务注册中心之Zookeeper">
-<meta property="og:url" content="https://lnzz.site/2020/07/17/SpringCloud-%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AE%9E%E7%AB%99%EF%BC%88%E5%9B%9B%EF%BC%89%EF%BC%9A%E6%9C%8D%E5%8A%A1%E6%B3%A8%E5%86%8C%E4%B8%AD%E5%BF%83%E4%B9%8BZookeeper/index.html">
+<meta property="og:url" content="http://lengnzz.top/2020/07/17/SpringCloud-%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AE%9E%E7%AB%99%EF%BC%88%E5%9B%9B%EF%BC%89%EF%BC%9A%E6%9C%8D%E5%8A%A1%E6%B3%A8%E5%86%8C%E4%B8%AD%E5%BF%83%E4%B9%8BZookeeper/index.html">
 <meta property="og:site_name" content="你对我笑i">
 <meta property="og:description" content="参考资料 Spring Cloud SpringCloud中文文档 SpringCloud官方文档 书籍 《 Spring Cloud微服务实战 》     SpringBoot SpringBoot官方文档   Github 获取代码    一、前言&amp;emsp;再上一章节我们学习了 Eureka 作为服务注册中心的相关知识，但是由于 Eureka 2.x 已经停止更新维护，具体说明可以 点击这里">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://lnzz.site/2020/07/17/SpringCloud-%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AE%9E%E7%AB%99%EF%BC%88%E5%9B%9B%EF%BC%89%EF%BC%9A%E6%9C%8D%E5%8A%A1%E6%B3%A8%E5%86%8C%E4%B8%AD%E5%BF%83%E4%B9%8BZookeeper/qihjf4962.hn-bkt.clouddn.com/static/images/SpringCloud/04/1.png">
-<meta property="og:image" content="https://lnzz.site/2020/07/17/SpringCloud-%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AE%9E%E7%AB%99%EF%BC%88%E5%9B%9B%EF%BC%89%EF%BC%9A%E6%9C%8D%E5%8A%A1%E6%B3%A8%E5%86%8C%E4%B8%AD%E5%BF%83%E4%B9%8BZookeeper/qihjf4962.hn-bkt.clouddn.com/static/images/SpringCloud/04/2.png">
-<meta property="og:image" content="https://lnzz.site/2020/07/17/SpringCloud-%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AE%9E%E7%AB%99%EF%BC%88%E5%9B%9B%EF%BC%89%EF%BC%9A%E6%9C%8D%E5%8A%A1%E6%B3%A8%E5%86%8C%E4%B8%AD%E5%BF%83%E4%B9%8BZookeeper/qihjf4962.hn-bkt.clouddn.com/static/images/SpringCloud/04/3.jpg">
-<meta property="og:image" content="https://lnzz.site/2020/07/17/SpringCloud-%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AE%9E%E7%AB%99%EF%BC%88%E5%9B%9B%EF%BC%89%EF%BC%9A%E6%9C%8D%E5%8A%A1%E6%B3%A8%E5%86%8C%E4%B8%AD%E5%BF%83%E4%B9%8BZookeeper/qihjf4962.hn-bkt.clouddn.com/static/images/SpringCloud/04/4.png">
-<meta property="og:image" content="https://lnzz.site/2020/07/17/SpringCloud-%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AE%9E%E7%AB%99%EF%BC%88%E5%9B%9B%EF%BC%89%EF%BC%9A%E6%9C%8D%E5%8A%A1%E6%B3%A8%E5%86%8C%E4%B8%AD%E5%BF%83%E4%B9%8BZookeeper/qihjf4962.hn-bkt.clouddn.com/static/images/SpringCloud/04/5.png">
-<meta property="og:image" content="https://lnzz.site/2020/07/17/SpringCloud-%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AE%9E%E7%AB%99%EF%BC%88%E5%9B%9B%EF%BC%89%EF%BC%9A%E6%9C%8D%E5%8A%A1%E6%B3%A8%E5%86%8C%E4%B8%AD%E5%BF%83%E4%B9%8BZookeeper/qihjf4962.hn-bkt.clouddn.com/static/images/SpringCloud/04/3.jpg">
+<meta property="og:image" content="http://cdn.lengnzz.top/static/images/SpringCloud/04/1.png">
+<meta property="og:image" content="http://cdn.lengnzz.top/static/images/SpringCloud/04/2.png">
+<meta property="og:image" content="http://cdn.lengnzz.top/static/images/SpringCloud/04/3.jpg">
+<meta property="og:image" content="http://cdn.lengnzz.top/static/images/SpringCloud/04/4.png">
+<meta property="og:image" content="http://cdn.lengnzz.top/static/images/SpringCloud/04/5.png">
+<meta property="og:image" content="http://cdn.lengnzz.top/static/images/SpringCloud/04/3.jpg">
 <meta property="article:published_time" content="2020-07-17T14:04:24.000Z">
 <meta property="article:modified_time" content="2020-08-16T14:14:57.324Z">
 <meta property="article:author" content="你对我笑i">
 <meta property="article:tag" content="SpringCloud">
 <meta property="article:tag" content="Zookeeper">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://lnzz.site/2020/07/17/SpringCloud-%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AE%9E%E7%AB%99%EF%BC%88%E5%9B%9B%EF%BC%89%EF%BC%9A%E6%9C%8D%E5%8A%A1%E6%B3%A8%E5%86%8C%E4%B8%AD%E5%BF%83%E4%B9%8BZookeeper/qihjf4962.hn-bkt.clouddn.com/static/images/SpringCloud/04/1.png">
+<meta name="twitter:image" content="http://cdn.lengnzz.top/static/images/SpringCloud/04/1.png">
   
     <link rel="alternative" href="/atom.xml" title="你对我笑i" type="application/atom+xml">
   
@@ -254,10 +254,10 @@
 </ul>
 </li>
 </ul>
-<h2 id="一、前言"><a href="#一、前言" class="headerlink" title="一、前言"></a>一、前言</h2><p>&emsp;再上一章节我们学习了 <a href="https://lnzz.site/2020/07/14/SpringCloud-微服务实站（三）：服务注册中心之Eureka/">Eureka</a> 作为服务注册中心的相关知识，但是由于 <strong>Eureka 2.x</strong> 已经停止更新维护，具体说明可以 <a href="https://github.com/Netflix/eureka/wiki" target="_blank" rel="noopener">点击这里</a></p>
+<h2 id="一、前言"><a href="#一、前言" class="headerlink" title="一、前言"></a>一、前言</h2><p>&emsp;再上一章节我们学习了 <a href="https://lnzz.site/2020/07/14/SpringCloud-微服务实站（三）：服务注册中心之Eureka/" target="_blank" rel="noopener">Eureka</a> 作为服务注册中心的相关知识，但是由于 <strong>Eureka 2.x</strong> 已经停止更新维护，具体说明可以 <a href="https://github.com/Netflix/eureka/wiki" target="_blank" rel="noopener">点击这里</a></p>
 <a id="more"></a>
 
-<img src="qihjf4962.hn-bkt.clouddn.com/static/images/SpringCloud/04/1.png">
+<img src="http://cdn.lengnzz.top/static/images/SpringCloud/04/1.png">
 
 
 
@@ -265,12 +265,12 @@
 <h2 id="二、Zookeeper简介"><a href="#二、Zookeeper简介" class="headerlink" title="二、Zookeeper简介"></a>二、Zookeeper简介</h2><p>&emsp;  ZooKeeper 是一种分布式协调服务，用于管理大型主机。在分布式环境中协调和管理服务是一个复杂的过程。ZooKeeper 通过其简单的架构和API解决了这个问题。 ZooKeeper 允许开发人员专注于核心应用程序逻辑，而不必担心应用程序的分布式特性。 </p>
 <p>&emsp;    ZooKeeper 框架最初是在 <a href="http://www.yahoo.com/" target="_blank" rel="noopener">Yahoo</a>上构建的，用于以简单而稳健的方式访问他们的应用程序。后来，Apache ZooKeeper 成为 Hadoop，HBase 和其他分布式框架使用的有组织服务的标准。例如，Apache HBase使用ZooKeeper跟踪分布式数据的状态。</p>
 <h2 id="三、Zookeeper的基本概念"><a href="#三、Zookeeper的基本概念" class="headerlink" title="三、Zookeeper的基本概念"></a>三、Zookeeper的基本概念</h2><h3 id="3-1-角色"><a href="#3-1-角色" class="headerlink" title="3.1 角色"></a>3.1 角色</h3><p> Zookeeper中的角色主要有以下三类，如下表所示： </p>
-<img src="qihjf4962.hn-bkt.clouddn.com/static/images/SpringCloud/04/2.png">
+<img src="http://cdn.lengnzz.top/static/images/SpringCloud/04/2.png">
 
 
 
 <p> 系统模型如图所示： </p>
-<img src="qihjf4962.hn-bkt.clouddn.com/static/images/SpringCloud/04/3.jpg">
+<img src="http://cdn.lengnzz.top/static/images/SpringCloud/04/3.jpg">
 
 
 
@@ -301,11 +301,11 @@
 </li>
 </ul>
 <h3 id="3-3-数据结构"><a href="#3-3-数据结构" class="headerlink" title="3.3 数据结构"></a>3.3 数据结构</h3><p> Zookeeper 的数据结构和 Linux 的目录结构类似，也像数据结构中的树，如下图： </p>
-  <img src="qihjf4962.hn-bkt.clouddn.com/static/images/SpringCloud/04/4.png">
+  <img src="http://cdn.lengnzz.top/static/images/SpringCloud/04/4.png">
 
 <p>Zookeeper 的数据存储基于节点，这种节点称为Znode。Znode的引用方式是路径的引用，每个Znode都可以通过其路径唯一标识。</p>
 <p>其中Znode中包含有：数据，子节点引用，访问权限等，如下图：</p>
-  <img src="qihjf4962.hn-bkt.clouddn.com/static/images/SpringCloud/04/5.png">
+  <img src="http://cdn.lengnzz.top/static/images/SpringCloud/04/5.png">
 
 <ul>
 <li>data：Znode存储的数据信息</li>
@@ -313,7 +313,7 @@
 <li>child：当前节点的子节点引用，类似于二叉树的左孩子右孩子</li>
 <li>stat：包含Znode的各种元数据，比如事务ID、版本号、时间戳、大小等等</li>
 </ul>
-<h3 id="3-4-选举机制"><a href="#3-4-选举机制" class="headerlink" title="3.4 选举机制"></a>3.4 选举机制</h3><img src="qihjf4962.hn-bkt.clouddn.com/static/images/SpringCloud/04/3.jpg">
+<h3 id="3-4-选举机制"><a href="#3-4-选举机制" class="headerlink" title="3.4 选举机制"></a>3.4 选举机制</h3><img src="http://cdn.lengnzz.top/static/images/SpringCloud/04/3.jpg">
 
 <p> Zookeeper集群是一主多从的模式，主为leader，从为follower，其中leader是通过选举得到。 </p>
 <blockquote>
@@ -430,10 +430,10 @@
     2020-08-16
     <br>
     <strong class="article-titles">本文标题：</strong>
-    <a href="https://lnzz.site/2020/07/17/SpringCloud-微服务实站（四）：服务注册中心之Zookeeper/" title="SpringCloud 微服务实站（四）：服务注册中心之Zookeeper" target="_blank">SpringCloud 微服务实站（四）：服务注册中心之Zookeeper</a>
+    <a href="http://lengnzz.top/2020/07/17/SpringCloud-微服务实站（四）：服务注册中心之Zookeeper/" title="SpringCloud 微服务实站（四）：服务注册中心之Zookeeper" target="_blank">SpringCloud 微服务实站（四）：服务注册中心之Zookeeper</a>
     <br>
     <strong class="article-url">本文链接：</strong>
-    <a href="https://lnzz.site/2020/07/17/SpringCloud-微服务实站（四）：服务注册中心之Zookeeper/" title="SpringCloud 微服务实站（四）：服务注册中心之Zookeeper" target="_blank">https://lnzz.site/2020/07/17/SpringCloud-微服务实站（四）：服务注册中心之Zookeeper/</a>
+    <a href="http://lengnzz.top/2020/07/17/SpringCloud-微服务实站（四）：服务注册中心之Zookeeper/" title="SpringCloud 微服务实站（四）：服务注册中心之Zookeeper" target="_blank">http://lengnzz.top/2020/07/17/SpringCloud-微服务实站（四）：服务注册中心之Zookeeper/</a>
     <br>
     <strong class="copyright">版权声明：</strong>
     本作品采用
@@ -550,7 +550,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=https://lnzz.site/2020/07/17/SpringCloud-%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AE%9E%E7%AB%99%EF%BC%88%E5%9B%9B%EF%BC%89%EF%BC%9A%E6%9C%8D%E5%8A%A1%E6%B3%A8%E5%86%8C%E4%B8%AD%E5%BF%83%E4%B9%8BZookeeper/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://lengnzz.top/2020/07/17/SpringCloud-%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AE%9E%E7%AB%99%EF%BC%88%E5%9B%9B%EF%BC%89%EF%BC%9A%E6%9C%8D%E5%8A%A1%E6%B3%A8%E5%86%8C%E4%B8%AD%E5%BF%83%E4%B9%8BZookeeper/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -759,15 +759,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Hystrix</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Ribbon</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Eureka</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Hystrix</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Feign</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -779,35 +783,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Feign</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Zookeeper</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Config</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Bus</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Mybatis</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Intellij IDEA</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Stream</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Sleuth</a>
+                <a href="javascript:void(0)" class="js-tag color2">Config</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -819,6 +799,22 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Mybatis</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Intellij IDEA</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Zookeeper</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Sleuth</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Spring Cloud Alibaba</a>
               </li>
              
@@ -827,15 +823,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">JVM</a>
+                <a href="javascript:void(0)" class="js-tag color2">Stream</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">设计模式</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">架构修炼之道</a>
+                <a href="javascript:void(0)" class="js-tag color4">Java编程思想</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -843,11 +835,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">面向对象设计原则</a>
+                <a href="javascript:void(0)" class="js-tag color2">架构修炼之道</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Java编程思想</a>
+                <a href="javascript:void(0)" class="js-tag color5">设计模式</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">JVM</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">面向对象设计原则</a>
               </li>
             
             <div class="clearfix"></div>

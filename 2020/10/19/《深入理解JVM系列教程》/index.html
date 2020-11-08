@@ -8,15 +8,15 @@
   <link rel="dns-prefetch" href="http://blog.lengnzz.top">
   <title>《深入理解JVM系列教程》 | 你对我笑i</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="深入理解JVM系列教程（01）- JVM与Java体系结构深入理解JVM系列教程（02）- 类加载器子系统">
+  <meta name="description" content="深入理解JVM系列教程（01）- JVM与Java体系结构深入理解JVM系列教程（02）- 类加载器子系统深入理解JVM系列教程（03）- Java内存区域">
 <meta property="og:type" content="article">
 <meta property="og:title" content="《深入理解JVM系列教程》">
 <meta property="og:url" content="http://blog.lengnzz.top/2020/10/19/%E3%80%8A%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3JVM%E7%B3%BB%E5%88%97%E6%95%99%E7%A8%8B%E3%80%8B/index.html">
 <meta property="og:site_name" content="你对我笑i">
-<meta property="og:description" content="深入理解JVM系列教程（01）- JVM与Java体系结构深入理解JVM系列教程（02）- 类加载器子系统">
+<meta property="og:description" content="深入理解JVM系列教程（01）- JVM与Java体系结构深入理解JVM系列教程（02）- 类加载器子系统深入理解JVM系列教程（03）- Java内存区域">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2020-10-19T13:09:31.000Z">
-<meta property="article:modified_time" content="2020-11-08T14:35:52.286Z">
+<meta property="article:modified_time" content="2020-11-08T15:08:14.595Z">
 <meta property="article:author" content="你对我笑i">
 <meta property="article:tag" content="Java">
 <meta property="article:tag" content="JVM">
@@ -85,7 +85,7 @@
 		
 		<nav>
 			<ul style="font-size:12px; font-style:oblique; font-weight:100">
-				总文章数：34
+				总文章数：35
 			</ul>
 		</nav>
 		<br/>
@@ -193,7 +193,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">32字</span>
+        <span class="post-count">47字</span>
       </span>
     </span>
 
@@ -228,7 +228,7 @@
 
     <div class="article-entry" itemprop="articleBody">
       
-        <h4 id="深入理解JVM系列教程（01）-JVM与Java体系结构"><a href="#深入理解JVM系列教程（01）-JVM与Java体系结构" class="headerlink" title="深入理解JVM系列教程（01）- JVM与Java体系结构"></a><a href="http://blog.lengnzz.top/2020/10/19/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3JVM%E7%B3%BB%E5%88%97%E6%95%99%E7%A8%8B%EF%BC%8801%EF%BC%89-JVM%E4%B8%8EJava%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84/">深入理解JVM系列教程（01）- JVM与Java体系结构</a></h4><h4 id="深入理解JVM系列教程（02）-类加载器子系统"><a href="#深入理解JVM系列教程（02）-类加载器子系统" class="headerlink" title="深入理解JVM系列教程（02）- 类加载器子系统"></a><a href="http://blog.lengnzz.top/2020/10/21/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3JVM%E7%B3%BB%E5%88%97%E6%95%99%E7%A8%8B%EF%BC%8802%EF%BC%89-%E7%B1%BB%E5%8A%A0%E8%BD%BD%E5%99%A8%E5%AD%90%E7%B3%BB%E7%BB%9F/">深入理解JVM系列教程（02）- 类加载器子系统</a></h4>
+        <h4 id="深入理解JVM系列教程（01）-JVM与Java体系结构"><a href="#深入理解JVM系列教程（01）-JVM与Java体系结构" class="headerlink" title="深入理解JVM系列教程（01）- JVM与Java体系结构"></a><a href="http://blog.lengnzz.top/2020/10/19/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3JVM%E7%B3%BB%E5%88%97%E6%95%99%E7%A8%8B%EF%BC%8801%EF%BC%89-JVM%E4%B8%8EJava%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84/">深入理解JVM系列教程（01）- JVM与Java体系结构</a></h4><h4 id="深入理解JVM系列教程（02）-类加载器子系统"><a href="#深入理解JVM系列教程（02）-类加载器子系统" class="headerlink" title="深入理解JVM系列教程（02）- 类加载器子系统"></a><a href="http://blog.lengnzz.top/2020/10/21/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3JVM%E7%B3%BB%E5%88%97%E6%95%99%E7%A8%8B%EF%BC%8802%EF%BC%89-%E7%B1%BB%E5%8A%A0%E8%BD%BD%E5%99%A8%E5%AD%90%E7%B3%BB%E7%BB%9F/">深入理解JVM系列教程（02）- 类加载器子系统</a></h4><h4 id="深入理解JVM系列教程（03）-Java内存区域"><a href="#深入理解JVM系列教程（03）-Java内存区域" class="headerlink" title="深入理解JVM系列教程（03）- Java内存区域"></a><a href="http://blog.lengnzz.top/2020/11/08/深入理解JVM系列教程（03）-Java内存区域/">深入理解JVM系列教程（03）- Java内存区域</a></h4>
       
 	  
 	          <!-- 《添加版权声明 -->
@@ -429,7 +429,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#深入理解JVM系列教程（01）-JVM与Java体系结构"><span class="toc-number">1.</span> <span class="toc-text">深入理解JVM系列教程（01）- JVM与Java体系结构</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#深入理解JVM系列教程（02）-类加载器子系统"><span class="toc-number">2.</span> <span class="toc-text">深入理解JVM系列教程（02）- 类加载器子系统</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#深入理解JVM系列教程（01）-JVM与Java体系结构"><span class="toc-number">1.</span> <span class="toc-text">深入理解JVM系列教程（01）- JVM与Java体系结构</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#深入理解JVM系列教程（02）-类加载器子系统"><span class="toc-number">2.</span> <span class="toc-text">深入理解JVM系列教程（02）- 类加载器子系统</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#深入理解JVM系列教程（03）-Java内存区域"><span class="toc-number">3.</span> <span class="toc-text">深入理解JVM系列教程（03）- Java内存区域</span></a></li></ol>
                     </div>
                 </span>
             </div>

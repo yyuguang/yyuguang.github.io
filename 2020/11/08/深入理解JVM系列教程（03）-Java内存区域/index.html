@@ -6,17 +6,26 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://blog.lengnzz.top">
-  <title>Tag: Spring Cloud Alibaba | 你对我笑i</title>
+  <title>深入理解JVM系列教程（03）- Java内存区域 | 你对我笑i</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Do what you love,love what you do">
-<meta property="og:type" content="website">
-<meta property="og:title" content="你对我笑i">
-<meta property="og:url" content="http://blog.lengnzz.top/tags/Spring-Cloud-Alibaba/index.html">
+  <meta name="description" content="1. 运行时数据区域Java虚拟机在执行Java程序的过程中会把他所管理的内存划分为若干个不同的数据区域。这些区域有各自的用途，以及创建和销毁的时间，有的区域随着虚拟机进程的启动而一直存在，有些区域则是以来用户线程的启动和结束而建立和销毁。根据《Java虚拟机规范》的规定，Java虚拟机所管理的内存将会包括一下几个运行时数据区域">
+<meta property="og:type" content="article">
+<meta property="og:title" content="深入理解JVM系列教程（03）- Java内存区域">
+<meta property="og:url" content="http://blog.lengnzz.top/2020/11/08/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3JVM%E7%B3%BB%E5%88%97%E6%95%99%E7%A8%8B%EF%BC%8803%EF%BC%89-Java%E5%86%85%E5%AD%98%E5%8C%BA%E5%9F%9F/index.html">
 <meta property="og:site_name" content="你对我笑i">
-<meta property="og:description" content="Do what you love,love what you do">
+<meta property="og:description" content="1. 运行时数据区域Java虚拟机在执行Java程序的过程中会把他所管理的内存划分为若干个不同的数据区域。这些区域有各自的用途，以及创建和销毁的时间，有的区域随着虚拟机进程的启动而一直存在，有些区域则是以来用户线程的启动和结束而建立和销毁。根据《Java虚拟机规范》的规定，Java虚拟机所管理的内存将会包括一下几个运行时数据区域">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://cdn.lengnzz.top/static/images/JVM/03/01.png">
+<meta property="og:image" content="http://cdn.lengnzz.top/static/images/JVM/03/02.png">
+<meta property="og:image" content="http://cdn.lengnzz.top/static/images/JVM/03/03.png">
+<meta property="og:image" content="http://cdn.lengnzz.top/static/images/JVM/03/04.png">
+<meta property="article:published_time" content="2020-11-08T14:55:53.000Z">
+<meta property="article:modified_time" content="2020-11-08T15:07:50.006Z">
 <meta property="article:author" content="你对我笑i">
+<meta property="article:tag" content="Java">
+<meta property="article:tag" content="JVM">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://cdn.lengnzz.top/static/images/JVM/03/01.png">
   
     <link rel="alternative" href="/atom.xml" title="你对我笑i" type="application/atom+xml">
   
@@ -172,163 +181,333 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-深入理解JVM系列教程（03）-Java内存区域" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      深入理解JVM系列教程（03）- Java内存区域
+    </h1>
+  
+
+		
+          <div style="margin-top:10px;">
+    <span class="post-time">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-keyboard-o"></i>
+        <span class="post-meta-item-text">  字数统计: </span>
+        <span class="post-count">4.5k字</span>
+      </span>
+    </span>
+
+    <span class="post-time">
+      &nbsp; | &nbsp;
+      <span class="post-meta-item-icon">
+        <i class="fa fa-hourglass-half"></i>
+        <span class="post-meta-item-text">  阅读时长: </span>
+        <span class="post-count">15分</span>
+      </span>
+    </span>
+	
+	
+	<!-- 添加代码 -->
+	
+	&nbsp; | &nbsp;
+		<span>
+			阅读量: &nbsp;<span id="busuanzi_value_page_pv"></span>&nbsp;次
+		</span>
+	
+</div>
+        
+        
+        <a href="/2020/11/08/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3JVM%E7%B3%BB%E5%88%97%E6%95%99%E7%A8%8B%EF%BC%8803%EF%BC%89-Java%E5%86%85%E5%AD%98%E5%8C%BA%E5%9F%9F/" class="archive-article-date">
+  	<time datetime="2020-11-08T14:55:53.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-11-08</time>
+</a>
+
+        
+
+      </header>
     
+
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="1-运行时数据区域"><a href="#1-运行时数据区域" class="headerlink" title="1. 运行时数据区域"></a>1. 运行时数据区域</h2><p>Java虚拟机在执行Java程序的过程中会把他所管理的内存划分为若干个不同的数据区域。这些区域有各自的用途，以及创建和销毁的时间，有的区域随着虚拟机进程的启动而一直存在，有些区域则是以来用户线程的启动和结束而建立和销毁。根据《Java虚拟机规范》的规定，Java虚拟机所管理的内存将会包括一下几个运行时数据区域</p>
+<a id="more"></a>
+
+<img src="http://cdn.lengnzz.top/static/images/JVM/03/01.png">
+
+<h3 id="1-1-程序计数器"><a href="#1-1-程序计数器" class="headerlink" title="1.1 程序计数器"></a>1.1 程序计数器</h3><p>一块较小的内存空间，可以看作是当前线程所执行的字节码的行号治时期。在Java虚拟机得概念模型里，字节码计时器工作时就是通过改变这个计数器得值来取下一条需要执行得字节码指令。它是程序控制流得治时期，分支、循环、跳转、异常处理、线程恢复等基础功能都需要依赖这个计数器来完成。</p>
+<p>由于Java虚拟机得多线程是通过线程轮流切换、分配处理器执行时间得方式来实现的，在任何一个确定的时刻，一个处理器（<strong>对于多核处理器来说是一个内核</strong>）都会执行一条线程中的指令。因此，为了线程切换后能恢复到正确的执行位置，每条线程都需要有一个独立的程序计数器，各条线程之家计数器互不影响，独立存储，我们称这类内存区域为“<strong>线程私有</strong>”的内存</p>
+<p>如果线程正在执行的是一个Java方法，这个计数器记录的是正在执行的虚拟机字节码指令的地址；如果正在执行的是本地（Native）方法，这个计数器值则应为空（Undefined）。<strong>此内存区域是唯一一个在《Java虚拟机规范》中没有任何OutOfMemoryError情况的区域</strong></p>
+<h3 id="1-2-Java虚拟机栈"><a href="#1-2-Java虚拟机栈" class="headerlink" title="1.2 Java虚拟机栈"></a>1.2 Java虚拟机栈</h3><p><strong>与程序计数器一样，Java虚拟机栈也是线程私有的</strong>，它的生命周期与线程相同，虚拟机栈描述的是Java方法执行的线程内存模型：每个方法被执行的时候，Java虚拟机都会同步创建一个栈帧用于存储局部变量表，操作舒展、动态链接、方法出口等信息。每一个方法被调用直至执行完毕的过程，就对应着一个栈帧在虚拟机栈中从入栈到出栈的过程</p>
+<p>栈在更多的情况下只是指虚拟机栈中局部变量表部分，局部变量表存放了编译期可知的各种Java虚拟机<strong>基本数据类型</strong>（boolean、byte、char、short、int、float、long、double）、<strong>引用对象</strong>（reference类型，并不等同于对象本身，可能是一个执行对象起始地址的引用指针，也可能指向一个代表对象的句柄或者其他与此对象相关的位置）和<strong>returnAddress类型</strong>（指向了一条字节码指令的地址）</p>
+<p>这些数据类型在局部变量表中的存储空间以局部变量槽（Slot）来表示，其中<strong>64为长度的long和double类型的数据会占用两个变量槽，其余的数据类型只占用一个</strong></p>
+<h3 id="1-3-本地方法栈"><a href="#1-3-本地方法栈" class="headerlink" title="1.3 本地方法栈"></a>1.3 本地方法栈</h3><p>与虚拟机栈所发挥的作用是非常相似的，其区别只是<strong>虚拟机栈为虚拟机执行Java方法（即字节码）服务，而本地方法栈则是为虚拟机使用到的本地（Native）方法服务</strong></p>
+<h3 id="1-4-Java堆"><a href="#1-4-Java堆" class="headerlink" title="1.4 Java堆"></a>1.4 Java堆</h3><p>Java堆是虚拟机所管理的内存中最大的一块。Java堆是被所有线程共享的一块内存区域，在虚拟机启动时创建。此内存区域的唯一目的就是<strong>存放对象实例</strong>，<strong>Java几乎所有的对象实例都在这里分配内存</strong></p>
+<p>Java堆是垃圾收集器管理的内存区域，也称为GC堆，从回收内存的角度看，由于现代垃圾收集器大部分都是基于分代收集理论设计的，所以Java堆中出现了“新生代”，“老年代”，“永久代”等一系列名词，但是这些区域划分仅仅<strong>是一部分垃圾收集器的共同特性或者说是设计风格而已，并不是某个Java虚拟机具体实现的固有内存布局，更不是《Java虚拟机规范》里对Java堆的进一步细致划分</strong></p>
+<p>从分配内存的角度看，所有线程共享的Java堆中可以划分出多个线程私有的分配缓冲区（Thread Local Allocation Buffer, TLAB），以提升对象分配时的效率。<strong>将Java堆细分的目的只是为了更好的回收内存，或者更快的分配内存。</strong></p>
+<h3 id="1-5-方法区"><a href="#1-5-方法区" class="headerlink" title="1.5 方法区"></a>1.5 方法区</h3><p>与Java堆一样，是各个线程共享的内存区域，它用于存储已被虚拟机加载的类型信息、常量、静态变量、即时编译器后的代码缓存等数据。虽然在《Java虚拟机规范》中把方法去描述为堆的一个逻辑部分，但是它却有一个别名叫做<strong>“非堆”（Non-Heap）,</strong></p>
+<p>目的是与Java堆区分开来</p>
+<p>根据《Java虚拟机规范》规定，如果方法区无法满足新的内存分配需求是，将抛出OutOfMemoryError异常</p>
+<h3 id="1-6-运行时常量池"><a href="#1-6-运行时常量池" class="headerlink" title="1.6 运行时常量池"></a>1.6 运行时常量池</h3><p>方法区的一部分。Class文件除了有类的版本、字段、方法、接口等描述信息外，还有一项信息是常量池表，<strong>用于存放编译器生成的各种字面量与符号引用，这部分内容将在类加载后存放到方法区的运行时常量池中</strong></p>
+<h3 id="1-7-直接内存"><a href="#1-7-直接内存" class="headerlink" title="1.7 直接内存"></a>1.7 直接内存</h3><p>并不是虚拟机运行时数据区的一部分，也不是《Java虚拟机规范》中定义的内存区域，但是这部分内存也被频繁的使用，而且也可能导致OutOfMemoryError异常出现</p>
+<p>在JDK1.4中新加入了NIO类，引入了一种基于通道与缓冲区的I/O方式，它可以使用Native函数库直接分配到堆外内存，然后通过一个存储在Java对立面的DirectByteBuffer对象作为这块内存的引用进行操作。这样能在一些场景中显著提高性能，因为避免了在Java堆和Native堆中来回复制数据</p>
+<p>显然， 本机直接内存的分配不会受到Java堆大小的限制， 但是， 既然是内存， 则肯定还是会受到本机总内存（包括物理内存、 SWAP分区或者分页文件） 大小以及处理器寻址空间的限制， 一般服务器管理员配置虚拟机参数时， 会根据实际内存去设置-Xmx等参数信息， 但经常忽略掉直接内存， 使得各个内存区域总和大于物理内存限制（包括物理的和操作系统级的限制） ， 从而导致<strong>动态扩展时出现OutOfMemoryError异常</strong>。</p>
+<h2 id="2-HotSpot虚拟机"><a href="#2-HotSpot虚拟机" class="headerlink" title="2.HotSpot虚拟机"></a>2.HotSpot虚拟机</h2><h3 id="2-1-对象的创建"><a href="#2-1-对象的创建" class="headerlink" title="2.1 对象的创建"></a>2.1 对象的创建</h3><p>当Java虚拟机遇到一条字节码<strong>new</strong>指令时， 首先将去检查这个指令的参数是否能在常量池中定位到一个类的符号引用， 并且检查这个符号引用代表的类是否已被<strong>加载、 解析和初始化</strong>过。 如果没有， 那必须先执行相应的类加载过程</p>
+<p>在类加载检查通过后， 接下来虚拟机将为新生对象分配内存。 <strong>对象所需内存的大小在类加载完成后便可完全确定</strong>， 为对象分配空间的任务实际上便等同于把一块确定大小的内存块从Java堆中划分出来。 假设Java堆中内存是绝对规整的， 所有被使用过的内存都被放在一边， 空闲的内存被放在另一边， 中间放着一个指针作为分界点的指示器， 那所分配内存就仅仅是把那个指针向空闲空间方向挪动一段与对象大小相等的距离， 这种分配方式称为<strong>“指针碰撞”（Bump The Pointer）</strong> 。 但如果Java堆中的内存并不是规整的， 已被使用的内存和空闲的内存相互交错在一起， 那就没有办法简单地进行指针碰撞了， 虚拟机就必须维护一个列表， 记录上哪些内存块是可用的， 在分配的时候从列表中找到一块足够大的空间划分给对象实例， 并更新列表上的记录， 这种分配方式称为<strong>“空闲列表”（Free List）</strong> 。 选择哪种分配方式由Java堆是否规整决定， 而<strong>Java堆是否规整又由所采用的垃圾收集器是否带有空间压缩整理（Compact） 的能力决定。 因此， 当使用Serial、 ParNew等带压缩整理过程的收集器时， 系统采用的分配算法是指针碰撞， 既简单又高效； 而当使用CMS这种基于清除（Sweep） 算法的收集器时， 理论上就只能采用较为复杂的空闲列表来分配内存。</strong> </p>
+<p>对象创建在虚拟机中是非常频繁的行为， 即使仅仅修改一个指针所指向的位置， 在并发情况下也并<strong>不是线程安全</strong>的， 可能出现正在给对象A分配内存， 指针还没来得及修改， 对象B又同时使用了原来的指针来分配内存的情况。 解决这个问题有两种可选方案： 一种是对分配内存空间的动作进行同步处理——实际上虚拟机是采用<strong>CAS**</strong>配上失败重试的方式保证更新操作的原子性<strong>； 另外一种是</strong>把内存分配的动作按照线程划分在不同的空间之中进行**， 即每个线程在Java堆中预先分配一小块内存， 称为本地线程分配缓冲（Thread Local AllocationBuffer， TLAB） ， 哪个线程要分配内存， 就在哪个线程的本地缓冲区中分配， 只有本地缓冲区用完了， 分配新的缓存区时才需要同步锁定。 虚拟机是否使用TLAB， 可以通过-XX:+/-UseTLAB参数来设定。</p>
+<p>内存分配完成之后， 虚拟机必须将分配到的内存空间（但不包括对象头） 都初始化为零值， 如果使用了TLAB的话， 这一项工作也可以提前至TLAB分配时顺便进行。 这步操作保证了对象的实例字段在Java代码中可以不赋初始值就直接使用， 使程序能访问到这些字段的数据类型所对应的零值</p>
+<p>接下来， Java虚拟机还要对对象进行必要的设置， 例如这个对象是哪个类的实例、 如何才能找到类的元数据信息、 对象的哈希码（实际上对象的哈希码会延后到真正调用<strong>Object::hashCode()</strong>方法时才计算） 、 对象的GC分代年龄等信息。 这些信息存放在对象的对象头（Object Header） 之中。 根据虚拟机当前运行状态的不同， 如是否启用偏向锁等， 对象头会有不同的设置方式。 </p>
+<p>在上面工作都完成之后， 从虚拟机的视角来看， 一个新的对象已经产生了。 <strong>但是从Java程序的视角看来， 对象创建才刚刚开始——构造函数， 即Class文件中的()</strong>方法还没有执行， 所有的字段都为默认的零值， 对象需要的其他资源和状态信息也还没有按照预定的意图构造好。 一般来说（由字节码流中new指令后面是否跟随invokespecial指令所决定， Java编译器会在遇到new关键字的地方同时生成这两条字节码指令， 但如果直接通过其他方式产生的则不一定如此） ， new指令之后会接着执行<init>()方法， 按照程序员的意愿对对象进行初始化， 这样一个真正可用的对象才算完全被构造出来</p>
+<h3 id="2-2-对象的内存布局"><a href="#2-2-对象的内存布局" class="headerlink" title="2.2 对象的内存布局"></a>2.2 对象的内存布局</h3><p>在HotSpot虚拟机里， 对象在堆内存中的存储布局可以划分为三个部分： <strong>对象头（Header） 、 实例数据（Instance Data） 和对齐填充（Padding）</strong> 。</p>
+<p> HotSpot虚拟机对象的对象头部分包括两类信息。 第一类是用于存储对象自身的运行时数据， 如哈希码（HashCode） 、 GC分代年龄、 锁状态标志、 线程持有的锁、 偏向线程ID、 偏向时间戳等， 这部分数据的长度在32位和64位的虚拟机（未开启压缩指针） 中分别为32个比特和64个比特， 官方称它为<strong>“Mark Word”</strong>。 对象需要存储的运行时数据很多， 其实已经超出了32、 64位Bitmap结构所能记录的最大限度， 但对象头里的信息是与对象自身定义的数据无关的额外存储成本， 考虑到虚拟机的空间效率， Mark Word被设计成一个有着<strong>动态定义的数据结构</strong>， 以便在极小的空间内存储尽量多的数据， 根据对象的状态复用自己的存储空间。 例如<strong>在32位的HotSpot</strong>虚拟机中， 如对象未被同步锁锁定的状态下，<strong>Mark Word</strong>的<strong>32</strong>个比特存储空间中的<strong>25</strong>个比特用于存储对象哈希码，<strong>4</strong>个比特用于存储对象分代年龄， <strong>2</strong>个比特用于存储锁标志位， <strong>1</strong>个比特固定为<strong>0</strong>， 在其他状态（轻量级锁定、 重量级锁定、 GC标记、 可偏向） 下对象的存储内容如表所示。 </p>
+<img src="http://cdn.lengnzz.top/static/images/JVM/03/02.png">
+
+
+
+<p>对象头的另外一部分是类型指针， 即对象指向它的类型元数据的指针， Java虚拟机通过这个指针来确定该对象是哪个类的实例。 并不是所有的虚拟机实现都必须在对象数据上保留类型指针， 换句话说， <strong>查找对象的元数据信息并不一定要经过对象本身</strong>。 此外， 如果对象是一个Java数组， 那在对象头中还必须有一块用于记录数组长度的数据， 因为虚拟机可以通过普通Java对象的元数据信息确定Java对象的大小， 但是如果数组的长度是不确定的， 将无法通过元数据中的信息推断出数组的大小</p>
+<p>接下来实例数据部分是对象真正存储的有效信息， 即我们在程序代码里面所定义的各种类型的字段内容， 无论是从父类继承下来的， 还是在子类中定义的字段都必须记录起来。 这部分的存储顺序会受到虚拟机分配策略参数（-XX:FieldsAllocationStyle参数） 和字段在Java源码中定义顺序的影响。<strong>HotSpot**</strong>虚拟机默认的分配顺序为<strong>longs/doubles、ints、shorts/chars、bytes/booleans、oops（Ordinary Object Pointers，OOPs）</strong> ， 从以上默认的分配策略中可以看到， 相同宽度的字段总是被分配到一起存放， 在满足这个前提条件的情况下， 在父类中定义的变量会出现在子类之前。 如果HotSpot虚拟机的+XX: CompactFields参数值为true（默认就为true） ， 那子类之中较窄的变量也允许插入父类变量的空隙之中， 以节省出一点点空间。</p>
+<p>对象的第三部分是对齐填充， 这并不是必然存在的， 也没有特别的含义， 它<strong>仅仅起着占位符的作用</strong>。 由于HotSpot虚拟机的自动内存管理系统要求对象起始地址必须是8字节的整数倍， 换句话说就是任何对象的大小都必须是8字节的整数倍。 对象头部分已经被精心设计成正好是8字节的倍数（1倍或者2倍） ， 因此， 如果对象实例数据部分没有对齐的话， 就需要通过对齐填充来补全。</p>
+<h3 id="2-3-对象的访问定位"><a href="#2-3-对象的访问定位" class="headerlink" title="2.3 对象的访问定位"></a>2.3 对象的访问定位</h3><p>对象访问方式也是由虚拟机实现而定的， 主流的访问方式主要有使用句柄和直接指针两种：</p>
+<ul>
+<li>如果使用句柄访问的话， Java堆中将可能会划分出一块内存来作为句柄池， reference中存储的就是对象的句柄地址， 而句柄中包含了对象实例数据与类型数据各自具体的地址信息， 其结构如图所示。</li>
+</ul>
+<img src="http://cdn.lengnzz.top/static/images/JVM/03/03.png">
+
+<ul>
+<li>如果使用直接指针访问的话， Java堆中对象的内存布局就必须考虑如何放置访问类型数据的相关信息， reference中存储的直接就是对象地址， 如果只是访问对象本身的话， 就不需要多一次间接访问的开销， 如图所示。</li>
+</ul>
+<img src="http://cdn.lengnzz.top/static/images/JVM/03/04.png">
+
+<p><strong>使用句柄来访问的最大好处就是reference中存储的是稳定句柄地址， 在对象被移动（垃圾收集时移动对象是非常普遍的行为） 时只会改变句柄中的实例数据指针， 而reference本身不需要被修改</strong> </p>
+<p><strong>使用直接指针来访问最大的好处就是速度更快， 它节省了一次指针定位的时间开销， 由于对象访问在Java中非常频繁， 因此这类开销积少成多也是一项极为可观的执行成本</strong> </p>
+
+      
+	  
+	          <!-- 《添加版权声明 -->
+        
+            <!-- 《添加版权声明 -->
+<!--添加版权声明https://github.com/JoeyBling/hexo-theme-yilia-plus/commit/c1215e132f6d5621c5fea83d3c4f7ccbcca074a3-->
+
+
+<!-- #版权基础设定：0-关闭声明； 1-文章对应的md文件里有declare: true属性，才有版权声明； 2-所有文章均有版权声明 -->
+
+  <div class="declare">
+    <strong class="author">本文作者：</strong>
+    
+      你对我笑i
+    
+    <br>
+    <strong class="create-time">发布时间：</strong>
+    2020-11-08
+    <br>
+    <strong class="update-time">最后更新：</strong>
+    2020-11-08
+    <br>
+    <strong class="article-titles">本文标题：</strong>
+    <a href="http://blog.lengnzz.top/2020/11/08/深入理解JVM系列教程（03）-Java内存区域/" title="深入理解JVM系列教程（03）- Java内存区域" target="_blank">深入理解JVM系列教程（03）- Java内存区域</a>
+    <br>
+    <strong class="article-url">本文链接：</strong>
+    <a href="http://blog.lengnzz.top/2020/11/08/深入理解JVM系列教程（03）-Java内存区域/" title="深入理解JVM系列教程（03）- Java内存区域" target="_blank">http://blog.lengnzz.top/2020/11/08/深入理解JVM系列教程（03）-Java内存区域/</a>
+    <br>
+    <strong class="copyright">版权声明：</strong>
+    本作品采用
+    <a rel="license noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" title="知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议">CC BY-NC-SA 4.0</a>
+    许可协议进行许可。转载请注明出处！
+    
+  </div>
+
+<!-- 添加版权声明》 -->
+
+        
+        <!-- 添加版权声明》 -->
+
+
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/alipay.jpg">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/wx_pay.jpg">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2020" class="archive-year">2020</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/08/20/SpringCloud-%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AE%9E%E7%AB%99%EF%BC%9AAlibaba-Sentinel-%E9%85%8D%E7%BD%AE%E9%A1%B9%E6%80%BB%E7%BB%93/" class="archive-article-date">
-  	<time datetime="2020-08-20T14:24:21.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-08-20</time>
-</a>
-
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/08/20/SpringCloud-%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AE%9E%E7%AB%99%EF%BC%9AAlibaba-Sentinel-%E9%85%8D%E7%BD%AE%E9%A1%B9%E6%80%BB%E7%BB%93/">SpringCloud 微服务实站：Alibaba Sentinel 配置项总结</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">SpringCloud</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Spring Cloud Alibaba</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Sentinel</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">JVM</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://blog.lengnzz.top/2020/11/08/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3JVM%E7%B3%BB%E5%88%97%E6%95%99%E7%A8%8B%EF%BC%8803%EF%BC%89-Java%E5%86%85%E5%AD%98%E5%8C%BA%E5%9F%9F/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/08/20/SpringCloud-%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AE%9E%E7%AB%99%EF%BC%9ASentinelResource%E6%B3%A8%E8%A7%A3-%E5%B1%9E%E6%80%A7%E6%80%BB%E7%BB%93/" class="archive-article-date">
-  	<time datetime="2020-08-20T13:49:33.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-08-20</time>
-</a>
 
+  
+<nav id="article-nav">
+  
+  
+    <a href="/2020/11/08/%E7%AC%AC%E5%9B%9B%E7%AB%A0-MQ%E4%B9%8B%E9%81%93/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">第四章 MQ之道</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/08/20/SpringCloud-%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AE%9E%E7%AB%99%EF%BC%9ASentinelResource%E6%B3%A8%E8%A7%A3-%E5%B1%9E%E6%80%A7%E6%80%BB%E7%BB%93/">SpringCloud 微服务实站：SentinelResource注解 - 属性总结</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">SpringCloud</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Spring Cloud Alibaba</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Sentinel</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
+        
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-运行时数据区域"><span class="toc-number">1.</span> <span class="toc-text">1. 运行时数据区域</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1-程序计数器"><span class="toc-number">1.1.</span> <span class="toc-text">1.1 程序计数器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2-Java虚拟机栈"><span class="toc-number">1.2.</span> <span class="toc-text">1.2 Java虚拟机栈</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-3-本地方法栈"><span class="toc-number">1.3.</span> <span class="toc-text">1.3 本地方法栈</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-4-Java堆"><span class="toc-number">1.4.</span> <span class="toc-text">1.4 Java堆</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-5-方法区"><span class="toc-number">1.5.</span> <span class="toc-text">1.5 方法区</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-6-运行时常量池"><span class="toc-number">1.6.</span> <span class="toc-text">1.6 运行时常量池</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-7-直接内存"><span class="toc-number">1.7.</span> <span class="toc-text">1.7 直接内存</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-HotSpot虚拟机"><span class="toc-number">2.</span> <span class="toc-text">2.HotSpot虚拟机</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-对象的创建"><span class="toc-number">2.1.</span> <span class="toc-text">2.1 对象的创建</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-对象的内存布局"><span class="toc-number">2.2.</span> <span class="toc-text">2.2 对象的内存布局</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-3-对象的访问定位"><span class="toc-number">2.3.</span> <span class="toc-text">2.3 对象的访问定位</span></a></li></ol></li></ol>
+                    </div>
+                </span>
+            </div>
         </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/08/20/SpringCloud-%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AE%9E%E7%AB%99%EF%BC%9AAlibaba-Sentinel-%E8%A7%84%E5%88%99%E5%8F%82%E6%95%B0%E6%80%BB%E7%BB%93/" class="archive-article-date">
-  	<time datetime="2020-08-20T13:18:19.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-08-20</time>
-</a>
+        
+    </div>
+</aside>
 
-        </div>
-    	 
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/08/20/SpringCloud-%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AE%9E%E7%AB%99%EF%BC%9AAlibaba-Sentinel-%E8%A7%84%E5%88%99%E5%8F%82%E6%95%B0%E6%80%BB%E7%BB%93/">SpringCloud 微服务实站：Alibaba Sentinel 规则参数总结</a>
-    </h1>
+  
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">SpringCloud</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Spring Cloud Alibaba</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Sentinel</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
   
 
-    
+  
+    <section id="comments">
+      <div id="disqus_thread">
+	 
+	  </div>
+        <script type="text/javascript">
+        /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+        var disqus_shortname = 'lnzz'; // required: replace example with your forum shortname
+
+        /* * * DON'T EDIT BELOW THIS LINE * * */
+        (function() {
+          var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+          dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+      </script>
+      <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" target="_blank" rel="noopener">comments powered by Disqus.</a></noscript>
+    </section>
+  
+
+  
 
 
           </div>
@@ -385,9 +564,9 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: true,
 		toc_hide_index: true,
